@@ -8,9 +8,11 @@ const uri = process.env.MONGODB_URI;
 /*mongoose.connect('mongodb+srv://Leena:Vincent_7@cluster0.x32ne.mongodb.net/RolesPlayAvatar',{ useNewUrlParser: true, useUnifiedTopology: true });*/
 MongoClient.connect(uri, function (err, db) {
 	if (err) {
-	  console.log('Unable to connect to the mongoDB server. Error:', err);
-	} else {
-	  console.log('Connection established to', url);}}
+		console.log('Unable to connect to the mongoDB server. Error:', err);
+	  } else {
+		console.log('Connection established to', url);
+	  }
+	});
 mongoose.set('useFindAndModify', false);
 
 
