@@ -4,8 +4,10 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const counterMot = require('letter-count');
 const mongoose = require("mongoose");
+const uri = process.env.MONGODB_URI;
 mongoose.connect('mongodb+srv://Leena:Vincent_7@cluster0.x32ne.mongodb.net/RolesPlayAvatar',{ useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.set('useFindAndModify', false);
+
 
 const FichePerso = require("./FichePerso.js");
 const BoutiqueMaitrise = require("./Boutique.js");
