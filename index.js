@@ -5,9 +5,11 @@ const client = new Discord.Client();
 const counterMot = require('letter-count');
 const mongoose = require("mongoose");
 const uri = process.env.MONGODB_URI;
-/*mongoose.connect('mongodb+srv://Leena:Vincent_7@cluster0.x32ne.mongodb.net/RolesPlayAvatar',{ useNewUrlParser: true, useUnifiedTopology: true });*/
-mongoose.connect(uri,{ useNewUrlParser: true, useUnifiedTopology: true }() => { }).catch(err => console.log(err));
+/*mongoose.connect('mongodb+srv://Leena:Vincent_7@cluster0.x32ne.mongodb.net/RolesPlayAvatar',{ useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(uri,{ useNewUrlParser: true, useUnifiedTopology: true }() => { }).catch(err => console.log(err));*/
 
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true }, () => { })
+        .catch(err => console.log(err));
 mongoose.set('useFindAndModify', false);
 
 
