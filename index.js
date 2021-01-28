@@ -246,7 +246,7 @@ __Lune__ : ` +LuneBloodOrNot)
 	else
 	{
 		console.log("CountLune : "+CountLune);
-	channel.send(`**Bulletin de la nuit (a partir de 17h)**
+	channel.send(`**Bulletin de la nuit (a partir de 19h)**
 
 __Lune__ : ` +tableauNuit[CountLune])
 		await Weather.findOneAndUpdate({_id: "152579868"}, {Nuit : tableauNuit[CountLune]})
