@@ -636,7 +636,9 @@ client.on('message', async function (message, user)
 			case "categorie" : 
 			var ValueUpdate2 = message.content.split(' ').slice(3).join(' ').split('&')
 			console.log(ValueUpdate2)
-			await FichePerso.findOneAndUpdate({_id: taggedUser.id},{'Identite.Categorie' : ValueUpdate2}); 
+			var ValueUpdate3 = ValueUpdate2[1].split('>')
+			console.log(ValueUpdate3)
+			await FichePerso.findOneAndUpdate({_id: taggedUser.id},{'Identite.Categorie' : ValueUpdate3[0]}); 
 			break;
 			case "age" : await FichePerso.findOneAndUpdate({_id: taggedUser.id},{'Identite.Age' : Number(ValueUpdate)}); 
 			break;
