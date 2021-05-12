@@ -35,6 +35,7 @@ const prefixWhatWeather= "check-meteo"
 const prefixUpdateFiche = "updatefiche"
 const prefixAjoutCompetence = "newcompetence"
 const SalaireCat0= 0
+const SalaireCat6= 150
 const SalaireCat1 = 200
 const SalaireCat2 = 300
 const SalaireCommercant = 150
@@ -97,7 +98,16 @@ cron.schedule('0 7 * * *', async () => {
 	        var idZ = ficheCollectZ.Identite.Categorie
 	        console.log(idZ)
 	        console.log(ficheCollectZ.NiveauXP +" XP")
-	        		 if(idZ==auth.RoleRP.CouteauSuisse || idZ==auth.RoleRP.Moine || idZ==auth.RoleRP.Artiste || idZ==auth.RoleRP.Journaliste || idZ==auth.RoleRP.Mafieux|| idZ==auth.RoleRP.Probender|| idZ==auth.RoleRP.Pretresse )
+					if(idZ==auth.RoleRP.CouteauSuisse)
+					{
+						console.log("XP avant:"+ficheCollectZ.NiveauXP);
+						var SalaryXP =  ficheCollectZ.NiveauXP + Number(SalaireCat6);
+						console.log(SalaryXP)
+						await FichePerso.findOneAndUpdate({_id: fichesCollect[z]._id}, {NiveauXP : SalaryXP});
+						console.log("Salaire"+ SalaryXP);
+
+					}
+	        		 if(idZ==auth.RoleRP.Moine || idZ==auth.RoleRP.Artiste || idZ==auth.RoleRP.Journaliste || idZ==auth.RoleRP.Mafieux|| idZ==auth.RoleRP.Probender|| idZ==auth.RoleRP.Pretresse )
 	                {
 		                console.log("XP avant:"+ficheCollectZ.NiveauXP);
 		                var SalaryXP =  ficheCollectZ.NiveauXP + Number(SalaireCat1);
@@ -2426,7 +2436,7 @@ function createJobList()
     Journaliste : 200,
     Artiste : 200,
     Moine : 200,
-    CouteauSuisse : 200,
+    CouteauSuisse : 150,
     Jobless : 0,
 	time: Date()
 	});
