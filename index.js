@@ -2071,11 +2071,11 @@ client.on('message', async function (message, user)
 					  			var ValRoll= ValRand + Number(bonusAttaque)
 								if (ValRoll<=10)
 								{
-									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus maitrise) = " + ValRoll + " \rTu n'as pas su utiliser ta maitrise efficacement, meme si ton score est plus haut que ton adversaire, tu ne lui fera pas de degat");
+									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus maitrise) = " + ValRoll + " \rTu n'as pas su utiliser ta maitrise efficacement, meme si ton score est plus haut que ton adversaire, tu ne lui feras pas de degat");
 								}
 								else
 								{
-									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus maitrise) = " + ValRoll +" \rL'utilisation de ta maitrise est une reussite");
+									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus maitrise) = " + ValRoll +" \rL'utilisation de ta maitrise est une reussite, si ton score est plus haut que ton adversaire tu l'emportes");
 								}
 				  			}
 				  			else
@@ -2085,11 +2085,11 @@ client.on('message', async function (message, user)
 				  				var ValRoll= ValRand + Number(bonusAttaque) + Number(BonusLieu)
 								if (ValRoll<=10)
 								{
-									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus maitrise) + "+ BonusLieu + " (bonus/malus Lieu/Contexte) = " + ValRoll + " \rTu n'as pas su utiliser ta maitrise efficacement, meme si ton score est plus haut que ton adversaire, tu ne lui fera pas de degat");
+									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus maitrise) + "+ BonusLieu + " (bonus/malus Lieu/Contexte) = " + ValRoll + " \rTu n'as pas su utiliser ta maitrise efficacement, meme si ton score est plus haut que ton adversaire, tu ne lui feras pas de degat");
 								}
 								else
 								{
-									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus maitrise) + "+ BonusLieu + " (bonus/malus Lieu/Contexte) = " + ValRoll +" \rL'utilisation de ta maitrise est une reussite");
+									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus maitrise) + "+ BonusLieu + " (bonus/malus Lieu/Contexte) = " + ValRoll +" \rL'utilisation de ta maitrise est une reussite, si ton score est plus haut que ton adversaire tu l'emportes");
 								}
 				  			}
 				  			
