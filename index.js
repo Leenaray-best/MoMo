@@ -2415,7 +2415,7 @@ function createJobList()
     Soldat : 300,
     Commercant : 300,
     Ministre : 400,
-    Mafieux : 2000,
+    Mafieux : 200,
     Journaliste : 200,
     Artiste : 200,
     Moine : 200,
