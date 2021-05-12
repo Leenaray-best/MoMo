@@ -2101,18 +2101,18 @@ client.on('message', async function (message, user)
 						var ValRoll = Rand(20) + Number(Nombre);
 						if (ValRoll<=5)
 						{
-							message.reply(" Ton roll est de " +ValRoll+ ", c'est un echec critique avec degats physique ou moral");
+							message.reply(" Ton roll de Force est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
 						}else if (ValRoll<=10)
 						{
-							message.reply(" Ton roll est de " +ValRoll+ ", c'est un echec, aucun dommage ni physique ni moral !");
+							message.reply(" Ton roll de Force est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
 						}
 						else if (ValRoll<=15)
 						{
-							message.reply(" Ton roll est de " +ValRoll+ ", c'est une reussite !");
+							message.reply(" Ton roll de Force est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
 						}
 						else if (ValRoll>=16)
 						{
-							message.reply(" Ton roll est de " +ValRoll+ ", c'est une reussite critique, ta reussite est brillante !");
+							message.reply(" Ton roll de Force est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
 						}
 						break;
 						case "constitution" :
@@ -2120,18 +2120,18 @@ client.on('message', async function (message, user)
 						var ValRoll = Rand(20) + Number(Nombre);
 						if (ValRoll<=5)
 						{
-							message.reply(" Ton roll est de " +ValRoll+ ", c'est un echec critique avec degats physique ou moral");
+							message.reply(" Ton roll de Constitution est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
 						}else if (ValRoll<=10)
 						{
-							message.reply(" Ton roll est de " +ValRoll+ ", c'est un echec, aucun dommage ni physique ni moral !");
+							message.reply(" Ton roll de Constitution est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
 						}
 						else if (ValRoll<=15)
 						{
-							message.reply(" Ton roll est de " +ValRoll+ ", c'est une reussite !");
+							message.reply(" Ton roll de Constitution est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
 						}
 						else if (ValRoll>=16)
 						{
-							message.reply(" Ton roll est de " +ValRoll+ ", c'est une reussite critique, ta reussite est brillante !");
+							message.reply(" Ton roll de Constitution est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
 						}
 						break;
 						case "charisme" :
@@ -2139,18 +2139,18 @@ client.on('message', async function (message, user)
 						var ValRoll = Rand(20)+ Number(Nombre);
 						if (ValRoll<=5)
 						{
-							message.reply(" Ton roll est de " +ValRoll+ ", c'est un echec critique avec degats physique ou moral");
+							message.reply(" Ton roll de Charisme est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
 						}else if (ValRoll<=10)
 						{
-							message.reply(" Ton roll est de " +ValRoll+ ", c'est un echec, aucun dommage ni physique ni moral !");
+							message.reply(" Ton roll de Charisme est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
 						}
 						else if (ValRoll<=15)
 						{
-							message.reply(" Ton roll est de " +ValRoll+ ", c'est une reussite !");
+							message.reply(" Ton roll de Charisme est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
 						}
 						else if (ValRoll>=16)
 						{
-							message.reply(" Ton roll est de " +ValRoll+ ", c'est une reussite critique, ta reussite est brillante !");
+							message.reply(" Ton roll de Charisme est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
 						}
 						break;
 						case "intelligence" :
@@ -2158,18 +2158,18 @@ client.on('message', async function (message, user)
 						var ValRoll = Rand(20)+ Number(Nombre);
 						if (ValRoll<=5)
 						{
-							message.reply(" Ton roll est de " +ValRoll+ ", c'est un echec critique avec degats physique ou moral");
+							message.reply(" Ton roll d'intelligence est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
 						}else if (ValRoll<=10)
 						{
-							message.reply(" Ton roll est de " +ValRoll+ ", c'est un echec, aucun dommage ni physique ni moral !");
+							message.reply(" Ton roll d'intelligence est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
 						}
 						else if (ValRoll<=15)
 						{
-							message.reply(" Ton roll est de " +ValRoll+ ", c'est une reussite !");
+							message.reply(" Ton roll d'intelligence est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
 						}
 						else if (ValRoll>=16)
 						{
-							message.reply(" Ton roll est de " +ValRoll+ ", c'est une reussite critique, ta reussite est brillante !");
+							message.reply(" Ton roll d'intelligence est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
 						}
 						break;
 						case "sagesse" :
@@ -2177,18 +2177,18 @@ client.on('message', async function (message, user)
 						var ValRoll = Rand(20)+ Number(Nombre);
 						if (ValRoll<=5)
 						{
-							message.reply(" Ton roll est de " +ValRoll+ ", c'est un echec critique avec degats physique ou moral");
+							message.reply(" Ton roll de sagesse est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
 						}else if (ValRoll<=10)
 						{
-							message.reply(" Ton roll est de " +ValRoll+ ", c'est un echec, aucun dommage ni physique ni moral !");
+							message.reply(" Ton roll de sagesse est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
 						}
 						else if (ValRoll<=15)
 						{
-							message.reply(" Ton roll est de " +ValRoll+ ", c'est une reussite !");
+							message.reply(" Ton roll de sagesse est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
 						}
 						else if (ValRoll>=16)
 						{
-							message.reply(" Ton roll est de " +ValRoll+ ", c'est une reussite critique, ta reussite est brillante !");
+							message.reply(" Ton roll de sagesse est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
 						}
 						break;
 						case "dexterite" :
@@ -2196,18 +2196,18 @@ client.on('message', async function (message, user)
 						var ValRoll = Rand(20)+ Number(Nombre);
 						if (ValRoll<=5)
 						{
-							message.reply(" Ton roll est de " +ValRoll+ ", c'est un echec critique avec degats physique ou moral");
+							message.reply(" Ton roll de dexterite est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
 						}else if (ValRoll<=10)
 						{
-							message.reply(" Ton roll est de " +ValRoll+ ", c'est un echec, aucun dommage ni physique ni moral !");
+							message.reply(" Ton roll de dexterite est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
 						}
 						else if (ValRoll<=15)
 						{
-							message.reply(" Ton roll est de " +ValRoll+ ", c'est une reussite !");
+							message.reply(" Ton roll de dexterite est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
 						}
 						else if (ValRoll>=16)
 						{
-							message.reply(" Ton roll est de " +ValRoll+ ", c'est une reussite critique, ta reussite est brillante !");
+							message.reply(" Ton roll de dexterite est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
 						}
 						break;
 						default:
