@@ -633,6 +633,8 @@ client.on('message', async function (message, user)
 		{
 			case "metier" : await FichePerso.findOneAndUpdate({_id: taggedUser.id},{'Identite.Metier' : ValueUpdate}); 
 			break;
+			case "categorie" : await FichePerso.findOneAndUpdate({_id: taggedUser.id},{'Identite.Categorie' : ValueUpdate}); 
+			break;
 			case "age" : await FichePerso.findOneAndUpdate({_id: taggedUser.id},{'Identite.Age' : Number(ValueUpdate)}); 
 			break;
 			case "force" : await FichePerso.findOneAndUpdate({_id: taggedUser.id},{'Competence.Force' : Number(ValueUpdate)}); 
