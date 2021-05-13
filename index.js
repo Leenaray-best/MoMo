@@ -53,7 +53,7 @@ client.on('ready', () => {
 });
 
 //Delivrance quotidienne des salaires
-const test0 = '48 10 * * *';
+const test0 = '57 10 * * *';
 cron.schedule(test0, async () => 
 {
 //cron.schedule('0 7 * * *', async () => {
@@ -119,9 +119,11 @@ cron.schedule(test0, async () =>
 	                if(idZ==auth.RoleRP.Commercant)            
 	                {
 		                console.log("XP avant:"+ficheCollectZ.NiveauXP);
-		                var SalaryXP =  ficheCollectZ.NiveauXP + Number(Rand(SalaireCommercant))+ Number(150) ;
+						var NumRand = Number(Rand(SalaireCommercant))
+						console.log("Tirage random commercant"+ Number(NumRand));
+		                var SalaryXP =  ficheCollectZ.NiveauXP + Number(NumRand)+ Number(150) ;
 		                await FichePerso.findOneAndUpdate({_id: fichesCollect[z]._id}, {NiveauXP : SalaryXP});
-		                console.log("Salaire"+ SalaryXP);
+		                console.log("Salaire"+ Number(SalaryXP));
 
 	                }
 
@@ -150,7 +152,7 @@ cron.schedule(test0, async () =>
 		                console.log("Salaire"+ SalaryXP);
 
 	                }
-	                 if(idZ==auth.RoleRP.Souverain)
+	                 if(idZ==auth.RoleRP.Souveraine)
 	                {
 		                console.log("XP avant:"+ficheCollectZ.NiveauXP);
 		                var SalaryXP =  ficheCollectZ.NiveauXP + Number(SalaireCat5);
