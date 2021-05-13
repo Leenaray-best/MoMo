@@ -336,7 +336,7 @@ client.on('message', async function (message, user)
 	                         Metier : `+fiche.Identite.Metier+`
 	                         Niveau de Maitrise : `+fiche.NiveauDeMaitrise+`
 	                         Niveau XP : `+fiche.NiveauXP+`
-	                         Gain de Competence : `+fiche.GainCompetence+`
+	                         Point de Competence : `+fiche.GainCompetence+`
 	                         Faiblesse : `+listeFaiblesse[0]+`, `+listeFaiblesse[1])
 	            .addFields(
                     { name : `Qualite 1`, value : listeQualite[0], inline : true},
@@ -433,7 +433,7 @@ client.on('message', async function (message, user)
                          Metier : `+fiche.Identite.Metier+`
                          Niveau de Maitrise : `+fiche.NiveauDeMaitrise+`
                          Niveau XP : `+fiche.NiveauXP+`
-                         Gain de Competence : `+fiche.GainCompetence+`
+                         Point de Competence : `+fiche.GainCompetence+`
                          Faiblesse : `+listeFaiblesse[0]+`, `+listeFaiblesse[1])
             .addFields(
                 { name : `Qualite 1`, value : listeQualite[0], inline : true},
@@ -489,7 +489,7 @@ client.on('message', async function (message, user)
                          Metier : `+fiche.Identite.Metier+`
                          Niveau de Maitrise : `+fiche.NiveauDeMaitrise+`
                          Niveau XP : `+fiche.NiveauXP+`
-                         Gain de Competence : `+fiche.GainCompetence+`
+                         Point de Competence : `+fiche.GainCompetence+`
                          Faiblesse : `+listeFaiblesse[0]+`, `+listeFaiblesse[1])
             .addFields(
                 { name : `Qualite 1`, value : listeQualite[0], inline : true},
@@ -554,7 +554,7 @@ client.on('message', async function (message, user)
                          Metier : `+fiche.Identite.Metier+`
                          Niveau de Maitrise : `+fiche.NiveauDeMaitrise+`
                          Niveau XP : `+fiche.NiveauXP+`
-                         Gain de Competence : `+fiche.GainCompetence+`
+                         Point de Competence : `+fiche.GainCompetence+`
                          Faiblesse : `+listeFaiblesse[0]+`, `+listeFaiblesse[1])
             .addFields(
                 { name : `Qualite 1`, value : listeQualite[0], inline : true},
@@ -602,7 +602,7 @@ client.on('message', async function (message, user)
                          Metier : `+fiche.Identite.Metier+`
                          Niveau de Maitrise : `+fiche.NiveauDeMaitrise+`
                          Niveau XP : `+fiche.NiveauXP+`
-                         Gain de Competence : `+fiche.GainCompetence+`
+                         Point de Competence : `+fiche.GainCompetence+`
                          Faiblesse : `+listeFaiblesse[0]+`, `+listeFaiblesse[1])
             .addFields(
                 { name : `Qualite 1`, value : listeQualite[0], inline : true},
@@ -681,7 +681,7 @@ client.on('message', async function (message, user)
                          Metier : `+fiche.Identite.Metier+`
                          Niveau de Maitrise : `+fiche.NiveauDeMaitrise+`
                          Niveau XP : `+fiche.NiveauXP+`
-                         Gain de Competence : `+fiche.GainCompetence+`
+                         Point de Competence : `+fiche.GainCompetence+`
                          Faiblesse : `+listeFaiblesse[0]+`, `+listeFaiblesse[1])
             .addFields(
                 { name : `Qualite 1`, value : listeQualite[0], inline : true},
@@ -726,7 +726,7 @@ client.on('message', async function (message, user)
 	                         Metier : `+fiche.Identite.Metier+`
 	                         Niveau de Maitrise : `+fiche.NiveauDeMaitrise+`
 	                         Niveau XP : `+fiche.NiveauXP+`
-	                         Gain de Competence : `+fiche.GainCompetence+`
+	                         Point de Competence : `+fiche.GainCompetence+`
 	                         Faiblesse : `+listeFaiblesse[0]+`, `+listeFaiblesse[1])
 
                 .addFields(
@@ -2396,7 +2396,7 @@ client.on('message', async function (message, user)
 	                         Metier : `+fiche.Identite.Metier+`
 	                         Niveau de Maitrise : `+fiche.NiveauDeMaitrise+`
 	                         Niveau XP : `+fiche.NiveauXP+`
-	                         Gain de Competence : `+fiche.GainCompetence+`
+	                         Point de Competence : `+fiche.GainCompetence+`
 	                         Faiblesse : `+listeFaiblesse[0]+`, `+listeFaiblesse[1])
 	            .addFields(
 	                { name : `Qualite 1`, value : listeQualite[0], inline : true},
