@@ -53,7 +53,7 @@ client.on('ready', () => {
 });
 
 //Delivrance quotidienne des salaires
-const test0 = '30 10 * * *';
+const test0 = '36 10 * * *';
 cron.schedule(test0, async () => 
 {
 //cron.schedule('0 7 * * *', async () => {
