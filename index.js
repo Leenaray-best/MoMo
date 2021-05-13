@@ -53,10 +53,10 @@ client.on('ready', () => {
 });
 
 //Delivrance quotidienne des salaires
-//const test0 = '32 16 * * *';
-//cron.schedule(test0, async () => 
-//{
-cron.schedule('0 7 * * *', async () => {
+const test0 = '12 18 * * *';
+cron.schedule(test0, async () => 
+{
+//cron.schedule('0 7 * * *', async () => {
     const guildRP = client.guilds.cache.get(auth.guildRP);
     const channel = client.channels.cache.get(auth.Salon.Jet);
 
