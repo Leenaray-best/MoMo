@@ -53,10 +53,10 @@ client.on('ready', () => {
 });
 
 //Delivrance quotidienne des salaires
-const test0 = '16 11 * * *';
-cron.schedule(test0, async () => 
-{
-//cron.schedule('0 7 * * *', async () => {
+//const test0 = '16 11 * * *';
+//cron.schedule(test0, async () => 
+//{
+cron.schedule('0 7 * * *', async () => {
     const guildRP = client.guilds.cache.get(auth.guildRP);
     const channel = client.channels.cache.get(auth.Salon.Jet);
 
@@ -258,7 +258,7 @@ __Lune__ : ` +LuneBloodOrNot)
 	else
 	{
 		console.log("CountLune : "+CountLune);
-	channel.send(`**Bulletin de la nuit (a partir de 19h)**
+	channel.send(`**Bulletin de la nuit (a partir de 18h)**
 
 __Lune__ : ` +tableauNuit[CountLune])
 		await Weather.findOneAndUpdate({_id: "152579868"}, {Nuit : tableauNuit[CountLune]})
@@ -1151,7 +1151,7 @@ client.on('message', async function (message, user)
 				  					var BonusMeteo = Number(0)
 				  				}
 				  			}
-				  			if (message.createdAt.getHours()>= 19 || message.createdAt.getHours()<= 3)
+				  			if (message.createdAt.getHours()>= 16 || message.createdAt.getHours()<= 3)
 				  			{
 				  				console.log("C'est la nuit")
 				  				if (ficheMeteo.Nuit=='🌕')
@@ -1783,7 +1783,7 @@ client.on('message', async function (message, user)
 				  					var BonusMeteo = Number(0)
 				  				}
 				  			}
-				  			if (message.createdAt.getHours()>= 19 || message.createdAt.getHours()<= 3)
+				  			if (message.createdAt.getHours()>= 16 || message.createdAt.getHours()<= 3)
 				  			{
 				  				if (ficheMeteo.Nuit=='🌕')
 				  				{
