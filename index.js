@@ -21,6 +21,7 @@ const prefixXP= "monxp"
 const prefixremoveXP = "removexp"
 const prefixgiveXP = "givexp"
 const prefixMaFiche = "mafiche"
+const prefixResetFiche = "resetfiche"
 const prefixCreateFicheStep1= "remplirfiche1"
 const prefixCreateFicheStep2= "remplirfiche2"
 const prefixCreateFicheStep3= "remplirfiche3"
@@ -329,6 +330,58 @@ client.on('message', async function (message, user)
 			const listeFaiblesse=fiche.Faiblesse;			
 			console.log(listeQualite)
 			console.log(listeFaiblesse)
+			const exampleEmbed = new Discord.MessageEmbed()
+	            .setColor('#16EF0E')
+	            .setTitle("Fiche de " +fiche.Username)
+	            .setDescription(`Nom : `+fiche.Identite.Nom+`
+	                         Prenom : `+fiche.Identite.Prenom+`
+	                         Age: `+fiche.Identite.Age+`
+	                         Metier : `+fiche.Identite.Metier+`
+	                         Niveau de Maitrise : `+fiche.NiveauDeMaitrise+`
+	                         Niveau XP : `+fiche.NiveauXP+`
+	                         Point de Competence : `+fiche.GainCompetence+`
+	                         Faiblesse : `+listeFaiblesse[0]+`, `+listeFaiblesse[1])
+	            .addFields(
+                    { name : `Qualite 1`, value : listeQualite[0], inline : true},
+                    { name : `Qualite 2`, value : listeQualite[1], inline : true},
+                    { name : `Defaut 1`, value : fiche.Defaut, inline : true}
+                )
+                .addFields(
+                    { name : `Force`, value : fiche.Competence.Force, inline : true},
+                    { name : `Constitution`, value : fiche.Competence.Constitution, inline : true},
+                    { name : `Charisme`, value : fiche.Competence.Charisme, inline : true}
+                )
+                .addFields(
+                    { name : `Intelligence`, value : fiche.Competence.Intelligence, inline : true},
+                    { name : `Sagesse`, value : fiche.Competence.Sagesse, inline : true},
+                    { name : `Dexterite`, value : fiche.Competence.Dexterite, inline : true}
+                )
+                .addFields(
+                    { name : `Lien Gdoc`, value : fiche.LienFichePerso, inline : true}
+                )
+                .setThumbnail(taggedUser.avatarURL())
+	            message.channel.send(exampleEmbed);
+		}
+	}
+
+	//Fonction reset fiche pour admin
+	if (message.channel.id==auth.Salon.GestionFiche)
+	{
+		console.log("2")
+		if (petitMessage.startsWith(prefixResetFiche) && message.member.roles.cache.has(auth.RoleRP.RoleStaff)) 
+		{	console.log("3");
+			const taggedUser = message.mentions.users.first();
+			console.log(taggedUser)
+			if (!taggedUser) return message.author.send("Vous n'avez pas saisi de pseudo à chercher.").then(msg => msg.delete({ timeout: 10000 }));
+        	if (isNaN(taggedUser)) return message.author.send("Le paramètre que vous avez saisi n'est pas un pseudo.").then(msg => msg.delete({ timeout: 10000 }));
+			var fiche = await FichePerso.findOne({_id: taggedUser.id}); 
+			console.log(fiche)
+			await FichePerso.findOneAndUpdate({_id: taggedUser.id},{'Identite.Prenom': "" , 'Identite.Nom': "", 'Identite.Age': "", 'Identite.Sexe': "", 'Identite.Metier': "", 'Identite.Categorie': ""});
+			await FichePerso.findOneAndUpdate({_id: taggedUser.id},{'Qualite.0': "" ,'Qualite.1': "", Defaut: "", 'Faiblesse.0': ""});
+			await FichePerso.findOneAndUpdate({_id: taggedUser.id},{'Competence.Force': 0,'Competence.Constitution': 0, 'Competence.Charisme': 0});
+			await FichePerso.findOneAndUpdate({_id: taggedUser.id},{'Competence.Intelligence': 0 ,'Competence.Sagesse': 0, 'Competence.Dexterite': 0});
+			await FichePerso.findOneAndUpdate({_id: taggedUser.id},{'Faiblesse.1': ""});
+			await FichePerso.findOneAndUpdate({_id: taggedUser.id},{LienFichePerso: ""});
 			const exampleEmbed = new Discord.MessageEmbed()
 	            .setColor('#16EF0E')
 	            .setTitle("Fiche de " +fiche.Username)
