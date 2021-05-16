@@ -315,7 +315,7 @@ client.on('message', async function (message, user)
 
 	// COMMANDE POUR LES ADMINS
 	//Fonction affichage fiche pour admin
-	if (message.channel.id==auth.Salon.GestionFiche)
+	if (message.channel.id==auth.Salon.GestionFiche || message.channel.id==auth.Salon.SalonBotAdmin)
 	{
 		console.log("2")
 		if (petitMessage.startsWith(prefixFiche) && message.member.roles.cache.has(auth.RoleRP.RoleStaff)) 
@@ -365,7 +365,7 @@ client.on('message', async function (message, user)
 	}
 
 	//Fonction reset fiche pour admin
-	if (message.channel.id==auth.Salon.GestionFiche)
+	if (message.channel.id==auth.Salon.GestionFiche || message.channel.id==auth.Salon.SalonBotAdmin)
 	{
 		console.log("2")
 		if (petitMessage.startsWith(prefixResetFiche) && message.member.roles.cache.has(auth.RoleRP.RoleStaff)) 
