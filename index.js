@@ -382,6 +382,10 @@ client.on('message', async function (message, user)
 			await FichePerso.findOneAndUpdate({_id: taggedUser.id},{'Competence.Intelligence': 0 ,'Competence.Sagesse': 0, 'Competence.Dexterite': 0});
 			await FichePerso.findOneAndUpdate({_id: taggedUser.id},{'Faiblesse.1': ""});
 			await FichePerso.findOneAndUpdate({_id: taggedUser.id},{LienFichePerso: ""});
+			var fiche = await FichePerso.findOne({_id: taggedUser.id}); 
+			console.log(fiche)
+			const listeQualite=fiche.Qualite;
+			const listeFaiblesse=fiche.Faiblesse;	
 			const exampleEmbed = new Discord.MessageEmbed()
 	            .setColor('#16EF0E')
 	            .setTitle("Fiche de " +fiche.Username)
