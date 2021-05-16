@@ -376,48 +376,8 @@ client.on('message', async function (message, user)
         	if (isNaN(taggedUser)) return message.author.send("Le paramètre que vous avez saisi n'est pas un pseudo.").then(msg => msg.delete({ timeout: 10000 }));
 			var fiche = await FichePerso.findOne({_id: taggedUser.id}); 
 			console.log(fiche)
-			await FichePerso.findOneAndUpdate({_id: taggedUser.id},{'Identite.Prenom': "empty" , 'Identite.Nom': "empty", 'Identite.Age': 0, 'Identite.Sexe': "empty", 'Identite.Metier': "empty", 'Identite.Categorie': "empty"});
-			await FichePerso.findOneAndUpdate({_id: taggedUser.id},{'Qualite.0': "empty" ,'Qualite.1': "empty", Defaut: "", 'Faiblesse.0': "empty"});
-			await FichePerso.findOneAndUpdate({_id: taggedUser.id},{'Competence.Force': 0,'Competence.Constitution': 0, 'Competence.Charisme': 0});
-			await FichePerso.findOneAndUpdate({_id: taggedUser.id},{'Competence.Intelligence': 0 ,'Competence.Sagesse': 0, 'Competence.Dexterite': 0});
-			await FichePerso.findOneAndUpdate({_id: taggedUser.id},{'Faiblesse.1': "empty"});
-			await FichePerso.findOneAndUpdate({_id: taggedUser.id},{LienFichePerso: "empty"});
-			await FichePerso.findOneAndUpdate({_id: taggedUser.id},{'Identite.NiveauDeMaitrise': 0},{'Identite.NiveauXP': 0},{'Identite.GainCompetence':0});
-			var fiche = await FichePerso.findOne({_id: taggedUser.id}); 
-			console.log(fiche)
-			const listeQualite=fiche.Qualite;
-			const listeFaiblesse=fiche.Faiblesse;	
-			const exampleEmbed = new Discord.MessageEmbed()
-	            .setColor('#16EF0E')
-	            .setTitle("Fiche de " +fiche.Username)
-	            .setDescription(`Nom : `+fiche.Identite.Nom+`
-	                         Prenom : `+fiche.Identite.Prenom+`
-	                         Age: `+fiche.Identite.Age+`
-	                         Metier : `+fiche.Identite.Metier+`
-	                         Niveau de Maitrise : `+fiche.NiveauDeMaitrise+`
-	                         Niveau XP : `+fiche.NiveauXP+`
-	                         Point de Competence : `+fiche.GainCompetence+`
-	                         Faiblesse : `+listeFaiblesse[0]+`, `+listeFaiblesse[1])
-	            .addFields(
-                    { name : `Qualite 1`, value : listeQualite[0], inline : true},
-                    { name : `Qualite 2`, value : listeQualite[1], inline : true},
-                    { name : `Defaut 1`, value : fiche.Defaut, inline : true}
-                )
-                .addFields(
-                    { name : `Force`, value : fiche.Competence.Force, inline : true},
-                    { name : `Constitution`, value : fiche.Competence.Constitution, inline : true},
-                    { name : `Charisme`, value : fiche.Competence.Charisme, inline : true}
-                )
-                .addFields(
-                    { name : `Intelligence`, value : fiche.Competence.Intelligence, inline : true},
-                    { name : `Sagesse`, value : fiche.Competence.Sagesse, inline : true},
-                    { name : `Dexterite`, value : fiche.Competence.Dexterite, inline : true}
-                )
-                .addFields(
-                    { name : `Lien Gdoc`, value : fiche.LienFichePerso, inline : true}
-                )
-                .setThumbnail(taggedUser.avatarURL())
-	            message.channel.send(exampleEmbed);
+			await FichePerso.findOneAndDelete({_id: taggedUser.id});
+	        message.channel.send("La fiche a ete detruite, enlever tout les roles lies au RolePlay et celui de Maitrise. Lui mettre le role Bienvenue et lui faire retirer sa maitrise");
 		}
 	}
 
