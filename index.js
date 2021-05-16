@@ -18,6 +18,7 @@ const ListeMetier = require("./job.js");
 const prefixFiche = "ficheperso";
 const prefixMaitrise = "roll-maitrise";
 const prefixXP= "monxp"
+const prefixCarte= "carte"
 const prefixremoveXP = "removexp"
 const prefixgiveXP = "givexp"
 const prefixMaFiche = "mafiche"
@@ -311,6 +312,13 @@ client.on('message', async function (message, user)
 	  					}
 	  		}    
 		}
+	}
+
+	// Commande pour la carte
+	if (message.channel.id==auth.Salon.Jet && petitMessage === prefixCarte)
+	{
+		var gifCarte = "https://cdn.discordapp.com/attachments/641015662118174730/843501620172292096/map2.jpg";
+	  	await client.channels.cache.get(auth.Salon.Jet).send(gifCarte);
 	}
 
 	// COMMANDE POUR LES ADMINS
