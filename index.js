@@ -376,12 +376,13 @@ client.on('message', async function (message, user)
         	if (isNaN(taggedUser)) return message.author.send("Le paramètre que vous avez saisi n'est pas un pseudo.").then(msg => msg.delete({ timeout: 10000 }));
 			var fiche = await FichePerso.findOne({_id: taggedUser.id}); 
 			console.log(fiche)
-			await FichePerso.findOneAndUpdate({_id: taggedUser.id},{'Identite.Prenom': "" , 'Identite.Nom': "", 'Identite.Age': "", 'Identite.Sexe': "", 'Identite.Metier': "", 'Identite.Categorie': ""});
-			await FichePerso.findOneAndUpdate({_id: taggedUser.id},{'Qualite.0': "" ,'Qualite.1': "", Defaut: "", 'Faiblesse.0': ""});
+			await FichePerso.findOneAndUpdate({_id: taggedUser.id},{'Identite.Prenom': "empty" , 'Identite.Nom': "empty", 'Identite.Age': "empty", 'Identite.Sexe': "empty", 'Identite.Metier': "empty", 'Identite.Categorie': "empty"});
+			await FichePerso.findOneAndUpdate({_id: taggedUser.id},{'Qualite.0': "empty" ,'Qualite.1': "empty", Defaut: "", 'Faiblesse.0': "empty"});
 			await FichePerso.findOneAndUpdate({_id: taggedUser.id},{'Competence.Force': 0,'Competence.Constitution': 0, 'Competence.Charisme': 0});
 			await FichePerso.findOneAndUpdate({_id: taggedUser.id},{'Competence.Intelligence': 0 ,'Competence.Sagesse': 0, 'Competence.Dexterite': 0});
-			await FichePerso.findOneAndUpdate({_id: taggedUser.id},{'Faiblesse.1': ""});
-			await FichePerso.findOneAndUpdate({_id: taggedUser.id},{LienFichePerso: ""});
+			await FichePerso.findOneAndUpdate({_id: taggedUser.id},{'Faiblesse.1': "empty"});
+			await FichePerso.findOneAndUpdate({_id: taggedUser.id},{LienFichePerso: "empty"});
+			await FichePerso.findOneAndUpdate({_id: taggedUser.id},{'Identite.NiveauDeMaitrise': 0},{'Identite.NiveauXP': 0},{'Identite.GainCompetence':0});
 			var fiche = await FichePerso.findOne({_id: taggedUser.id}); 
 			console.log(fiche)
 			const listeQualite=fiche.Qualite;
