@@ -22,6 +22,7 @@ const prefixCarte= "carte"
 const prefixremoveXP = "removexp"
 const prefixgiveXP = "givexp"
 const prefixMaFiche = "mafiche"
+const prefixresetXP = "resetallxp"
 const prefixResetFiche = "resetfiche"
 const prefixCreateFicheStep1= "remplirfiche1"
 const prefixCreateFicheStep2= "remplirfiche2"
@@ -2444,6 +2445,21 @@ client.on('message', async function (message, user)
 	            .setThumbnail(message.author.avatarURL())
 	            message.channel.send(exampleEmbed);
 		}
+	}
+
+	//Commande pour retirer TOUTE l'XP a un joueur PAR UN ADMIN
+	if ((message.channel.id==auth.Salon.Jet || message.channel.id==auth.Salon.SalonBotAdmin) && message.member.roles.cache.has(auth.RoleRP.RoleStaff) && petitMessage.startsWith(prefixresetXP))
+	{
+		const taggedUser = message.mentions.users.first();
+		const argsNumber = message.content.split(' ').slice(2); // All arguments behind the command name with the prefix
+		var Quantity = argsNumber.join(' '); // Amount of Joker
+			if (!Quantity) Quantity=0;
+			if (isNaN(Quantity)) Quantity=0;
+			if (!taggedUser) return message.author.send("Vous n'avez pas saisi de pseudo à chercher.").then(msg => msg.delete({ timeout: 10000 }));
+        	if (isNaN(taggedUser)) return message.author.send("Le paramètre que vous avez saisi n'est pas un pseudo.").then(msg => msg.delete({ timeout: 10000 }));
+		var fiche = await FichePerso.findOne({_id: taggedUser.id}); 
+		await FichePerso.findOneAndUpdate({_id: taggedUser.id},{NiveauXP: 0});
+		client.channels.cache.get(auth.Salon.SalonBotAdmin).send("<@"+taggedUser.id+"> a ete remise a 0");
 	}
 
 });
