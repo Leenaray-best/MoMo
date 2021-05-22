@@ -1552,7 +1552,7 @@ client.on('message', async function (message, user)
 						}
 						break;
 						case "constitution" :
-						var Nombre = Number(fiche.Competence.Force)
+						var Nombre = Number(fiche.Competence.Constitution)
 						var ValRoll = Rand(20);
 						if (ValRoll<=Nombre)
 						{
@@ -1564,7 +1564,7 @@ client.on('message', async function (message, user)
 						}
 						break;
 						case "charisme" :
-						var Nombre = Number(fiche.Competence.Force)
+						var Nombre = Number(fiche.Competence.Charisme)
 						var ValRoll = Rand(20);
 						if (ValRoll<=Nombre)
 						{
@@ -1576,7 +1576,7 @@ client.on('message', async function (message, user)
 						}
 						break;						
 						case "intelligence" :
-						var Nombre = Number(fiche.Competence.Force)
+						var Nombre = Number(fiche.Competence.Intelligence)
 						var ValRoll = Rand(20);
 						if (ValRoll<=Nombre)
 						{
@@ -1588,7 +1588,7 @@ client.on('message', async function (message, user)
 						}
 						break;
 						case "sagesse" :
-						var Nombre = Number(fiche.Competence.Force)
+						var Nombre = Number(fiche.Competence.Sagesse)
 						var ValRoll = Rand(20);
 						if (ValRoll<=Nombre)
 						{
@@ -1600,7 +1600,7 @@ client.on('message', async function (message, user)
 						}
 						break;
 						case "dexterite" :
-						var Nombre = Number(fiche.Competence.Force)
+						var Nombre = Number(fiche.Competence.Dexterite)
 						var ValRoll = Rand(20);
 						if (ValRoll<=Nombre)
 						{
