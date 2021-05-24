@@ -2301,10 +2301,10 @@ client.on('message', async function (message, user)
 				var ficheCollectZ = await FichePerso.findOne({_id: fichesCollect[z]._id});
 				var ValueXPz = ficheCollectZ.NiveauXP;
 				var Usernamez = ficheCollectZ.Username;
-				var UsernamePrenom = ficheCollectZ.Identite.Prenom;
-				var UsernameNom = ficheCollectZ.Identite.Nom;
-				//TableauAllXp.push([Usernamez,ValueXPz])
-				TableauAllXp.push([UsernamePrenom,UsernameNom,ValueXPz])
+				//var UsernamePrenom = ficheCollectZ.Identite.Prenom;
+				//var UsernameNom = ficheCollectZ.Identite.Nom;
+				TableauAllXp.push([Usernamez,ValueXPz])
+				//TableauAllXp.push([UsernamePrenom,UsernameNom,ValueXPz])
 	        }
 		console.log(TableauAllXp)
 		var TableauFinal = TableauAllXp.sort(([a, b], [c, d]) => a - c || d - b);
@@ -2313,8 +2313,8 @@ client.on('message', async function (message, user)
 		var texte = "";
 			for (var z = 0; z < numberFiche; z++) 
 			{
-				//texte = texte+TableauFinal[z][0]+ " : " + TableauFinal[z][1] + " Xp \r";
-				texte = texte+TableauFinal[z][0]+texte+TableauFinal[z][1]+ " : " + TableauFinal[z][2] + " Xp \r";
+				texte = texte+TableauFinal[z][0]+ " : " + TableauFinal[z][1] + " Xp \r";
+				//texte = texte+TableauFinal[z][0]+texte+TableauFinal[z][1]+ " : " + TableauFinal[z][2] + " Xp \r";
 			}
 		const exampleEmbed = new Discord.MessageEmbed()
 	            .setColor('#16EF0E')
