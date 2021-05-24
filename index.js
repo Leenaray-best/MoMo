@@ -324,10 +324,10 @@ client.on('message', async function (message, user)
 
 	// COMMANDE POUR LES ADMINS
 	//Fonction affichage fiche pour admin
-	if (message.channel.id==auth.Salon.GestionFiche || message.channel.id==auth.Salon.SalonBotAdmin)
+	if (message.channel.id==auth.Salon.GestionFiche || message.channel.id==auth.Salon.SalonBotAdmin || message.channel.id==auth.Salon.Jet)
 	{
 		console.log("2")
-		if (petitMessage.startsWith(prefixFiche) && message.member.roles.cache.has(auth.RoleRP.RoleStaff)) 
+		if (petitMessage.startsWith(prefixFiche) && (message.member.roles.cache.has(auth.RoleRP.RoleStaff) || message.member.roles.cache.has(auth.RoleRP.RolePlay))) 
 		{	console.log("3");
 			const taggedUser = message.mentions.users.first();
 			console.log(taggedUser)
