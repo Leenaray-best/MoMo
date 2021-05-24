@@ -2300,18 +2300,22 @@ client.on('message', async function (message, user)
 				console.log("nom n°"+(z+1)+" : "+fichesCollect[z].Username);
 				var ficheCollectZ = await FichePerso.findOne({_id: fichesCollect[z]._id});
 				var ValueXPz = ficheCollectZ.NiveauXP;
-				var Usernamez = ficheCollectZ.Username;
-				//var UsernamePrenom = ficheCollectZ.Identite.Prenom;
-				//var UsernameNom = ficheCollectZ.Identite.Nom;
-				TableauAllXp.push([Usernamez,ValueXPz])
-				//TableauAllXp.push([UsernamePrenom,UsernameNom,ValueXPz])
-	        }
+				if (Number(ValueXPz)>0)
+				{
+					var Usernamez = ficheCollectZ.Username;
+					//var UsernamePrenom = ficheCollectZ.Identite.Prenom;
+					//var UsernameNom = ficheCollectZ.Identite.Nom;
+					TableauAllXp.push([Usernamez,ValueXPz])
+					//TableauAllXp.push([UsernamePrenom,UsernameNom,ValueXPz])
+				}
+	        }	
 		console.log(TableauAllXp)
 		var TableauFinal = TableauAllXp.sort(([a, b], [c, d]) => a - c || d - b);
 		console.log(TableauFinal)
 		var tailletableau = TableauFinal.length;
 		var texte = "";
-			for (var z = 0; z < numberFiche; z++) 
+		//	for (var z = 0; z < numberFiche; z++)
+			for (var z = 0; z < tailletableau; z++)
 			{
 				texte = texte+TableauFinal[z][0]+ " : " + TableauFinal[z][1] + " Xp \r";
 				//texte = texte+TableauFinal[z][0]+texte+TableauFinal[z][1]+ " : " + TableauFinal[z][2] + " Xp \r";
