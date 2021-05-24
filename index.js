@@ -2303,7 +2303,7 @@ client.on('message', async function (message, user)
 				if (Number(ValueXPz)>0)
 				{
 					//var Usernamez = ficheCollectZ.Username;
-					var Usernamez = ficheCollectZ.Identite.Prenom+""+ficheCollectZ.Identite.Nom;
+					var Usernamez = ficheCollectZ.Identite.Prenom+", "+ficheCollectZ.Identite.Nom;
 					//var UsernamePrenom = ficheCollectZ.Identite.Prenom;
 					//var UsernameNom = ficheCollectZ.Identite.Nom;
 					TableauAllXp.push([Usernamez,ValueXPz])
