@@ -73,15 +73,18 @@ cron.schedule('0 7 * * *', async () => {
 			console.log("nom n°"+(zz+1)+" : "+fichesCollect[zz].Username);
 			var ficheCollectZ = await FichePerso.findOne({_id: fichesCollect[zz]._id});
 			var ValueXPz = ficheCollectZ.NiveauXP;
-			var Usernamez = ficheCollectZ.Username;
-			TableauAllXp.push([Usernamez,ValueXPz])
+			if (Number(ValueXPz)>0)
+			{
+				var Usernamez = ficheCollectZ.Identite.Prenom+", "+ficheCollectZ.Identite.Nom;
+				TableauAllXp.push([Usernamez,ValueXPz])
+			}
         }
 	console.log(TableauAllXp)
 	var TableauFinal = TableauAllXp.sort(([a, b], [c, d]) => a - c || d - b);
 	console.log(TableauFinal)
 	var tailletableau = TableauFinal.length;
 	var texte = "";
-		for (var zz = 0; zz < numberFiche; zz++) 
+		for (var zz = 0; zz < tailletableau; zz++) 
 		{
 			texte = texte+TableauFinal[zz][0]+ " : " + TableauFinal[zz][1] + " Xp \r";
 		}
@@ -185,15 +188,18 @@ cron.schedule('0 7 * * *', async () => {
 			console.log("nom n°"+(zz+1)+" : "+fichesCollect[zz].Username);
 			var ficheCollectZ = await FichePerso.findOne({_id: fichesCollect[zz]._id});
 			var ValueXPz = ficheCollectZ.NiveauXP;
-			var Usernamez = ficheCollectZ.Username;
-			TableauAllXp.push([Usernamez,ValueXPz])
+			if (Number(ValueXPz)>0)
+			{
+				var Usernamez = ficheCollectZ.Identite.Prenom+", "+ficheCollectZ.Identite.Nom;
+				TableauAllXp.push([Usernamez,ValueXPz])
+			}
         }
 	console.log(TableauAllXp)
 	var TableauFinal = TableauAllXp.sort(([a, b], [c, d]) => a - c || d - b);
 	console.log(TableauFinal)
 	var tailletableau = TableauFinal.length;
 	var texte = "";
-		for (var zz = 0; zz < numberFiche; zz++) 
+		for (var zz = 0; zz < tailletableau; zz++) 
 		{
 			texte = texte+TableauFinal[zz][0]+ " : " + TableauFinal[zz][1] + " Xp \r";
 		}
