@@ -2258,7 +2258,7 @@ client.on('message', async function (message, user)
 	}
 
 	//Commande de roll basique
-	if  (message.channel.id==auth.Salon.CommandeBotAll && petitMessage.startsWith(prefixRollBasique))
+	if  ((message.channel.id==auth.Salon.CommandeBotAll || message.channel.id==auth.Salon.SalonBotAdmin) && petitMessage.startsWith(prefixRollBasique))
 	{
 		var chiffre = message.content.split('d');
 		console.log(chiffre);
