@@ -796,19 +796,19 @@ client.on('message', async function (message, user)
 		if (taillemessage.chars>=100 && taillemessage.chars<=150)
 		{
 			var xPfiche = await FichePerso.findOne({_id: message.author.id});
-			var NewXP=xPfiche.NiveauXP+Rand(50)+20;
+			var NewXP=xPfiche.NiveauXP+Rand(30)+10;
 			await FichePerso.findOneAndUpdate({_id: message.author.id},{NiveauXP: NewXP});
 		};
 		if (taillemessage.chars>150 && taillemessage.chars<=250)
 		{
 			var xPfiche = await FichePerso.findOne({_id: message.author.id});
-			var NewXP=xPfiche.NiveauXP+Rand(70)+50;
+			var NewXP=xPfiche.NiveauXP+Rand(70)+30;
 			await FichePerso.findOneAndUpdate({_id: message.author.id},{NiveauXP: NewXP});
 		};
 		if (taillemessage.chars>250)
 		{
 			var xPfiche = await FichePerso.findOne({_id: message.author.id});
-			var NewXP=xPfiche.NiveauXP+Rand(100)+120;
+			var NewXP=xPfiche.NiveauXP+Rand(90)+70;
 			await FichePerso.findOneAndUpdate({_id: message.author.id},{NiveauXP: NewXP});
 		};
 		console.log(NewXP)
