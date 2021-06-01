@@ -2258,7 +2258,7 @@ client.on('message', async function (message, user)
 	}
 
 	//Commande de roll basique
-	if  ((message.channel.id==auth.Salon.CommandeBotAll || message.channel.id==auth.Salon.SalonBotAdmin) && petitMessage.startsWith(prefixRollBasique))
+	if  ((message.channel.id==auth.Salon.CommandeBotAll || message.channel.id==auth.Salon.SalonBotAdmin || message.channel.id==auth.Salon.Jet) && petitMessage.startsWith(prefixRollBasique))
 	{
 		var chiffre = message.content.split('d');
 		console.log(chiffre);
@@ -2287,7 +2287,7 @@ client.on('message', async function (message, user)
 					break;
 					case 5 : message.reply("Tu as roll " +Rand(chiffre[2])+ " , " + Rand(chiffre[2])+" , " + Rand(chiffre[2])+" , " + Rand(chiffre[2])+" , " + Rand(chiffre[2]));
 					break;
-					default:
+					default: message.reply("Il y a trop de des ou pas assez"));
 					break;
 				}
 				
