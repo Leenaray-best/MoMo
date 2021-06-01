@@ -2287,7 +2287,7 @@ client.on('message', async function (message, user)
 					break;
 					case 5 : message.reply("Tu as roll " +Rand(chiffre[2])+ " , " + Rand(chiffre[2])+" , " + Rand(chiffre[2])+" , " + Rand(chiffre[2])+" , " + Rand(chiffre[2]));
 					break;
-					default: message.reply("Il y a trop de des ou pas assez"));
+					default: message.reply("Il y a trop de des ou pas assez");
 					break;
 				}
 				
