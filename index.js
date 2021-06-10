@@ -2405,10 +2405,18 @@ client.on('message', async function (message, user)
 		{	
 			switch (argumentUpdate[0]) 
 			{
-			case "force" : var NewForce = fiche.Competence.Force + Number(ValueToAdd);
+			case "force" : var OldForce = fiche.Competence.Force
+			var NewForce = fiche.Competence.Force + Number(ValueToAdd);
 			console.log(NewForce);
 			await FichePerso.findOneAndUpdate({_id: message.author.id},{'Competence.Force' : NewForce, GainCompetence : fiche.GainCompetence - Number(ValueToAdd) }); 
-			message.channel.send("Competence force update")
+			if (Number(NewForce) == Number(OldForce)+Number(2))
+				{
+					message.channel.send("Competence force update")
+				}
+			else
+				{
+					message.channel.send("TU AS FAIT UNE ERREUR TA FICHE N'A PAS ETE UPDATE")
+				}
 			break;
 			case "constitution" : await FichePerso.findOneAndUpdate({_id: message.author.id},{'Competence.Constitution' : fiche.Competence.Constitution + Number(ValueToAdd),GainCompetence : fiche.GainCompetence - Number(ValueToAdd)}); 
 			message.channel.send("Competence constitution update")
@@ -2425,7 +2433,7 @@ client.on('message', async function (message, user)
 			case "dexterite" : await FichePerso.findOneAndUpdate({_id: message.author.id},{'Competence.Dexterite' : fiche.Competence.Dexterite + Number(ValueToAdd),GainCompetence : fiche.GainCompetence - Number(ValueToAdd)}); 
 			message.channel.send("Competence dexterite update")
 			break;
-			default:
+			default:message.channel.send("TU AS FAIT UNE ERREUR TA FICHE N'A PAS ETE UPDATE")
 			break;
 			}
 			var fiche = await FichePerso.findOne({_id: message.author.id}); 
