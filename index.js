@@ -2397,8 +2397,6 @@ client.on('message', async function (message, user)
 		console.log(argumentUpdate)
 		console.log(argumentUpdate[0])
 		console.log(ValueToAdd)
-		value_old = fiche.Competence.argumentUpdate[0]
-		console.log(value_old)
 		if (ValueToAdd > fiche.GainCompetence)
 		{
 			message.reply("Tu n'as plus/pas assez de points a distribuer");
