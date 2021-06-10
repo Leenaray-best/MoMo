@@ -2399,7 +2399,13 @@ client.on('message', async function (message, user)
 		console.log(ValueToAdd)
 		if (ValueToAdd > fiche.GainCompetence)
 		{
+			console.log("Echec1")
 			message.reply("Tu n'as plus/pas assez de points a distribuer");
+		}
+		else if (Object.keys(ValueToAdd).length==0)
+		{
+			console.log("Echec2")
+			message.reply("Tu n'as entre les points a distribuer");
 		}
 		else
 		{	
