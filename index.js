@@ -2409,37 +2409,13 @@ client.on('message', async function (message, user)
 			var NewForce = fiche.Competence.Force + Number(ValueToAdd);
 			console.log(NewForce);
 			await FichePerso.findOneAndUpdate({_id: message.author.id},{'Competence.Force' : NewForce, GainCompetence : fiche.GainCompetence - Number(ValueToAdd) }); 
-			if (Number(NewForce) == Number(OldForce)+Number(2))
+			if (Number(NewForce) == Number(OldForce)+Number(ValueToAdd))
 				{
 					message.channel.send("Competence force update")
-				}
-			else
-				{
-					message.channel.send("TU AS FAIT UNE ERREUR TA FICHE N'A PAS ETE UPDATE")
-				}
-			break;
-			case "constitution" : await FichePerso.findOneAndUpdate({_id: message.author.id},{'Competence.Constitution' : fiche.Competence.Constitution + Number(ValueToAdd),GainCompetence : fiche.GainCompetence - Number(ValueToAdd)}); 
-			message.channel.send("Competence constitution update")
-			break;
-			case "charisme" : await FichePerso.findOneAndUpdate({_id: message.author.id},{'Competence.Charisme' : fiche.Competence.Charisme + Number(ValueToAdd),GainCompetence : fiche.GainCompetence - Number(ValueToAdd)}); 
-			message.channel.send("Competence charisme update")
-			break;
-			case "intelligence" : await FichePerso.findOneAndUpdate({_id: message.author.id},{'Competence.Intelligence' : fiche.Competence.Intelligence + Number(ValueToAdd),GainCompetence : fiche.GainCompetence - Number(ValueToAdd)}); 
-			message.channel.send("Competence intelligence update")
-			break;
-			case "sagesse" : await FichePerso.findOneAndUpdate({_id: message.author.id},{'Competence.Sagesse' : fiche.Competence.Sagesse + Number(ValueToAdd), GainCompetence : fiche.GainCompetence - Number(ValueToAdd)}); 
-			message.channel.send("Competence sagesse update")
-			break;
-			case "dexterite" : await FichePerso.findOneAndUpdate({_id: message.author.id},{'Competence.Dexterite' : fiche.Competence.Dexterite + Number(ValueToAdd),GainCompetence : fiche.GainCompetence - Number(ValueToAdd)}); 
-			message.channel.send("Competence dexterite update")
-			break;
-			default:message.channel.send("TU AS FAIT UNE ERREUR TA FICHE N'A PAS ETE UPDATE")
-			break;
-			}
-			var fiche = await FichePerso.findOne({_id: message.author.id}); 
-			const listeQualite=fiche.Qualite;
-			const listeFaiblesse=fiche.Faiblesse;			
-			const exampleEmbed = new Discord.MessageEmbed()
+					var fiche = await FichePerso.findOne({_id: message.author.id}); 
+					const listeQualite=fiche.Qualite;
+					const listeFaiblesse=fiche.Faiblesse;			
+					const exampleEmbed = new Discord.MessageEmbed()
 	            .setColor('#16EF0E')
 	            .setTitle("Fiche de " +fiche.Username)
 	            .setDescription(`Nom : `+fiche.Identite.Nom+`
@@ -2467,6 +2443,261 @@ client.on('message', async function (message, user)
 	            )
 	            .setThumbnail(message.author.avatarURL())
 	            message.channel.send(exampleEmbed);
+				}
+			else
+				{
+					message.channel.send("TU AS FAIT UNE ERREUR TA FICHE N'A PAS ETE UPDATE")
+				}
+			break;
+			case "constitution" : var OldConstitution = fiche.Competence.Constitution
+			var NewConstitution = fiche.Competence.Constitution + Number(ValueToAdd)
+			await FichePerso.findOneAndUpdate({_id: message.author.id},{'Competence.Constitution' : fiche.Competence.Constitution + Number(ValueToAdd),GainCompetence : fiche.GainCompetence - Number(ValueToAdd)}); 
+			if (Number(NewConstitution)==Number(OldConstitution)+Number(ValueToAdd))
+				{
+					message.channel.send("Competence constitution update")
+					var fiche = await FichePerso.findOne({_id: message.author.id}); 
+					const listeQualite=fiche.Qualite;
+					const listeFaiblesse=fiche.Faiblesse;			
+					const exampleEmbed = new Discord.MessageEmbed()
+					.setColor('#16EF0E')
+					.setTitle("Fiche de " +fiche.Username)
+					.setDescription(`Nom : `+fiche.Identite.Nom+`
+								 Prenom : `+fiche.Identite.Prenom+`
+								 Age: `+fiche.Identite.Age+`
+								 Metier : `+fiche.Identite.Metier+`
+								 Niveau de Maitrise : `+fiche.NiveauDeMaitrise+`
+								 Niveau XP : `+fiche.NiveauXP+`
+								 Point de Competence : `+fiche.GainCompetence+`
+								 Faiblesse : `+listeFaiblesse[0]+`, `+listeFaiblesse[1])
+					.addFields(
+						{ name : `Qualite 1`, value : listeQualite[0], inline : true},
+						{ name : `Qualite 2`, value : listeQualite[1], inline : true},
+						{ name : `Defaut 1`, value : fiche.Defaut, inline : true}
+					)
+					.addFields(
+						{ name : `Force`, value : fiche.Competence.Force, inline : true},
+						{ name : `Constitution`, value : fiche.Competence.Constitution, inline : true},
+						{ name : `Charisme`, value : fiche.Competence.Charisme, inline : true}
+					)
+					.addFields(
+						{ name : `Intelligence`, value : fiche.Competence.Intelligence, inline : true},
+						{ name : `Sagesse`, value : fiche.Competence.Sagesse, inline : true},
+						{ name : `Dexterite`, value : fiche.Competence.Dexterite, inline : true}
+					)
+					.setThumbnail(message.author.avatarURL())
+					message.channel.send(exampleEmbed);
+				}
+			else
+				{
+					message.channel.send("TU AS FAIT UNE ERREUR TA FICHE N'A PAS ETE UPDATE")
+				}
+			break;
+			case "charisme" : var OldCharisme = fiche.Competence.Charisme
+			var NewCharisme = fiche.Competence.Charisme + Number(ValueToAdd)
+			await FichePerso.findOneAndUpdate({_id: message.author.id},{'Competence.Charisme' : fiche.Competence.Charisme + Number(ValueToAdd),GainCompetence : fiche.GainCompetence - Number(ValueToAdd)}); 
+			if (Number(NewCharisme) == Number(OldCharisme) + Number(ValueToAdd))
+				{
+					message.channel.send("Competence charisme update")
+					var fiche = await FichePerso.findOne({_id: message.author.id}); 
+					const listeQualite=fiche.Qualite;
+					const listeFaiblesse=fiche.Faiblesse;			
+					const exampleEmbed = new Discord.MessageEmbed()
+					.setColor('#16EF0E')
+					.setTitle("Fiche de " +fiche.Username)
+					.setDescription(`Nom : `+fiche.Identite.Nom+`
+								 Prenom : `+fiche.Identite.Prenom+`
+								 Age: `+fiche.Identite.Age+`
+								 Metier : `+fiche.Identite.Metier+`
+								 Niveau de Maitrise : `+fiche.NiveauDeMaitrise+`
+								 Niveau XP : `+fiche.NiveauXP+`
+								 Point de Competence : `+fiche.GainCompetence+`
+								 Faiblesse : `+listeFaiblesse[0]+`, `+listeFaiblesse[1])
+					.addFields(
+						{ name : `Qualite 1`, value : listeQualite[0], inline : true},
+						{ name : `Qualite 2`, value : listeQualite[1], inline : true},
+						{ name : `Defaut 1`, value : fiche.Defaut, inline : true}
+					)
+					.addFields(
+						{ name : `Force`, value : fiche.Competence.Force, inline : true},
+						{ name : `Constitution`, value : fiche.Competence.Constitution, inline : true},
+						{ name : `Charisme`, value : fiche.Competence.Charisme, inline : true}
+					)
+					.addFields(
+						{ name : `Intelligence`, value : fiche.Competence.Intelligence, inline : true},
+						{ name : `Sagesse`, value : fiche.Competence.Sagesse, inline : true},
+						{ name : `Dexterite`, value : fiche.Competence.Dexterite, inline : true}
+					)
+					.setThumbnail(message.author.avatarURL())
+					message.channel.send(exampleEmbed);
+				}
+			else
+				{
+					message.channel.send("TU AS FAIT UNE ERREUR TA FICHE N'A PAS ETE UPDATE")
+				}
+			break;
+			case "intelligence" : var OldIntelligence = fiche.Competence.Intelligence
+			var NewIntelligence = fiche.Competence.Intelligence + Number(ValueToAdd)
+			await FichePerso.findOneAndUpdate({_id: message.author.id},{'Competence.Intelligence' : fiche.Competence.Intelligence + Number(ValueToAdd),GainCompetence : fiche.GainCompetence - Number(ValueToAdd)}); 
+			if (Number(NewIntelligence) == Number(OldCharisme)+Number(ValueToAdd))
+				{
+					message.channel.send("Competence intelligence update")
+					var fiche = await FichePerso.findOne({_id: message.author.id}); 
+					const listeQualite=fiche.Qualite;
+					const listeFaiblesse=fiche.Faiblesse;			
+					const exampleEmbed = new Discord.MessageEmbed()
+					.setColor('#16EF0E')
+					.setTitle("Fiche de " +fiche.Username)
+					.setDescription(`Nom : `+fiche.Identite.Nom+`
+								 Prenom : `+fiche.Identite.Prenom+`
+								 Age: `+fiche.Identite.Age+`
+								 Metier : `+fiche.Identite.Metier+`
+								 Niveau de Maitrise : `+fiche.NiveauDeMaitrise+`
+								 Niveau XP : `+fiche.NiveauXP+`
+								 Point de Competence : `+fiche.GainCompetence+`
+								 Faiblesse : `+listeFaiblesse[0]+`, `+listeFaiblesse[1])
+					.addFields(
+						{ name : `Qualite 1`, value : listeQualite[0], inline : true},
+						{ name : `Qualite 2`, value : listeQualite[1], inline : true},
+						{ name : `Defaut 1`, value : fiche.Defaut, inline : true}
+					)
+					.addFields(
+						{ name : `Force`, value : fiche.Competence.Force, inline : true},
+						{ name : `Constitution`, value : fiche.Competence.Constitution, inline : true},
+						{ name : `Charisme`, value : fiche.Competence.Charisme, inline : true}
+					)
+					.addFields(
+						{ name : `Intelligence`, value : fiche.Competence.Intelligence, inline : true},
+						{ name : `Sagesse`, value : fiche.Competence.Sagesse, inline : true},
+						{ name : `Dexterite`, value : fiche.Competence.Dexterite, inline : true}
+					)
+					.setThumbnail(message.author.avatarURL())
+					message.channel.send(exampleEmbed);
+				}
+			else
+				{
+					message.channel.send("TU AS FAIT UNE ERREUR TA FICHE N'A PAS ETE UPDATE")
+				}
+			break;
+			case "sagesse" : var OldSagesse = fiche.Competence.Sagesse
+			var NewSagesse = fiche.Competence.Sagesse+Number(ValueToAdd)
+			await FichePerso.findOneAndUpdate({_id: message.author.id},{'Competence.Sagesse' : fiche.Competence.Sagesse + Number(ValueToAdd), GainCompetence : fiche.GainCompetence - Number(ValueToAdd)}); 
+			if (Number(NewSagesse) == Number(OldSagesse)+Number(ValueToAdd))
+				{
+					message.channel.send("Competence sagesse update")
+					var fiche = await FichePerso.findOne({_id: message.author.id}); 
+					const listeQualite=fiche.Qualite;
+					const listeFaiblesse=fiche.Faiblesse;			
+					const exampleEmbed = new Discord.MessageEmbed()
+					.setColor('#16EF0E')
+					.setTitle("Fiche de " +fiche.Username)
+					.setDescription(`Nom : `+fiche.Identite.Nom+`
+								 Prenom : `+fiche.Identite.Prenom+`
+								 Age: `+fiche.Identite.Age+`
+								 Metier : `+fiche.Identite.Metier+`
+								 Niveau de Maitrise : `+fiche.NiveauDeMaitrise+`
+								 Niveau XP : `+fiche.NiveauXP+`
+								 Point de Competence : `+fiche.GainCompetence+`
+								 Faiblesse : `+listeFaiblesse[0]+`, `+listeFaiblesse[1])
+					.addFields(
+						{ name : `Qualite 1`, value : listeQualite[0], inline : true},
+						{ name : `Qualite 2`, value : listeQualite[1], inline : true},
+						{ name : `Defaut 1`, value : fiche.Defaut, inline : true}
+					)
+					.addFields(
+						{ name : `Force`, value : fiche.Competence.Force, inline : true},
+						{ name : `Constitution`, value : fiche.Competence.Constitution, inline : true},
+						{ name : `Charisme`, value : fiche.Competence.Charisme, inline : true}
+					)
+					.addFields(
+						{ name : `Intelligence`, value : fiche.Competence.Intelligence, inline : true},
+						{ name : `Sagesse`, value : fiche.Competence.Sagesse, inline : true},
+						{ name : `Dexterite`, value : fiche.Competence.Dexterite, inline : true}
+					)
+					.setThumbnail(message.author.avatarURL())
+					message.channel.send(exampleEmbed);
+				}
+			else
+				{
+					message.channel.send("TU AS FAIT UNE ERREUR TA FICHE N'A PAS ETE UPDATE")
+				}
+			break;
+			case "dexterite" : var OldDexterite = fiche.Competence.Dexterite
+			var NewDexterite = fiche.Competence.Dexterite+Number(ValueToAdd)
+			await FichePerso.findOneAndUpdate({_id: message.author.id},{'Competence.Dexterite' : fiche.Competence.Dexterite + Number(ValueToAdd),GainCompetence : fiche.GainCompetence - Number(ValueToAdd)}); 
+			if (Number(NewDexterite) == Number(OldDexterite)+Number(ValueToAdd))
+				{
+					message.channel.send("Competence dexterite update")
+					var fiche = await FichePerso.findOne({_id: message.author.id}); 
+					const listeQualite=fiche.Qualite;
+					const listeFaiblesse=fiche.Faiblesse;			
+					const exampleEmbed = new Discord.MessageEmbed()
+					.setColor('#16EF0E')
+					.setTitle("Fiche de " +fiche.Username)
+					.setDescription(`Nom : `+fiche.Identite.Nom+`
+								 Prenom : `+fiche.Identite.Prenom+`
+								 Age: `+fiche.Identite.Age+`
+								 Metier : `+fiche.Identite.Metier+`
+								 Niveau de Maitrise : `+fiche.NiveauDeMaitrise+`
+								 Niveau XP : `+fiche.NiveauXP+`
+								 Point de Competence : `+fiche.GainCompetence+`
+								 Faiblesse : `+listeFaiblesse[0]+`, `+listeFaiblesse[1])
+					.addFields(
+						{ name : `Qualite 1`, value : listeQualite[0], inline : true},
+						{ name : `Qualite 2`, value : listeQualite[1], inline : true},
+						{ name : `Defaut 1`, value : fiche.Defaut, inline : true}
+					)
+					.addFields(
+						{ name : `Force`, value : fiche.Competence.Force, inline : true},
+						{ name : `Constitution`, value : fiche.Competence.Constitution, inline : true},
+						{ name : `Charisme`, value : fiche.Competence.Charisme, inline : true}
+					)
+					.addFields(
+						{ name : `Intelligence`, value : fiche.Competence.Intelligence, inline : true},
+						{ name : `Sagesse`, value : fiche.Competence.Sagesse, inline : true},
+						{ name : `Dexterite`, value : fiche.Competence.Dexterite, inline : true}
+					)
+					.setThumbnail(message.author.avatarURL())
+					message.channel.send(exampleEmbed);
+				}
+			else
+				{
+					message.channel.send("TU AS FAIT UNE ERREUR TA FICHE N'A PAS ETE UPDATE")
+				}
+			break;
+			default:message.channel.send("TU AS FAIT UNE ERREUR TA FICHE N'A PAS ETE UPDATE")
+			break;
+			}
+			// var fiche = await FichePerso.findOne({_id: message.author.id}); 
+			// const listeQualite=fiche.Qualite;
+			// const listeFaiblesse=fiche.Faiblesse;			
+			// const exampleEmbed = new Discord.MessageEmbed()
+	        //     .setColor('#16EF0E')
+	        //     .setTitle("Fiche de " +fiche.Username)
+	        //     .setDescription(`Nom : `+fiche.Identite.Nom+`
+	        //                  Prenom : `+fiche.Identite.Prenom+`
+	        //                  Age: `+fiche.Identite.Age+`
+	        //                  Metier : `+fiche.Identite.Metier+`
+	        //                  Niveau de Maitrise : `+fiche.NiveauDeMaitrise+`
+	        //                  Niveau XP : `+fiche.NiveauXP+`
+	        //                  Point de Competence : `+fiche.GainCompetence+`
+	        //                  Faiblesse : `+listeFaiblesse[0]+`, `+listeFaiblesse[1])
+	        //     .addFields(
+	        //         { name : `Qualite 1`, value : listeQualite[0], inline : true},
+	        //         { name : `Qualite 2`, value : listeQualite[1], inline : true},
+	        //         { name : `Defaut 1`, value : fiche.Defaut, inline : true}
+	        //     )
+	        //     .addFields(
+	        //         { name : `Force`, value : fiche.Competence.Force, inline : true},
+	        //         { name : `Constitution`, value : fiche.Competence.Constitution, inline : true},
+	        //         { name : `Charisme`, value : fiche.Competence.Charisme, inline : true}
+	        //     )
+	        //     .addFields(
+	        //         { name : `Intelligence`, value : fiche.Competence.Intelligence, inline : true},
+	        //         { name : `Sagesse`, value : fiche.Competence.Sagesse, inline : true},
+	        //         { name : `Dexterite`, value : fiche.Competence.Dexterite, inline : true}
+	        //     )
+	        //     .setThumbnail(message.author.avatarURL())
+	        //     message.channel.send(exampleEmbed);
 		}
 	}
 
