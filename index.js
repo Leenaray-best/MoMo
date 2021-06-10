@@ -2405,7 +2405,7 @@ client.on('message', async function (message, user)
 		else if (Object.keys(ValueToAdd).length==0)
 		{
 			console.log("Echec2")
-			message.reply("Tu n'as entre les points a distribuer");
+			message.reply("Tu n'as pas entré les points à distribuer");
 		}
 		else
 		{	
@@ -2452,7 +2452,7 @@ client.on('message', async function (message, user)
 				}
 			else
 				{
-					message.channel.send("TU AS FAIT UNE ERREUR TA FICHE N'A PAS ETE UPDATE")
+					message.channel.send("Tu as fait une erreur dans la commande ou dans l'orthographe, ta fiche n'a pas été mise a jour")
 				}
 			break;
 			case "constitution" : var OldConstitution = fiche.Competence.Constitution
@@ -2495,7 +2495,7 @@ client.on('message', async function (message, user)
 				}
 			else
 				{
-					message.channel.send("TU AS FAIT UNE ERREUR TA FICHE N'A PAS ETE UPDATE")
+					message.channel.send("Tu as fait une erreur dans la commande ou dans l'orthographe, ta fiche n'a pas été mise a jour")
 				}
 			break;
 			case "charisme" : var OldCharisme = fiche.Competence.Charisme
@@ -2538,7 +2538,7 @@ client.on('message', async function (message, user)
 				}
 			else
 				{
-					message.channel.send("TU AS FAIT UNE ERREUR TA FICHE N'A PAS ETE UPDATE")
+					message.channel.send("Tu as fait une erreur dans la commande ou dans l'orthographe, ta fiche n'a pas été mise a jour")
 				}
 			break;
 			case "intelligence" : var OldIntelligence = fiche.Competence.Intelligence
@@ -2581,7 +2581,7 @@ client.on('message', async function (message, user)
 				}
 			else
 				{
-					message.channel.send("TU AS FAIT UNE ERREUR TA FICHE N'A PAS ETE UPDATE")
+					message.channel.send("Tu as fait une erreur dans la commande ou dans l'orthographe, ta fiche n'a pas été mise a jour")
 				}
 			break;
 			case "sagesse" : var OldSagesse = fiche.Competence.Sagesse
@@ -2624,7 +2624,7 @@ client.on('message', async function (message, user)
 				}
 			else
 				{
-					message.channel.send("TU AS FAIT UNE ERREUR TA FICHE N'A PAS ETE UPDATE")
+					message.channel.send("Tu as fait une erreur dans la commande ou dans l'orthographe, ta fiche n'a pas été mise a jour")
 				}
 			break;
 			case "dexterite" : var OldDexterite = fiche.Competence.Dexterite
@@ -2667,10 +2667,10 @@ client.on('message', async function (message, user)
 				}
 			else
 				{
-					message.channel.send("TU AS FAIT UNE ERREUR TA FICHE N'A PAS ETE UPDATE")
+					message.channel.send("Tu as fait une erreur dans la commande ou dans l'orthographe, ta fiche n'a pas été mise a jour")
 				}
 			break;
-			default:message.channel.send("TU AS FAIT UNE ERREUR TA FICHE N'A PAS ETE UPDATE")
+			default:message.channel.send("Tu as fait une erreur dans la commande ou dans l'orthographe, ta fiche n'a pas été mise a jour")
 			break;
 			}
 			// var fiche = await FichePerso.findOne({_id: message.author.id}); 
