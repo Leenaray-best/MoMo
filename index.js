@@ -2391,12 +2391,14 @@ client.on('message', async function (message, user)
 	//Commande d'ajout de competence
 	if ((message.channel.id==auth.Salon.Jet || message.channel.id==auth.Salon.SalonBotAdmin) && petitMessage.startsWith(prefixAjoutCompetence) && message.member.roles.cache.has(auth.RoleRP.RolePlay))
 	{
-		var fiche = await FichePerso.findOne({_id: message.author.id}); 
+		var fiche = await FichePerso.findOne({_id: message.author.id});
 		var argumentUpdate = message.content.split(' ').slice(1);
 		var ValueToAdd = message.content.split(' ').slice(2).join(' ');
 		console.log(argumentUpdate)
 		console.log(argumentUpdate[0])
 		console.log(ValueToAdd)
+		value_old = fiche.Competence.argumentUpdate[0]
+		console.log(value_old)
 		if (ValueToAdd > fiche.GainCompetence)
 		{
 			message.reply("Tu n'as plus/pas assez de points a distribuer");
