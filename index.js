@@ -2311,6 +2311,8 @@ client.on('message', async function (message, user)
 				console.log("nom n°"+(z+1)+" : "+fichesCollect[z].Username);
 				var ficheCollectZ = await FichePerso.findOne({_id: fichesCollect[z]._id});
 				var ValueXPz = ficheCollectZ.NiveauXP;
+				var date_fiche = ficheCollectZ.time
+				console.log(date_fiche)
 				if (Number(ValueXPz)>0)
 				{
 					//var Usernamez = ficheCollectZ.Username;
