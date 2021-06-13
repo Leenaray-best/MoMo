@@ -37,6 +37,7 @@ const prefixLevel= "check-levels"
 const prefixWhatWeather= "check-meteo"
 const prefixUpdateFiche = "updatefiche"
 const prefixAjoutCompetence = "newcompetence"
+const prefixLevelAll = "levelAll"
 const SalaireCat0= 0
 const SalaireCat6= 150
 const SalaireCat1 = 200
@@ -73,7 +74,13 @@ cron.schedule('0 7 * * *', async () => {
 			console.log("nom n°"+(zz+1)+" : "+fichesCollect[zz].Username);
 			var ficheCollectZ = await FichePerso.findOne({_id: fichesCollect[zz]._id});
 			var ValueXPz = ficheCollectZ.NiveauXP;
-			if (Number(ValueXPz)>0)
+			var date_fiche = ficheCollectZ.time
+			console.log(date_fiche)
+			var timeStamp =  Math.round(new Date().getTime() / 1000);
+			var timeStampYesterday = timeStamp - (24 * 3600);
+			var is24 = date_fiche >= new Date(timeStampYesterday*1000).getTime();
+			console.log(is24)
+			if (Number(ValueXPz)>0 && is24==true)
 			{
 				var Usernamez = ficheCollectZ.Identite.Prenom+", "+ficheCollectZ.Identite.Nom;
 				TableauAllXp.push([Usernamez,ValueXPz])
@@ -104,6 +111,14 @@ cron.schedule('0 7 * * *', async () => {
 	        var idZ = ficheCollectZ.Identite.Categorie
 	        console.log(idZ)
 	        console.log(ficheCollectZ.NiveauXP +" XP")
+			var date_fiche = ficheCollectZ.time
+			console.log(date_fiche)
+			var timeStamp =  Math.round(new Date().getTime() / 1000);
+			var timeStampYesterday = timeStamp - (24 * 3600);
+			var is24 = date_fiche >= new Date(timeStampYesterday*1000).getTime();
+			console.log(is24)
+			if (is24==true)
+			{
 					if(idZ==auth.RoleRP.CouteauSuisse)
 					{
 						console.log("XP avant:"+ficheCollectZ.NiveauXP);
@@ -174,7 +189,7 @@ cron.schedule('0 7 * * *', async () => {
 		                console.log("Salaire"+ SalaryXP);
 
 	                }
-	               
+			}	       
 
         }
 	channel.send("Les salaires ont ete mis a jour !")
@@ -188,7 +203,13 @@ cron.schedule('0 7 * * *', async () => {
 			console.log("nom n°"+(zz+1)+" : "+fichesCollect[zz].Username);
 			var ficheCollectZ = await FichePerso.findOne({_id: fichesCollect[zz]._id});
 			var ValueXPz = ficheCollectZ.NiveauXP;
-			if (Number(ValueXPz)>0)
+			var date_fiche = ficheCollectZ.time
+			console.log(date_fiche)
+			var timeStamp =  Math.round(new Date().getTime() / 1000);
+			var timeStampYesterday = timeStamp - (24 * 3600);
+			var is24 = date_fiche >= new Date(timeStampYesterday*1000).getTime();
+			console.log(is24)
+			if (Number(ValueXPz)>0 && is24==true)
 			{
 				var Usernamez = ficheCollectZ.Identite.Prenom+", "+ficheCollectZ.Identite.Nom;
 				TableauAllXp.push([Usernamez,ValueXPz])
@@ -2299,7 +2320,7 @@ client.on('message', async function (message, user)
 		}
 	}
 
-	//Commande du tableau des levels
+	//Commande du tableau des levels des derniers actifs
 	if ((message.channel.id==auth.Salon.Jet || message.channel.id==auth.Salon.SalonBotAdmin) && petitMessage.startsWith(prefixLevel) && message.member.roles.cache.has(auth.RoleRP.RolePlay))
 	{
 	    var fichesCollect = await FichePerso.find({});
@@ -2318,6 +2339,52 @@ client.on('message', async function (message, user)
 				var is24 = date_fiche >= new Date(timeStampYesterday*1000).getTime();
 				console.log(is24)
 				if (Number(ValueXPz)>0 && is24==true)
+				{
+					//var Usernamez = ficheCollectZ.Username;
+					var Usernamez = ficheCollectZ.Identite.Prenom+", "+ficheCollectZ.Identite.Nom;
+					//var UsernamePrenom = ficheCollectZ.Identite.Prenom;
+					//var UsernameNom = ficheCollectZ.Identite.Nom;
+					TableauAllXp.push([Usernamez,ValueXPz])
+					//TableauAllXp.push([UsernamePrenom,UsernameNom,ValueXPz])
+				}
+	        }	
+		console.log(TableauAllXp)
+		var TableauFinal = TableauAllXp.sort(([a, b], [c, d]) => a - c || d - b);
+		console.log(TableauFinal)
+		var tailletableau = TableauFinal.length;
+		var texte = "";
+		//	for (var z = 0; z < numberFiche; z++)
+			for (var z = 0; z < tailletableau; z++)
+			{
+				texte = texte+TableauFinal[z][0]+ " : " + TableauFinal[z][1] + " Xp \r";
+				//texte = texte+TableauFinal[z][0]+texte+TableauFinal[z][1]+ " : " + TableauFinal[z][2] + " Xp \r";
+			}
+		const exampleEmbed = new Discord.MessageEmbed()
+	            .setColor('#16EF0E')
+	            .setTitle("Tableau de l'XP par odre decroissant")
+	            .setDescription(texte)
+	            message.channel.send(exampleEmbed);
+	}
+
+	//Commande du tableau des levels pour tous
+	if ((message.channel.id==auth.Salon.Jet || message.channel.id==auth.Salon.SalonBotAdmin) && petitMessage.startsWith(prefixLevelAll) && message.member.roles.cache.has(auth.RoleRP.RolePlay))
+	{
+	    var fichesCollect = await FichePerso.find({});
+		var numberFiche = fichesCollect.length;	
+		var ficheCollectZ0 = await FichePerso.findOne({_id: fichesCollect[0]._id});
+		var TableauAllXp = [];
+			for (var z = 0; z < numberFiche; z++) 
+			{	
+				console.log("nom n°"+(z+1)+" : "+fichesCollect[z].Username);
+				var ficheCollectZ = await FichePerso.findOne({_id: fichesCollect[z]._id});
+				var ValueXPz = ficheCollectZ.NiveauXP;
+				var date_fiche = ficheCollectZ.time
+				console.log(date_fiche)
+				var timeStamp =  Math.round(new Date().getTime() / 1000);
+				var timeStampYesterday = timeStamp - (24 * 3600);
+				var is24 = date_fiche >= new Date(timeStampYesterday*1000).getTime();
+				console.log(is24)
+				if (Number(ValueXPz)>0)
 				{
 					//var Usernamez = ficheCollectZ.Username;
 					var Usernamez = ficheCollectZ.Identite.Prenom+", "+ficheCollectZ.Identite.Nom;
