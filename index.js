@@ -793,6 +793,11 @@ client.on('message', async function (message, user)
 		var NewXP=0;
 		var taillemessage = counterMot.count(petitMessage,'-c');
 		console.log(taillemessage)
+		if (taillemessage.chars<100)
+		{
+			var xPfiche = await FichePerso.findOne({_id: message.author.id});
+			await FichePerso.findOneAndUpdate({_id: message.author.id},{time: Date.now()});
+		};
 		if (taillemessage.chars>=100 && taillemessage.chars<=150)
 		{
 			var xPfiche = await FichePerso.findOne({_id: message.author.id});
