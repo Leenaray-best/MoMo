@@ -60,7 +60,7 @@ client.on('ready', () => {
 //const test0 = '16 11 * * *';
 //cron.schedule(test0, async () => 
 //{
-cron.schedule('19 14 * * *', async () => {
+cron.schedule('0 7 * * *', async () => {
     const guildRP = client.guilds.cache.get(auth.guildRP);
     const channel = client.channels.cache.get(auth.Salon.Jet);
 
