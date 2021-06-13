@@ -2313,6 +2313,10 @@ client.on('message', async function (message, user)
 				var ValueXPz = ficheCollectZ.NiveauXP;
 				var date_fiche = ficheCollectZ.time
 				console.log(date_fiche)
+				var timeStamp =  Math.round(new Date().getTime() / 1000);
+				var timeStampYesterday = timeStamp - (24 * 3600);
+				var is24 = date_fiche >= new Date(timeStampYesterday*1000).getTime();
+				console.log(is24)
 				if (Number(ValueXPz)>0)
 				{
 					//var Usernamez = ficheCollectZ.Username;
