@@ -2317,7 +2317,7 @@ client.on('message', async function (message, user)
 				var timeStampYesterday = timeStamp - (24 * 3600);
 				var is24 = date_fiche >= new Date(timeStampYesterday*1000).getTime();
 				console.log(is24)
-				if (Number(ValueXPz)>0)
+				if (Number(ValueXPz)>0 && is24=="true")
 				{
 					//var Usernamez = ficheCollectZ.Username;
 					var Usernamez = ficheCollectZ.Identite.Prenom+", "+ficheCollectZ.Identite.Nom;
