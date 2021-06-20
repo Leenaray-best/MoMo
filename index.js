@@ -2622,7 +2622,7 @@ client.on('message', async function (message, user)
 			case "intelligence" : var OldIntelligence = fiche.Competence.Intelligence
 			var NewIntelligence = fiche.Competence.Intelligence + Number(ValueToAdd)
 			await FichePerso.findOneAndUpdate({_id: message.author.id},{'Competence.Intelligence' : fiche.Competence.Intelligence + Number(ValueToAdd),GainCompetence : fiche.GainCompetence - Number(ValueToAdd)}); 
-			if (Number(NewIntelligence) == Number(OldCharisme)+Number(ValueToAdd))
+			if (Number(NewIntelligence) == Number(OldIntelligence)+Number(ValueToAdd))
 				{
 					message.channel.send("Competence intelligence update")
 					var fiche = await FichePerso.findOne({_id: message.author.id}); 
