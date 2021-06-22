@@ -38,6 +38,7 @@ const prefixWhatWeather= "check-meteo"
 const prefixUpdateFiche = "updatefiche"
 const prefixAjoutCompetence = "newcompetence"
 const prefixLevelAll = "levelallplayer"
+const prefixTest = "testCode"
 const SalaireCat0= 0
 const SalaireCat6= 150
 const SalaireCat1 = 200
@@ -228,7 +229,7 @@ cron.schedule('0 7 * * *', async () => {
             .setColor('#16EF0E')
             .setTitle("Tableau de l'XP apres salaires")
             .setDescription(texte)
-            channel.send(exampleEmbed);
+            channel.send(exampleEmbed).then(async pourPin => {pourPin.pin();});
 });
 
 //const test0 = '17 23 * * *';
@@ -2800,6 +2801,16 @@ client.on('message', async function (message, user)
 		client.channels.cache.get(auth.Salon.SalonBotAdmin).send("<@"+taggedUser.id+"> a ete remise a 0");
 	}
 
+	//Commande test
+	if ((message.channel.id==auth.Salon.SalonBotAdmin)&& petitMessage.startsWith(prefixTest))
+	{
+		texte = "test"
+		const exampleEmbed = new Discord.MessageEmbed()
+            .setColor('#16EF0E')
+            .setTitle("Tableau de l'XP apres salaires")
+            .setDescription(texte)
+            channel.send(exampleEmbed).then(async pourPin => {pourPin.pin();});
+	}
 });
 
 function createJobList() 
