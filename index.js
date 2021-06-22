@@ -2806,6 +2806,7 @@ client.on('message', async function (message, user)
 	{
 		console.log("ouii jerome c moi")
 		texte = "test"
+		const channel = client.channels.cache.get(auth.Salon.SalonBotAdmin)
 		const exampleEmbed = new Discord.MessageEmbed()
             .setColor('#16EF0E')
             .setTitle("Tableau de l'XP apres salaires")
