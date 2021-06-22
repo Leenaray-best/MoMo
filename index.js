@@ -38,7 +38,7 @@ const prefixWhatWeather= "check-meteo"
 const prefixUpdateFiche = "updatefiche"
 const prefixAjoutCompetence = "newcompetence"
 const prefixLevelAll = "levelallplayer"
-const prefixTest = "testCode"
+const prefixTest = "testcode"
 const SalaireCat0= 0
 const SalaireCat6= 150
 const SalaireCat1 = 200
@@ -2804,6 +2804,7 @@ client.on('message', async function (message, user)
 	//Commande test
 	if ((message.channel.id==auth.Salon.SalonBotAdmin)&& petitMessage.startsWith(prefixTest))
 	{
+		console.log("ouii jerome c moi")
 		texte = "test"
 		const exampleEmbed = new Discord.MessageEmbed()
             .setColor('#16EF0E')
