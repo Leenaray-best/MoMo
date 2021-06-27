@@ -1594,11 +1594,11 @@ client.on('message', async function (message, user)
 							var ValRoll= ValRoll1+Number(BonusLieu)
 							if (ValRoll<=Nombre)
 							{
-								message.reply(" Ton roll est de " +ValRoll1+ " + "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est une reussite");
+								message.reply(" Ton roll est de " +ValRoll1+ " "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est une reussite");
 							}
 							else
 							{
-								message.reply(" Ton roll est de " +ValRoll1+ " + "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est un echec");
+								message.reply(" Ton roll est de " +ValRoll1+ " "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est un echec");
 							}
 						}
 						break;
@@ -1624,11 +1624,11 @@ client.on('message', async function (message, user)
 							var ValRoll= ValRoll1+Number(BonusLieu)
 							if (ValRoll<=Nombre)
 							{
-								message.reply(" Ton roll est de " +ValRoll1+ " + "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est une reussite");
+								message.reply(" Ton roll est de " +ValRoll1+ " "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est une reussite");
 							}
 							else
 							{
-								message.reply(" Ton roll est de " +ValRoll1+ " + "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est un echec");
+								message.reply(" Ton roll est de " +ValRoll1+ " "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est un echec");
 							}
 						}
 						break;
@@ -1654,11 +1654,11 @@ client.on('message', async function (message, user)
 							var ValRoll= ValRoll1+Number(BonusLieu)
 							if (ValRoll<=Nombre)
 							{
-								message.reply(" Ton roll est de " +ValRoll1+ " + "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est une reussite");
+								message.reply(" Ton roll est de " +ValRoll1+ " "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est une reussite");
 							}
 							else
 							{
-								message.reply(" Ton roll est de " +ValRoll1+ " + "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est un echec");
+								message.reply(" Ton roll est de " +ValRoll1+ " "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est un echec");
 							}
 						}
 						break;						
@@ -1684,11 +1684,11 @@ client.on('message', async function (message, user)
 							var ValRoll= ValRoll1+Number(BonusLieu)
 							if (ValRoll<=Nombre)
 							{
-								message.reply(" Ton roll est de " +ValRoll1+ " + "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est une reussite");
+								message.reply(" Ton roll est de " +ValRoll1+ " "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est une reussite");
 							}
 							else
 							{
-								message.reply(" Ton roll est de " +ValRoll1+ " + "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est un echec");
+								message.reply(" Ton roll est de " +ValRoll1+ " "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est un echec");
 							}
 						}
 						break;
@@ -1714,11 +1714,11 @@ client.on('message', async function (message, user)
 							var ValRoll= ValRoll1+Number(BonusLieu)
 							if (ValRoll<=Nombre)
 							{
-								message.reply(" Ton roll est de " +ValRoll1+ " + "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est une reussite");
+								message.reply(" Ton roll est de " +ValRoll1+ " "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est une reussite");
 							}
 							else
 							{
-								message.reply(" Ton roll est de " +ValRoll1+ " + "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est un echec");
+								message.reply(" Ton roll est de " +ValRoll1+ " "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est un echec");
 							}
 						}
 						break;
@@ -1744,11 +1744,11 @@ client.on('message', async function (message, user)
 							var ValRoll= ValRoll1+Number(BonusLieu)
 							if (ValRoll<=Nombre)
 							{
-								message.reply(" Ton roll est de " +ValRoll1+ " + "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est une reussite");
+								message.reply(" Ton roll est de " +ValRoll1+ " "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est une reussite");
 							}
 							else
 							{
-								message.reply(" Ton roll est de " +ValRoll1+ " + "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est un echec");
+								message.reply(" Ton roll est de " +ValRoll1+ " "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est un echec");
 							}
 						}
 						break;
