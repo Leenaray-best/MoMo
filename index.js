@@ -810,7 +810,7 @@ client.on('message', async function (message, user)
 	}
 
 	//Commande de gain d'XP par message dans les salons RP
-	if (message.channel.parent==auth.Salon.CategorieRPAzathys || message.channel.parent==auth.Salon.CategorieRPTempleAustral || message.channel.parent==auth.Salon.CategorieRPMasun || message.channel.parent==auth.Salon.CategorieRPCroissant || message.channel.parent==auth.Salon.CategorieRPTempOcci || message.channel.parent==auth.Salon.CategorieRPBraise || message.channel.parent==auth.Salon.CategorieRPBahSingSe || message.channel.parent==auth.Salon.CategorieRPOmashu || message.channel.parent==auth.Salon.CategorieRPMaraisBrumeux || message.channel.parent==auth.Salon.CategorieRPDesertSiWang || message.channel.parent==auth.Salon.CategorieRPTempOrient || message.channel.parent==auth.Salon.CategorieRPIleKyoshi || message.channel.parent==auth.Salon.CategorieRPTempBoreal|| message.channel.parent==auth.Salon.CategorieRPTribuSud)
+	if (message.channel.parent==auth.Salon.CategorieRPAzathys || message.channel.parent==auth.Salon.CategorieRPTempleAustral || message.channel.parent==auth.Salon.CategorieRPMasun || message.channel.parent==auth.Salon.CategorieRPCroissant || message.channel.parent==auth.Salon.CategorieRPTempOcci || message.channel.parent==auth.Salon.CategorieRPBraise || message.channel.parent==auth.Salon.CategorieRPBahSingSe || message.channel.parent==auth.Salon.CategorieRPOmashu || message.channel.parent==auth.Salon.CategorieRPMaraisBrumeux || message.channel.parent==auth.Salon.CategorieRPDesertSiWang || message.channel.parent==auth.Salon.CategorieRPTempOrient || message.channel.parent==auth.Salon.CategorieRPIleKyoshi || message.channel.parent==auth.Salon.CategorieRPTempBoreal|| message.channel.parent==auth.Salon.CategorieRPTribuSud || message.channel.parent==auth.Salon.CategorieTempleTerre)
 	{
 		var NewXP=0;
 		var taillemessage = counterMot.count(petitMessage,'-c');
@@ -2159,118 +2159,116 @@ client.on('message', async function (message, user)
 						break;
 						case "force" :
 						console.log("roll d'attaque d'opposition")
-						var Nombre = Number(fiche.Competence.Force)
-						var ValRoll = Rand(20) + Number(Nombre);
-						if (ValRoll<=5)
+						if(!tableauDeMot[2])
 						{
+							var Nombre = Number(fiche.Competence.Force)
+							var ValRoll = Rand(20) + Number(Nombre);
 							message.reply(" Ton roll de Force est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
-						}else if (ValRoll<=10)
-						{
-							message.reply(" Ton roll de Force est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
+							
 						}
-						else if (ValRoll<=15)
+						else
 						{
-							message.reply(" Ton roll de Force est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
-						}
-						else if (ValRoll>=16)
-						{
-							message.reply(" Ton roll de Force est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
+							var Nombre = Number(fiche.Competence.Force)
+							console.log("bonus de lieu 0 "+tableauDeMot[2])
+				  			var BonusLieu = Number(tableauDeMot[2])
+							var ValRoll1 = Rand(20) + Number(Nombre);
+							var ValRoll = ValRoll1 + BonusLieu
+							message.reply(" Ton roll de Force est de " +ValRoll1+ " + "+BonusLieu+ "(bonus/malus Lieu/Contexte) ="+ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
+						
 						}
 						break;
 						case "constitution" :
-						var Nombre = Number(fiche.Competence.Constitution)
-						var ValRoll = Rand(20) + Number(Nombre);
-						if (ValRoll<=5)
+						if(!tableauDeMot[2])
 						{
-							message.reply(" Ton roll de Constitution est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
-						}else if (ValRoll<=10)
-						{
+							var Nombre = Number(fiche.Competence.Constitution)
+							var ValRoll = Rand(20) + Number(Nombre);
 							message.reply(" Ton roll de Constitution est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
 						}
-						else if (ValRoll<=15)
+						else
 						{
-							message.reply(" Ton roll de Constitution est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
-						}
-						else if (ValRoll>=16)
-						{
-							message.reply(" Ton roll de Constitution est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
+							var Nombre = Number(fiche.Competence.Constitution)
+							console.log("bonus de lieu 0 "+tableauDeMot[2])
+				  			var BonusLieu = Number(tableauDeMot[2])
+							var ValRoll1 = Rand(20) + Number(Nombre);
+							var ValRoll = ValRoll1 + BonusLieu
+							message.reply(" Ton roll de Constitution est de " +ValRoll1+ " + "+BonusLieu+ "(bonus/malus Lieu/Contexte) ="+ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
+
 						}
 						break;
 						case "charisme" :
-						var Nombre = Number(fiche.Competence.Charisme);
-						var ValRoll = Rand(20)+ Number(Nombre);
-						if (ValRoll<=5)
-						{
-							message.reply(" Ton roll de Charisme est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
-						}else if (ValRoll<=10)
-						{
-							message.reply(" Ton roll de Charisme est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
-						}
-						else if (ValRoll<=15)
-						{
-							message.reply(" Ton roll de Charisme est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
-						}
-						else if (ValRoll>=16)
-						{
-							message.reply(" Ton roll de Charisme est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
-						}
+							if(!tableauDeMot[2])
+							{
+								var Nombre = Number(fiche.Competence.Charisme);
+								var ValRoll = Rand(20)+ Number(Nombre);
+								message.reply(" Ton roll de Charisme est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
+							}
+							else
+							{
+								var Nombre = Number(fiche.Competence.Charisme)
+								console.log("bonus de lieu 0 "+tableauDeMot[2])
+								var BonusLieu = Number(tableauDeMot[2])
+								var ValRoll1 = Rand(20) + Number(Nombre);
+								var ValRoll = ValRoll1 + BonusLieu
+								message.reply(" Ton roll de Charisme est de " +ValRoll1+ " + "+BonusLieu+ "(bonus/malus Lieu/Contexte) ="+ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
+
+							}
 						break;
 						case "intelligence" :
-						var Nombre = Number(fiche.Competence.Intelligence);
-						var ValRoll = Rand(20)+ Number(Nombre);
-						if (ValRoll<=5)
-						{
-							message.reply(" Ton roll d'intelligence est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
-						}else if (ValRoll<=10)
-						{
-							message.reply(" Ton roll d'intelligence est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
-						}
-						else if (ValRoll<=15)
-						{
-							message.reply(" Ton roll d'intelligence est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
-						}
-						else if (ValRoll>=16)
-						{
-							message.reply(" Ton roll d'intelligence est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
-						}
+							if(!tableauDeMot[2])
+							{
+								var Nombre = Number(fiche.Competence.Intelligence);
+								var ValRoll = Rand(20)+ Number(Nombre);
+								message.reply(" Ton roll d'Intelligence est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
+								
+							}
+							else
+							{
+								var Nombre = Number(fiche.Competence.Intelligence)
+								console.log("bonus de lieu 0 "+tableauDeMot[2])
+								var BonusLieu = Number(tableauDeMot[2])
+								var ValRoll1 = Rand(20) + Number(Nombre);
+								var ValRoll = ValRoll1 + BonusLieu
+								message.reply(" Ton roll d'Intelligence est de " +ValRoll1+ " + "+BonusLieu+ "(bonus/malus Lieu/Contexte) ="+ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
+
+							}
 						break;
 						case "sagesse" :
-						var Nombre = Number(fiche.Competence.Sagesse);
-						var ValRoll = Rand(20)+ Number(Nombre);
-						if (ValRoll<=5)
-						{
-							message.reply(" Ton roll de sagesse est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
-						}else if (ValRoll<=10)
-						{
-							message.reply(" Ton roll de sagesse est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
-						}
-						else if (ValRoll<=15)
-						{
-							message.reply(" Ton roll de sagesse est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
-						}
-						else if (ValRoll>=16)
-						{
-							message.reply(" Ton roll de sagesse est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
-						}
+							if(!tableauDeMot[2])
+							{
+								var Nombre = Number(fiche.Competence.Sagesse);
+								var ValRoll = Rand(20)+ Number(Nombre);
+								message.reply(" Ton roll de sagesse est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
+								
+							}
+							else
+							{
+								var Nombre = Number(fiche.Competence.Sagesse)
+								console.log("bonus de lieu 0 "+tableauDeMot[2])
+								var BonusLieu = Number(tableauDeMot[2])
+								var ValRoll1 = Rand(20) + Number(Nombre);
+								var ValRoll = ValRoll1 + BonusLieu
+								message.reply(" Ton roll de Sagesse est de " +ValRoll1+ " + "+BonusLieu+ "(bonus/malus Lieu/Contexte) ="+ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
+
+							}
 						break;
 						case "dexterite" :
-						var Nombre = Number(fiche.Competence.Dexterite);
-						var ValRoll = Rand(20)+ Number(Nombre);
-						if (ValRoll<=5)
-						{
-							message.reply(" Ton roll de dexterite est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
-						}else if (ValRoll<=10)
-						{
-							message.reply(" Ton roll de dexterite est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
-						}
-						else if (ValRoll<=15)
-						{
-							message.reply(" Ton roll de dexterite est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
-						}
-						else if (ValRoll>=16)
-						{
-							message.reply(" Ton roll de dexterite est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
-						}
+							if(!tableauDeMot[2])
+							{
+								var Nombre = Number(fiche.Competence.Dexterite);
+								var ValRoll = Rand(20)+ Number(Nombre);
+								message.reply(" Ton roll de dexterite est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
+								
+							}
+							else
+							{
+								var Nombre = Number(fiche.Competence.Dexterite)
+								console.log("bonus de lieu 0 "+tableauDeMot[2])
+								var BonusLieu = Number(tableauDeMot[2])
+								var ValRoll1 = Rand(20) + Number(Nombre);
+								var ValRoll = ValRoll1 + BonusLieu
+								message.reply(" Ton roll de Dexterite est de " +ValRoll1+ " + "+BonusLieu+ "(bonus/malus Lieu/Contexte) ="+ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
+
+							}
 						break;
 						default:
 						break;
