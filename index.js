@@ -1573,75 +1573,183 @@ client.on('message', async function (message, user)
 						break;
 						case "force" :
 						console.log("roll de force")
-						var Nombre = Number(fiche.Competence.Force)
-						var ValRoll = Rand(20);
-						if (ValRoll<=Nombre)
+						if (!tableauDeMot[1])
 						{
-							message.reply(" Ton roll est de " +ValRoll+ ", c'est une reussite");
+							var Nombre = Number(fiche.Competence.Force)
+							var ValRoll = Rand(20);
+							if (ValRoll<=Nombre)
+							{
+								message.reply(" Ton roll est de " +ValRoll+ ", c'est une reussite");
+							}
+							else
+							{
+								message.reply(" Ton roll est de " +ValRoll+ ", c'est un echec");
+							}
 						}
 						else
 						{
-							message.reply(" Ton roll est de " +ValRoll+ ", c'est un echec");
+							var Nombre = Number(fiche.Competence.Force)
+							var BonusLieu = tableauDeMot[1]
+							var ValRoll1 = Rand(20);
+							var ValRoll= ValRoll1+Number(BonusLieu)
+							if (ValRoll<=Nombre)
+							{
+								message.reply(" Ton roll est de " +ValRoll1+ " + "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est une reussite");
+							}
+							else
+							{
+								message.reply(" Ton roll est de " +ValRoll1+ " + "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est un echec");
+							}
 						}
 						break;
 						case "constitution" :
-						var Nombre = Number(fiche.Competence.Constitution)
-						var ValRoll = Rand(20);
-						if (ValRoll<=Nombre)
+						if (!tableauDeMot[1])
 						{
-							message.reply(" Ton roll est de " +ValRoll+ ", c'est une reussite");
+							var Nombre = Number(fiche.Competence.Constitution)
+							var ValRoll = Rand(20);
+							if (ValRoll<=Nombre)
+							{
+								message.reply(" Ton roll est de " +ValRoll+ ", c'est une reussite");
+							}
+							else
+							{
+								message.reply(" Ton roll est de " +ValRoll+ ", c'est un echec");
+							}
 						}
 						else
 						{
-							message.reply(" Ton roll est de " +ValRoll+ ", c'est un echec");
+							var Nombre = Number(fiche.Competence.Constitution)
+							var BonusLieu = tableauDeMot[1]
+							var ValRoll1 = Rand(20);
+							var ValRoll= ValRoll1+Number(BonusLieu)
+							if (ValRoll<=Nombre)
+							{
+								message.reply(" Ton roll est de " +ValRoll1+ " + "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est une reussite");
+							}
+							else
+							{
+								message.reply(" Ton roll est de " +ValRoll1+ " + "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est un echec");
+							}
 						}
 						break;
 						case "charisme" :
-						var Nombre = Number(fiche.Competence.Charisme)
-						var ValRoll = Rand(20);
-						if (ValRoll<=Nombre)
+						if (!tableauDeMot[1])
 						{
-							message.reply(" Ton roll est de " +ValRoll+ ", c'est une reussite");
+							var Nombre = Number(fiche.Competence.Charisme)
+							var ValRoll = Rand(20);
+							if (ValRoll<=Nombre)
+							{
+								message.reply(" Ton roll est de " +ValRoll+ ", c'est une reussite");
+							}
+							else
+							{
+								message.reply(" Ton roll est de " +ValRoll+ ", c'est un echec");
+							}
 						}
 						else
 						{
-							message.reply(" Ton roll est de " +ValRoll+ ", c'est un echec");
+							var Nombre = Number(fiche.Competence.Charisme)
+							var BonusLieu = tableauDeMot[1]
+							var ValRoll1 = Rand(20);
+							var ValRoll= ValRoll1+Number(BonusLieu)
+							if (ValRoll<=Nombre)
+							{
+								message.reply(" Ton roll est de " +ValRoll1+ " + "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est une reussite");
+							}
+							else
+							{
+								message.reply(" Ton roll est de " +ValRoll1+ " + "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est un echec");
+							}
 						}
 						break;						
 						case "intelligence" :
-						var Nombre = Number(fiche.Competence.Intelligence)
-						var ValRoll = Rand(20);
-						if (ValRoll<=Nombre)
+						if (!tableauDeMot[1])
 						{
-							message.reply(" Ton roll est de " +ValRoll+ ", c'est une reussite");
+							var Nombre = Number(fiche.Competence.Intelligence)
+							var ValRoll = Rand(20);
+							if (ValRoll<=Nombre)
+							{
+								message.reply(" Ton roll est de " +ValRoll+ ", c'est une reussite");
+							}
+							else
+							{
+								message.reply(" Ton roll est de " +ValRoll+ ", c'est un echec");
+							}
 						}
 						else
 						{
-							message.reply(" Ton roll est de " +ValRoll+ ", c'est un echec");
+							var Nombre = Number(fiche.Competence.Intelligence)
+							var BonusLieu = tableauDeMot[1]
+							var ValRoll1 = Rand(20);
+							var ValRoll= ValRoll1+Number(BonusLieu)
+							if (ValRoll<=Nombre)
+							{
+								message.reply(" Ton roll est de " +ValRoll1+ " + "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est une reussite");
+							}
+							else
+							{
+								message.reply(" Ton roll est de " +ValRoll1+ " + "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est un echec");
+							}
 						}
 						break;
 						case "sagesse" :
-						var Nombre = Number(fiche.Competence.Sagesse)
-						var ValRoll = Rand(20);
-						if (ValRoll<=Nombre)
+						if (!tableauDeMot[1])
 						{
-							message.reply(" Ton roll est de " +ValRoll+ ", c'est une reussite");
+							var Nombre = Number(fiche.Competence.Sagesse)
+							var ValRoll = Rand(20);
+							if (ValRoll<=Nombre)
+							{
+								message.reply(" Ton roll est de " +ValRoll+ ", c'est une reussite");
+							}
+							else
+							{
+								message.reply(" Ton roll est de " +ValRoll+ ", c'est un echec");
+							}
 						}
 						else
 						{
-							message.reply(" Ton roll est de " +ValRoll+ ", c'est un echec");
+							var Nombre = Number(fiche.Competence.Sagesse)
+							var BonusLieu = tableauDeMot[1]
+							var ValRoll1 = Rand(20);
+							var ValRoll= ValRoll1+Number(BonusLieu)
+							if (ValRoll<=Nombre)
+							{
+								message.reply(" Ton roll est de " +ValRoll1+ " + "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est une reussite");
+							}
+							else
+							{
+								message.reply(" Ton roll est de " +ValRoll1+ " + "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est un echec");
+							}
 						}
 						break;
 						case "dexterite" :
-						var Nombre = Number(fiche.Competence.Dexterite)
-						var ValRoll = Rand(20);
-						if (ValRoll<=Nombre)
+						if (!tableauDeMot[1])
 						{
-							message.reply(" Ton roll est de " +ValRoll+ ", c'est une reussite");
+							var Nombre = Number(fiche.Competence.Dexterite)
+							var ValRoll = Rand(20);
+							if (ValRoll<=Nombre)
+							{
+								message.reply(" Ton roll est de " +ValRoll+ ", c'est une reussite");
+							}
+							else
+							{
+								message.reply(" Ton roll est de " +ValRoll+ ", c'est un echec");
+							}
 						}
 						else
 						{
-							message.reply(" Ton roll est de " +ValRoll+ ", c'est un echec");
+							var Nombre = Number(fiche.Competence.Dexterite)
+							var BonusLieu = tableauDeMot[1]
+							var ValRoll1 = Rand(20);
+							var ValRoll= ValRoll1+Number(BonusLieu)
+							if (ValRoll<=Nombre)
+							{
+								message.reply(" Ton roll est de " +ValRoll1+ " + "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est une reussite");
+							}
+							else
+							{
+								message.reply(" Ton roll est de " +ValRoll1+ " + "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est un echec");
+							}
 						}
 						break;
 						default:
