@@ -2208,7 +2208,7 @@ client.on('message', async function (message, user)
 				  			{
 				  				console.log("Pas de bonus de lieu")
 					  			var ValRoll= ValRand + Number(bonusAttaque)+ Number(BonusMeteo);
-								if (ValRoll<=10)
+								if (ValRoll<10)
 								{
 									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus maitrise) + " +BonusMeteo+ " (bonus/malus Meteo) = " + ValRoll + " \rTu n'as pas su utiliser ta maitrise efficacement, meme si ton score est plus haut que ton adversaire, tu ne lui fera pas de degat");
 								}
@@ -2222,7 +2222,7 @@ client.on('message', async function (message, user)
 				  				console.log("bonus de lieu 0 "+tableauDeMot[2])
 				  				var BonusLieu = Number(tableauDeMot[2])
 				  				var ValRoll= ValRand + Number(bonusAttaque)+ Number(BonusMeteo)+ Number(BonusLieu);
-								if (ValRoll<=10)
+								if (ValRoll<10)
 								{
 									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus maitrise) + " +BonusMeteo+ " (bonus/malus Meteo) + " +BonusLieu+ " (bonus/malus Lieu/Contexte) = " + ValRoll + " \rTu n'as pas su utiliser ta maitrise efficacement, meme si ton score est plus haut que ton adversaire, tu ne lui fera pas de degat");
 								}
@@ -2239,7 +2239,7 @@ client.on('message', async function (message, user)
 				  			{
 				  				console.log("Pas de bonus de lieu")
 					  			var ValRoll= ValRand + Number(bonusAttaque)
-								if (ValRoll<=10)
+								if (ValRoll<10)
 								{
 									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus maitrise) = " + ValRoll + " \rTu n'as pas su utiliser ta maitrise efficacement, meme si ton score est plus haut que ton adversaire, tu ne lui feras pas de degat");
 								}
@@ -2253,7 +2253,7 @@ client.on('message', async function (message, user)
 				  				console.log("bonnus de lieu = "+tableauDeMot[2])
 				  				var BonusLieu = Number(tableauDeMot[2])
 				  				var ValRoll= ValRand + Number(bonusAttaque) + Number(BonusLieu)
-								if (ValRoll<=10)
+								if (ValRoll<10)
 								{
 									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus maitrise) + "+ BonusLieu + " (bonus/malus Lieu/Contexte) = " + ValRoll + " \rTu n'as pas su utiliser ta maitrise efficacement, meme si ton score est plus haut que ton adversaire, tu ne lui feras pas de degat");
 								}
