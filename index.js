@@ -1030,45 +1030,45 @@ client.on('message', async function (message, user)
 						NiveauMaitrise = fiche.NiveauDeMaitrise
 						switch (NiveauMaitrise) 
 						{
-								case 1: var bonusAttaque = Number(-1);
+								case 1: var bonusAttaque = Number(1);
 				  				break;
-				  				case 2: var bonusAttaque = Number(0);
+				  				case 2: var bonusAttaque = Number(2);
 				  				break;
-				  				case 3: var bonusAttaque = Number(1);
+				  				case 3: var bonusAttaque = Number(3);
 				  				break;
-				  				case 4: var bonusAttaque = Number(2);
+				  				case 4: var bonusAttaque = Number(4);
 				  				break;
-				  				case 5: var bonusAttaque = Number(3);
+				  				case 5: var bonusAttaque = Number(5);
 				  				break;
-				  				case 6: var bonusAttaque = Number(3);
+				  				case 6: var bonusAttaque = Number(6);
 				  				break;
-				  				case 7: var bonusAttaque = Number(4);
+				  				case 7: var bonusAttaque = Number(7);
 				  				break;
-				  				case 8: var bonusAttaque = Number(5);
+				  				case 8: var bonusAttaque = Number(8);
 				  				break;
-				  				case 9: var bonusAttaque = Number(6);
+				  				case 9: var bonusAttaque = Number(9);
 				  				break;
-				  				case 10: var bonusAttaque = Number(6);
+				  				case 10: var bonusAttaque = Number(10);
 				  				break;
-				  				case 11: var bonusAttaque = Number(7);
+				  				case 11: var bonusAttaque = Number(11);
 				  				break;
-				  				case 12: var bonusAttaque = Number(8);
+				  				case 12: var bonusAttaque = Number(12);
 				  				break;
-				  				case 13: var bonusAttaque = Number(9);
+				  				case 13: var bonusAttaque = Number(13);
 				  				break;
-				  				case 14: var bonusAttaque = Number(10);
+				  				case 14: var bonusAttaque = Number(14);
 				  				break;
-				  				case 15: var bonusAttaque = Number(11);
+				  				case 15: var bonusAttaque = Number(15);
 				  				break;
-				  				case 16: var bonusAttaque = Number(11);
+				  				case 16: var bonusAttaque = Number(16);
 				  				break;
-				  				case 17: var bonusAttaque = Number(12);
+				  				case 17: var bonusAttaque = Number(17);
 				  				break;
-				  				case 18: var bonusAttaque = Number(13);
+				  				case 18: var bonusAttaque = Number(18);
 				  				break;
-				  				case 19: var bonusAttaque = Number(14);
+				  				case 19: var bonusAttaque = Number(19);
 				  				break;
-				  				case 20: var bonusAttaque = Number(15);
+				  				case 20: var bonusAttaque = Number(20);
 				  				break;
 				  				default:
 				  				break;
@@ -1472,15 +1472,15 @@ client.on('message', async function (message, user)
 								{
 									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) + " + BonusMeteo + " (bonus/malus Meteo) = " + ValRoll +"\rOuhla c'est un echec critique ! Tu dois t'infliger une blessure");
 								}
-								else if (ValRoll<=9)
+								else if (ValRoll<=12)
 								{
 									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) + " + BonusMeteo + " (bonus/malus Meteo) = " + ValRoll +"\rTu n'as pas su utiliser ta maitrise correctement, c'est un echec sans dommage physique");
 								}
-								else if (ValRoll<=15)
+								else if (ValRoll<=19)
 								{
 									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) + " + BonusMeteo + " (bonus/malus Meteo) = " + ValRoll +"\rLa maitrise de ton element est correcte, tu reussis ton action sans briller");
 								}
-								else if (ValRoll<=19)
+								else if (ValRoll<=24)
 								{
 									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) + " + BonusMeteo + " (bonus/malus Meteo) = " + ValRoll +"\rLa maitrise de ton element est tres bonne, tu reussis ton action !");
 								}
@@ -1498,15 +1498,15 @@ client.on('message', async function (message, user)
 								{
 									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) " + BonusMeteo + " (bonus/malus Meteo) " + BonusLieu + " (bonus/malus Lieu/Contexte)  = " + ValRoll +"\rOuhla c'est un echec critique ! Tu dois t'infliger une blessure");
 								}
-								else if (ValRoll<=9)
+								else if (ValRoll<=12)
 								{
 									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) " + BonusMeteo + " (bonus/malus Meteo) " + BonusLieu + " (bonus/malus Lieu/Contexte) = " + ValRoll +"\rTu n'as pas su utiliser ta maitrise correctement, c'est un echec sans dommage physique");
 								}
-								else if (ValRoll<=15)
+								else if (ValRoll<=19)
 								{
 									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) " + BonusMeteo + " (bonus/malus Meteo) " + BonusLieu + " (bonus/malus Lieu/Contexte) = " + ValRoll +"\rLa maitrise de ton element est correcte, tu reussis ton action sans briller");
 								}
-								else if (ValRoll<=19)
+								else if (ValRoll<=24)
 								{
 									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) " + BonusMeteo + " (bonus/malus Meteo) " + BonusLieu + " (bonus/malus Lieu/Contexte) = " + ValRoll +"\rLa maitrise de ton element est tres bonne, tu reussis ton action !");
 								}
@@ -1526,15 +1526,15 @@ client.on('message', async function (message, user)
 								{
 									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) = " + ValRoll +"\rOuhla c'est un echec critique ! Tu dois t'infliger une blessure");
 								}
-								else if (ValRoll<=9)
+								else if (ValRoll<=12)
 								{
 									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) = " + ValRoll +"\rTu n'as pas su utiliser ta maitrise correctement, c'est un echec sans dommage physique");
 								}
-								else if (ValRoll<=15)
+								else if (ValRoll<=19)
 								{
 									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) = " + ValRoll +"\rLa maitrise de ton element est correcte, tu reussis ton action sans briller");
 								}
-								else if (ValRoll<=19)
+								else if (ValRoll<=24)
 								{
 									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) = " + ValRoll +"\rLa maitrise de ton element est tres bonne, tu reussis ton action !");
 								}
@@ -1552,15 +1552,15 @@ client.on('message', async function (message, user)
 								{
 									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) " + BonusLieu + " (bonus/malus Lieu/Contexte) = " + ValRoll +"\rOuhla c'est un echec critique ! Tu dois t'infliger une blessure");
 								}
-								else if (ValRoll<=9)
+								else if (ValRoll<=12)
 								{
 									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) " + BonusLieu + " (bonus/malus Lieu/Contexte) = " + ValRoll +"\rTu n'as pas su utiliser ta maitrise correctement, c'est un echec sans dommage physique");
 								}
-								else if (ValRoll<=15)
+								else if (ValRoll<=19)
 								{
 									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) " + BonusLieu + " (bonus/malus Lieu/Contexte) = " + ValRoll +"\rLa maitrise de ton element est correcte, tu reussis ton action sans briller");
 								}
-								else if (ValRoll<=19)
+								else if (ValRoll<=24)
 								{
 									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) " + BonusLieu + " (bonus/malus Lieu/Contexte) = " + ValRoll +"\rLa maitrise de ton element est tres bonne, tu reussis ton action !");
 								}
@@ -1771,45 +1771,45 @@ client.on('message', async function (message, user)
 						NiveauMaitrise = fiche.NiveauDeMaitrise
 						switch (NiveauMaitrise) 
 						{
-								case 1: var bonusAttaque = Number(-1);
+								case 1: var bonusAttaque = Number(1);
 				  				break;
-				  				case 2: var bonusAttaque = Number(0);
+				  				case 2: var bonusAttaque = Number(2);
 				  				break;
-				  				case 3: var bonusAttaque = Number(1);
+				  				case 3: var bonusAttaque = Number(3);
 				  				break;
-				  				case 4: var bonusAttaque = Number(2);
+				  				case 4: var bonusAttaque = Number(4);
 				  				break;
-				  				case 5: var bonusAttaque = Number(3);
+				  				case 5: var bonusAttaque = Number(5);
 				  				break;
-				  				case 6: var bonusAttaque = Number(3);
+				  				case 6: var bonusAttaque = Number(6);
 				  				break;
-				  				case 7: var bonusAttaque = Number(4);
+				  				case 7: var bonusAttaque = Number(7);
 				  				break;
-				  				case 8: var bonusAttaque = Number(5);
+				  				case 8: var bonusAttaque = Number(8);
 				  				break;
-				  				case 9: var bonusAttaque = Number(6);
+				  				case 9: var bonusAttaque = Number(9);
 				  				break;
-				  				case 10: var bonusAttaque = Number(6);
+				  				case 10: var bonusAttaque = Number(10);
 				  				break;
-				  				case 11: var bonusAttaque = Number(7);
+				  				case 11: var bonusAttaque = Number(11);
 				  				break;
-				  				case 12: var bonusAttaque = Number(8);
+				  				case 12: var bonusAttaque = Number(12);
 				  				break;
-				  				case 13: var bonusAttaque = Number(9);
+				  				case 13: var bonusAttaque = Number(13);
 				  				break;
-				  				case 14: var bonusAttaque = Number(10);
+				  				case 14: var bonusAttaque = Number(14);
 				  				break;
-				  				case 15: var bonusAttaque = Number(11);
+				  				case 15: var bonusAttaque = Number(15);
 				  				break;
-				  				case 16: var bonusAttaque = Number(11);
+				  				case 16: var bonusAttaque = Number(16);
 				  				break;
-				  				case 17: var bonusAttaque = Number(12);
+				  				case 17: var bonusAttaque = Number(17);
 				  				break;
-				  				case 18: var bonusAttaque = Number(13);
+				  				case 18: var bonusAttaque = Number(18);
 				  				break;
-				  				case 19: var bonusAttaque = Number(14);
+				  				case 19: var bonusAttaque = Number(19);
 				  				break;
-				  				case 20: var bonusAttaque = Number(15);
+				  				case 20: var bonusAttaque = Number(20);
 				  				break;
 				  				default:
 				  				break;
@@ -2204,62 +2204,83 @@ client.on('message', async function (message, user)
 				  		}
 				  		if (message.member.roles.cache.has(auth.RoleRP.Eau) || message.member.roles.cache.has(auth.RoleRP.Feu))
 				  		{
+							if (message.member.roles.cache.has(auth.RoleRP.Eau))
+							{
+								var BonusCompetence = Number(fiche.Competence.Sagesse)
+							}
+							else if (message.member.roles.cache.has(auth.RoleRP.Feu))
+							{
+								var BonusCompetence = Number(fiche.Competence.Intelligence)
+							}
 				  			if(!tableauDeMot[2])
 				  			{
 				  				console.log("Pas de bonus de lieu")
-					  			var ValRoll= ValRand + Number(bonusAttaque)+ Number(BonusMeteo);
-								if (ValRoll<10)
+					  			var ValRoll= ValRand + Number(bonusAttaque)+ Number(BonusMeteo)+Number(BonusCompetence);
+								var BonnusAttaqueMix = Number(bonusAttaque)+Number(BonusCompetence);
+								if (ValRoll<15)
 								{
-									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus maitrise) + " +BonusMeteo+ " (bonus/malus Meteo) = " + ValRoll + " \rTu n'as pas su utiliser ta maitrise efficacement, meme si ton score est plus haut que ton adversaire, tu ne lui fera pas de degat");
+									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ BonnusAttaqueMix + " (bonus maitrise) + " +BonusMeteo+ " (bonus/malus Meteo) = " + ValRoll + " \rTu n'as pas su utiliser ta maitrise efficacement, meme si ton score est plus haut que ton adversaire, tu ne lui fera pas de degat");
 								}
 								else
 								{
-									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus maitrise) + " +BonusMeteo+ " (bonus/malus Meteo) = " + ValRoll +" \rL'utilisation de ta maitrise est une reussite");
+									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ BonnusAttaqueMix + " (bonus maitrise) + " +BonusMeteo+ " (bonus/malus Meteo) = " + ValRoll +" \rL'utilisation de ta maitrise est une reussite");
 								}
 				  			}
 				  			else
 				  			{
 				  				console.log("bonus de lieu 0 "+tableauDeMot[2])
 				  				var BonusLieu = Number(tableauDeMot[2])
-				  				var ValRoll= ValRand + Number(bonusAttaque)+ Number(BonusMeteo)+ Number(BonusLieu);
-								if (ValRoll<10)
+				  				var ValRoll= ValRand + Number(bonusAttaque)+ Number(BonusMeteo)+ Number(BonusLieu)+Number(BonusCompetence);
+								var BonnusAttaqueMix = Number(bonusAttaque)+Number(BonusCompetence);
+								if (ValRoll<15)
 								{
-									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus maitrise) + " +BonusMeteo+ " (bonus/malus Meteo) + " +BonusLieu+ " (bonus/malus Lieu/Contexte) = " + ValRoll + " \rTu n'as pas su utiliser ta maitrise efficacement, meme si ton score est plus haut que ton adversaire, tu ne lui fera pas de degat");
+									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ BonnusAttaqueMix + " (bonus maitrise) + " +BonusMeteo+ " (bonus/malus Meteo) + " +BonusLieu+ " (bonus/malus Lieu/Contexte) = " + ValRoll + " \rTu n'as pas su utiliser ta maitrise efficacement, meme si ton score est plus haut que ton adversaire, tu ne lui fera pas de degat");
 								}
 								else
 								{
-									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus maitrise) + " +BonusMeteo+ " (bonus/malus Meteo) + " +BonusLieu+ " (bonus/malus Lieu/Contexte) = " + ValRoll +" \rL'utilisation de ta maitrise est une reussite");
+									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ BonnusAttaqueMix + " (bonus maitrise) + " +BonusMeteo+ " (bonus/malus Meteo) + " +BonusLieu+ " (bonus/malus Lieu/Contexte) = " + ValRoll +" \rL'utilisation de ta maitrise est une reussite");
 								}
 				  			}
 				  				
 						}
+						
 						if (message.member.roles.cache.has(auth.RoleRP.Terre) || message.member.roles.cache.has(auth.RoleRP.Air))
 				  		{
+							if (message.member.roles.cache.has(auth.RoleRP.Terre))
+							{
+								var BonusCompetence = Number(fiche.Competence.Constitution)
+							}
+							else if (message.member.roles.cache.has(auth.RoleRP.Air))
+							{
+								var BonusCompetence = Number(fiche.Competence.Dexterite)
+							}
 				  			if(!tableauDeMot[2])
 				  			{
 				  				console.log("Pas de bonus de lieu")
-					  			var ValRoll= ValRand + Number(bonusAttaque)
-								if (ValRoll<10)
+					  			var ValRoll= ValRand + Number(bonusAttaque)+Number(BonusCompetence)
+								var BonnusAttaqueMix = Number(bonusAttaque)+Number(BonusCompetence);
+								if (ValRoll<15)
 								{
-									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus maitrise) = " + ValRoll + " \rTu n'as pas su utiliser ta maitrise efficacement, meme si ton score est plus haut que ton adversaire, tu ne lui feras pas de degat");
+									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ BonnusAttaqueMix + " (bonus maitrise) = " + ValRoll + " \rTu n'as pas su utiliser ta maitrise efficacement, meme si ton score est plus haut que ton adversaire, tu ne lui feras pas de degat");
 								}
 								else
 								{
-									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus maitrise) = " + ValRoll +" \rL'utilisation de ta maitrise est une reussite, si ton score est plus haut que ton adversaire tu l'emportes");
+									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ BonnusAttaqueMix + " (bonus maitrise) = " + ValRoll +" \rL'utilisation de ta maitrise est une reussite, si ton score est plus haut que ton adversaire tu l'emportes");
 								}
 				  			}
 				  			else
 				  			{
 				  				console.log("bonnus de lieu = "+tableauDeMot[2])
 				  				var BonusLieu = Number(tableauDeMot[2])
-				  				var ValRoll= ValRand + Number(bonusAttaque) + Number(BonusLieu)
-								if (ValRoll<10)
+				  				var ValRoll= ValRand + Number(bonusAttaque) + Number(BonusLieu)+Number(BonusCompetence)
+								var BonnusAttaqueMix = Number(bonusAttaque)+Number(BonusCompetence);
+								if (ValRoll<15)
 								{
-									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus maitrise) + "+ BonusLieu + " (bonus/malus Lieu/Contexte) = " + ValRoll + " \rTu n'as pas su utiliser ta maitrise efficacement, meme si ton score est plus haut que ton adversaire, tu ne lui feras pas de degat");
+									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ BonnusAttaqueMix + " (bonus maitrise) + "+ BonusLieu + " (bonus/malus Lieu/Contexte) = " + ValRoll + " \rTu n'as pas su utiliser ta maitrise efficacement, meme si ton score est plus haut que ton adversaire, tu ne lui feras pas de degat");
 								}
 								else
 								{
-									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus maitrise) + "+ BonusLieu + " (bonus/malus Lieu/Contexte) = " + ValRoll +" \rL'utilisation de ta maitrise est une reussite, si ton score est plus haut que ton adversaire tu l'emportes");
+									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ BonnusAttaqueMix + " (bonus maitrise) + "+ BonusLieu + " (bonus/malus Lieu/Contexte) = " + ValRoll +" \rL'utilisation de ta maitrise est une reussite, si ton score est plus haut que ton adversaire tu l'emportes");
 								}
 				  			}
 				  			
