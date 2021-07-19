@@ -1151,7 +1151,11 @@ client.on('message', async function (message, user)
 				  				{
 				  					var BonusMeteo = Number(1)
 				  				}	
-				  				else
+				  				else if (ficheMeteo.Marais=='🌫️')
+				  				{
+				  					var BonusMeteo = Number(2)
+				  				}
+								else
 				  				{
 				  					var BonusMeteo = Number(0)
 				  				}
@@ -1350,9 +1354,9 @@ client.on('message', async function (message, user)
 				  			}
 				  			else if (message.member.roles.cache.has(auth.RoleRP.Marais))
 				  			{
-				  				if (ficheMeteo.Marais=='🌨️')
+				  				if (ficheMeteo.Marais=='🌫️')
 				  				{
-				  					var BonusMeteo = Number(-2)
+				  					var BonusMeteo = Number(-1)
 				  				}
 				  				else if (ficheMeteo.Marais=='🌧️')
 				  				{
@@ -1890,7 +1894,11 @@ client.on('message', async function (message, user)
 				  				if (ficheMeteo.Marais=='🌧️' || ficheMeteo.Marais=='🌨️')
 				  				{
 				  					var BonusMeteo = Number(1)
-				  				}	
+				  				}
+								else if (ficheMeteo.Marais=='🌫️')
+								{
+									var BonusMeteo = Number(2)
+								}
 				  				else
 				  				{
 				  					var BonusMeteo = Number(0)
@@ -2089,9 +2097,9 @@ client.on('message', async function (message, user)
 				  			}
 				  			else if (message.member.roles.cache.has(auth.RoleRP.Marais))
 				  			{
-				  				if (ficheMeteo.Marais=='🌨️')
+				  				if (ficheMeteo.Marais=='🌫️')
 				  				{
-				  					var BonusMeteo = Number(-2)
+				  					var BonusMeteo = Number(-1)
 				  				}
 				  				else if (ficheMeteo.Marais=='🌧️')
 				  				{
@@ -2223,7 +2231,7 @@ client.on('message', async function (message, user)
 								}
 								else
 								{
-									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ BonnusAttaqueMix + " (bonus maitrise) + " +BonusMeteo+ " (bonus/malus Meteo) = " + ValRoll +" \rL'utilisation de ta maitrise est une reussite");
+									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ BonnusAttaqueMix + " (bonus maitrise) + " +BonusMeteo+ " (bonus/malus Meteo) = " + ValRoll +" \rL'utilisation de ta maitrise est une reussite, si ton score est plus haut que ton adversaire tu l'emportes");
 								}
 				  			}
 				  			else
@@ -2238,7 +2246,7 @@ client.on('message', async function (message, user)
 								}
 								else
 								{
-									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ BonnusAttaqueMix + " (bonus maitrise) + " +BonusMeteo+ " (bonus/malus Meteo) + " +BonusLieu+ " (bonus/malus Lieu/Contexte) = " + ValRoll +" \rL'utilisation de ta maitrise est une reussite");
+									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ BonnusAttaqueMix + " (bonus maitrise) + " +BonusMeteo+ " (bonus/malus Meteo) + " +BonusLieu+ " (bonus/malus Lieu/Contexte) = " + ValRoll +" \rL'utilisation de ta maitrise est une reussite, si ton score est plus haut que ton adversaire tu l'emportes");
 								}
 				  			}
 				  				
@@ -2940,6 +2948,9 @@ client.on('message', async function (message, user)
             .setDescription(texte)
             channel.send(exampleEmbed).then(async pourPin => {pourPin.pin();});
 	}
+
+	//Commande effacer message de quelqu'un en particulier
+
 });
 
 function createJobList() 
