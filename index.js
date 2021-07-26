@@ -812,6 +812,12 @@ client.on('message', async function (message, user)
 	//Commande de gain d'XP par message dans les salons RP
 	if (message.channel.parent==auth.Salon.CategorieRPAzathys || message.channel.parent==auth.Salon.CategorieRPTempleAustral || message.channel.parent==auth.Salon.CategorieRPMasun || message.channel.parent==auth.Salon.CategorieRPCroissant || message.channel.parent==auth.Salon.CategorieRPTempOcci || message.channel.parent==auth.Salon.CategorieRPBraise || message.channel.parent==auth.Salon.CategorieRPBahSingSe || message.channel.parent==auth.Salon.CategorieRPOmashu || message.channel.parent==auth.Salon.CategorieRPMaraisBrumeux || message.channel.parent==auth.Salon.CategorieRPDesertSiWang || message.channel.parent==auth.Salon.CategorieRPTempOrient || message.channel.parent==auth.Salon.CategorieRPIleKyoshi || message.channel.parent==auth.Salon.CategorieRPTempBoreal|| message.channel.parent==auth.Salon.CategorieRPTribuSud || message.channel.parent==auth.Salon.CategorieTempleTerre)
 	{
+		if (message.member.roles.cache.has(auth.RoleRP.progreAFaire))
+			{
+			console.log("ne fait rien")
+			}
+		else
+		{
 		var NewXP=0;
 		var taillemessage = counterMot.count(petitMessage,'-c');
 		console.log(taillemessage)
@@ -839,6 +845,7 @@ client.on('message', async function (message, user)
 			await FichePerso.findOneAndUpdate({_id: message.author.id},{NiveauXP: NewXP,time: Date.now()});
 		};
 		console.log(NewXP)
+		}
 	}
 
 	//Commande pour voir son XP
@@ -2626,6 +2633,16 @@ client.on('message', async function (message, user)
 			switch (argumentUpdate[0]) 
 			{
 			case "force" : var OldForce = fiche.Competence.Force
+			if (OldForce==20)
+			{
+				message.channel.send("Tu es au max sur cette competence")
+			}
+			else if ((OldForce==19) && (Number(ValueToAdd)==2))
+			{
+				message.channel.send("Attention tu es a 19 tu ne peux mettre plus qu'un point dans cette competence !")
+			}
+			else
+			{
 			var NewForce = fiche.Competence.Force + Number(ValueToAdd);
 			console.log(NewForce);
 			await FichePerso.findOneAndUpdate({_id: message.author.id},{'Competence.Force' : NewForce, GainCompetence : fiche.GainCompetence - Number(ValueToAdd) }); 
@@ -2668,8 +2685,19 @@ client.on('message', async function (message, user)
 				{
 					message.channel.send("Tu as fait une erreur dans la commande ou dans l'orthographe, ta fiche n'a pas été mise a jour")
 				}
+			}
 			break;
 			case "constitution" : var OldConstitution = fiche.Competence.Constitution
+			if (OldConstitution==20)
+			{
+				message.channel.send("Tu es au max sur cette competence")
+			}
+			else if ((OldConstitution==19) && (Number(ValueToAdd)==2))
+			{
+				message.channel.send("Attention tu es a 19 tu ne peux mettre plus qu'un point dans cette competence !")
+			}
+			else
+			{
 			var NewConstitution = fiche.Competence.Constitution + Number(ValueToAdd)
 			await FichePerso.findOneAndUpdate({_id: message.author.id},{'Competence.Constitution' : fiche.Competence.Constitution + Number(ValueToAdd),GainCompetence : fiche.GainCompetence - Number(ValueToAdd)}); 
 			if (Number(NewConstitution)==Number(OldConstitution)+Number(ValueToAdd))
@@ -2711,8 +2739,19 @@ client.on('message', async function (message, user)
 				{
 					message.channel.send("Tu as fait une erreur dans la commande ou dans l'orthographe, ta fiche n'a pas été mise a jour")
 				}
+			}
 			break;
 			case "charisme" : var OldCharisme = fiche.Competence.Charisme
+			if (OldCharisme==20)
+			{
+				message.channel.send("Tu es au max sur cette competence")
+			}
+			else if ((OldCharisme==19) && (Number(ValueToAdd)==2))
+			{
+				message.channel.send("Attention tu es a 19 tu ne peux mettre plus qu'un point dans cette competence !")
+			}
+			else
+			{
 			var NewCharisme = fiche.Competence.Charisme + Number(ValueToAdd)
 			await FichePerso.findOneAndUpdate({_id: message.author.id},{'Competence.Charisme' : fiche.Competence.Charisme + Number(ValueToAdd),GainCompetence : fiche.GainCompetence - Number(ValueToAdd)}); 
 			if (Number(NewCharisme) == Number(OldCharisme) + Number(ValueToAdd))
@@ -2754,8 +2793,19 @@ client.on('message', async function (message, user)
 				{
 					message.channel.send("Tu as fait une erreur dans la commande ou dans l'orthographe, ta fiche n'a pas été mise a jour")
 				}
+			}
 			break;
 			case "intelligence" : var OldIntelligence = fiche.Competence.Intelligence
+			if (OldIntelligence==20)
+			{
+				message.channel.send("Tu es au max sur cette competence")
+			}
+			else if ((OldIntelligence==19) && (Number(ValueToAdd)==2))
+			{
+				message.channel.send("Attention tu es a 19 tu ne peux mettre plus qu'un point dans cette competence !")
+			}
+			else
+			{
 			var NewIntelligence = fiche.Competence.Intelligence + Number(ValueToAdd)
 			await FichePerso.findOneAndUpdate({_id: message.author.id},{'Competence.Intelligence' : fiche.Competence.Intelligence + Number(ValueToAdd),GainCompetence : fiche.GainCompetence - Number(ValueToAdd)}); 
 			if (Number(NewIntelligence) == Number(OldIntelligence)+Number(ValueToAdd))
@@ -2797,8 +2847,19 @@ client.on('message', async function (message, user)
 				{
 					message.channel.send("Tu as fait une erreur dans la commande ou dans l'orthographe, ta fiche n'a pas été mise a jour")
 				}
+			}
 			break;
 			case "sagesse" : var OldSagesse = fiche.Competence.Sagesse
+			if (OldSagesse==20)
+			{
+				message.channel.send("Tu es au max sur cette competence")
+			}
+			else if ((OldSagesse==19) && (Number(ValueToAdd)==2))
+			{
+				message.channel.send("Attention tu es a 19 tu ne peux mettre plus qu'un point dans cette competence !")
+			}
+			else
+			{
 			var NewSagesse = fiche.Competence.Sagesse+Number(ValueToAdd)
 			await FichePerso.findOneAndUpdate({_id: message.author.id},{'Competence.Sagesse' : fiche.Competence.Sagesse + Number(ValueToAdd), GainCompetence : fiche.GainCompetence - Number(ValueToAdd)}); 
 			if (Number(NewSagesse) == Number(OldSagesse)+Number(ValueToAdd))
@@ -2840,8 +2901,19 @@ client.on('message', async function (message, user)
 				{
 					message.channel.send("Tu as fait une erreur dans la commande ou dans l'orthographe, ta fiche n'a pas été mise a jour")
 				}
+			}
 			break;
 			case "dexterite" : var OldDexterite = fiche.Competence.Dexterite
+			if (OldDexterite==20)
+			{
+				message.channel.send("Tu es au max sur cette competence")
+			}
+			else if ((OldDexterite==19) && (Number(ValueToAdd)==2))
+			{
+				message.channel.send("Attention tu es a 19 tu ne peux mettre plus qu'un point dans cette competence !")
+			}
+			else
+			{
 			var NewDexterite = fiche.Competence.Dexterite+Number(ValueToAdd)
 			await FichePerso.findOneAndUpdate({_id: message.author.id},{'Competence.Dexterite' : fiche.Competence.Dexterite + Number(ValueToAdd),GainCompetence : fiche.GainCompetence - Number(ValueToAdd)}); 
 			if (Number(NewDexterite) == Number(OldDexterite)+Number(ValueToAdd))
@@ -2883,6 +2955,7 @@ client.on('message', async function (message, user)
 				{
 					message.channel.send("Tu as fait une erreur dans la commande ou dans l'orthographe, ta fiche n'a pas été mise a jour")
 				}
+			}
 			break;
 			default:message.channel.send("Tu as fait une erreur dans la commande ou dans l'orthographe, ta fiche n'a pas été mise a jour")
 			break;
