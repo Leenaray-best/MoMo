@@ -3014,6 +3014,7 @@ client.on('message', async function (message, user)
 	{
 		console.log("ouii jerome c moi")
 		texte = "test"
+		message.reply("MoMo est la")
 		const channel = client.channels.cache.get(auth.Salon.SalonBotAdmin)
 		const exampleEmbed = new Discord.MessageEmbed()
             .setColor('#16EF0E')
