@@ -129,7 +129,7 @@ cron.schedule('0 7 * * *', async () => {
 						console.log("Salaire"+ SalaryXP);
 
 					}
-	        		 if(idZ==auth.RoleRP.Moine || idZ==auth.RoleRP.Artiste || idZ==auth.RoleRP.Journaliste || idZ==auth.RoleRP.Mafieux|| idZ==auth.RoleRP.Probender|| idZ==auth.RoleRP.Pretresse )
+	        		 if(idZ==auth.RoleRP.Moine || idZ==auth.RoleRP.Scientifique || idZ==auth.RoleRP.Artiste || idZ==auth.RoleRP.Journaliste || idZ==auth.RoleRP.Mafieux|| idZ==auth.RoleRP.Probender|| idZ==auth.RoleRP.Pretresse )
 	                {
 		                console.log("XP avant:"+ficheCollectZ.NiveauXP);
 		                var SalaryXP =  ficheCollectZ.NiveauXP + Number(SalaireCat1);
