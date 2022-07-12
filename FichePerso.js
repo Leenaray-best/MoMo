@@ -22,8 +22,10 @@ const Perso = mongoose.Schema({
         Constitution : Number,
         Charisme : Number, 
         Intelligence : Number, 
-        Sagesse : Number, 
-        Dexterite : Number
+        Survie : Number, 
+        Adresse : Number,
+        Spiritualite : Number,
+        Discretion : Number,
     },
     LienFichePerso : String,
     time: Date

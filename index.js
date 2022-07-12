@@ -390,10 +390,12 @@ client.on('message', async function (message, user)
                 )
                 .addFields(
                     { name : `Intelligence`, value : fiche.Competence.Intelligence, inline : true},
-                    { name : `Sagesse`, value : fiche.Competence.Sagesse, inline : true},
-                    { name : `Dexterite`, value : fiche.Competence.Dexterite, inline : true}
+                    { name : `Survie`, value : fiche.Competence.Survie, inline : true},
+                    { name : `Adresse`, value : fiche.Competence.Adresse, inline : true}
                 )
                 .addFields(
+					{ name : `Spiritualite`, value : fiche.Competence.Spiritualite, inline : true},
+                    { name : `Discretion`, value : fiche.Competence.Discretion, inline : true},
                     { name : `Lien Gdoc`, value : fiche.LienFichePerso, inline : true}
                 )
                 .setThumbnail(taggedUser.avatarURL())
@@ -503,13 +505,15 @@ client.on('message', async function (message, user)
                 { name : `Charisme`, value : fiche.Competence.Charisme, inline : true}
             )
             .addFields(
-                { name : `Intelligence`, value : fiche.Competence.Intelligence, inline : true},
-                { name : `Sagesse`, value : fiche.Competence.Sagesse, inline : true},
-                { name : `Dexterite`, value : fiche.Competence.Dexterite, inline : true}
-            )
-            .addFields(
-                    { name : `Lien Gdoc`, value : fiche.LienFichePerso, inline : true}
-            )
+				{ name : `Intelligence`, value : fiche.Competence.Intelligence, inline : true},
+				{ name : `Survie`, value : fiche.Competence.Survie, inline : true},
+				{ name : `Adresse`, value : fiche.Competence.Adresse, inline : true}
+			)
+			.addFields(
+				{ name : `Spiritualite`, value : fiche.Competence.Spiritualite, inline : true},
+				{ name : `Discretion`, value : fiche.Competence.Discretion, inline : true},
+				{ name : `Lien Gdoc`, value : fiche.LienFichePerso, inline : true}
+			)
             .setThumbnail(taggedUser.avatarURL())
             message.channel.send(exampleEmbed);
 	}
@@ -559,13 +563,15 @@ client.on('message', async function (message, user)
                 { name : `Charisme`, value : fiche.Competence.Charisme, inline : true}
             )
             .addFields(
-                { name : `Intelligence`, value : fiche.Competence.Intelligence, inline : true},
-                { name : `Sagesse`, value : fiche.Competence.Sagesse, inline : true},
-                { name : `Dexterite`, value : fiche.Competence.Dexterite, inline : true}
-            )
-            .addFields(
-                    { name : `Lien Gdoc`, value : fiche.LienFichePerso, inline : true}
-            )
+				{ name : `Intelligence`, value : fiche.Competence.Intelligence, inline : true},
+				{ name : `Survie`, value : fiche.Competence.Survie, inline : true},
+				{ name : `Adresse`, value : fiche.Competence.Adresse, inline : true}
+			)
+			.addFields(
+				{ name : `Spiritualite`, value : fiche.Competence.Spiritualite, inline : true},
+				{ name : `Discretion`, value : fiche.Competence.Discretion, inline : true},
+				{ name : `Lien Gdoc`, value : fiche.LienFichePerso, inline : true}
+			)
             .setThumbnail(taggedUser.avatarURL())
             message.channel.send(exampleEmbed);
 	}
@@ -575,7 +581,7 @@ client.on('message', async function (message, user)
 	if (message.channel.id==auth.Salon.GestionFiche && message.member.roles.cache.has(auth.RoleRP.RoleStaff) && petitMessage.startsWith(prefixCreateFicheStep3))
 	{
 		const taggedUser = message.mentions.users.first();
-			if (!taggedUser) return message.channel.send("remplirfiche3 @joueur Force Constitution Charisme Intelligence Sagesse Dexterite Faiblesse2");
+			if (!taggedUser) return message.channel.send("remplirfiche3 @joueur Force Constitution Charisme Intelligence Survie Adresse Faiblesse2");
         	if (isNaN(taggedUser)) return message.author.send("Le paramètre que vous avez saisi n'est pas un pseudo.").then(msg => msg.delete({ timeout: 10000 }));
 		const argForce = message.content.split(' ').slice(2); // All arguments behind the command name with the prefix
 		const argConst = message.content.split(' ').slice(3); // All arguments behind the command name with the prefix
@@ -593,7 +599,7 @@ client.on('message', async function (message, user)
 		NewDext=argDext[0];
 		NewFaiblesseDeux=argFaiblesseDeux;
 		await FichePerso.findOneAndUpdate({_id: taggedUser.id},{'Competence.Force': NewForce ,'Competence.Constitution': NewConst, 'Competence.Charisme': NewCharisme});
-		await FichePerso.findOneAndUpdate({_id: taggedUser.id},{'Competence.Intelligence': NewInt ,'Competence.Sagesse': NewSagesse, 'Competence.Dexterite': NewDext});
+		await FichePerso.findOneAndUpdate({_id: taggedUser.id},{'Competence.Intelligence': NewInt ,'Competence.Survie': NewSagesse, 'Competence.Adresse': NewDext});
 		await FichePerso.findOneAndUpdate({_id: taggedUser.id},{'Faiblesse.1': NewFaiblesseDeux});
 		var fiche = await FichePerso.findOne({_id: taggedUser.id}); 
 		console.log(fiche)
@@ -624,13 +630,15 @@ client.on('message', async function (message, user)
                 { name : `Charisme`, value : fiche.Competence.Charisme, inline : true}
             )
             .addFields(
-                { name : `Intelligence`, value : fiche.Competence.Intelligence, inline : true},
-                { name : `Sagesse`, value : fiche.Competence.Sagesse, inline : true},
-                { name : `Dexterite`, value : fiche.Competence.Dexterite, inline : true}
-            )
-            .addFields(
-                    { name : `Lien Gdoc`, value : fiche.LienFichePerso, inline : true}
-            )
+				{ name : `Intelligence`, value : fiche.Competence.Intelligence, inline : true},
+				{ name : `Survie`, value : fiche.Competence.Survie, inline : true},
+				{ name : `Adresse`, value : fiche.Competence.Adresse, inline : true}
+			)
+			.addFields(
+				{ name : `Spiritualite`, value : fiche.Competence.Spiritualite, inline : true},
+				{ name : `Discretion`, value : fiche.Competence.Discretion, inline : true},
+				{ name : `Lien Gdoc`, value : fiche.LienFichePerso, inline : true}
+			)
             .setThumbnail(taggedUser.avatarURL())
             message.channel.send(exampleEmbed);
 	}
@@ -641,7 +649,12 @@ client.on('message', async function (message, user)
 		const taggedUser = message.mentions.users.first();
 			if (!taggedUser) return message.channel.send("remplirfiche4 @joueur Lien Gdoc");
         	if (isNaN(taggedUser)) return message.author.send("Le paramètre que vous avez saisi n'est pas un pseudo.").then(msg => msg.delete({ timeout: 10000 }));
-		const argLienGdoc = message.content.split(' ').slice(2).join(' '); // All arguments behind the command name with the prefix
+		const argSpi = message.content.split(' ').slice(2); // All arguments behind the command name with the prefix
+		const argDis = message.content.split(' ').slice(3); // All arguments behind the command name with the prefix
+		const argLienGdoc = message.content.split(' ').slice(4).join(' '); // All arguments behind the command name with the prefix
+		NewSpi=argSpi[0];
+		NewDis=argDis[0];
+		await FichePerso.findOneAndUpdate({_id: taggedUser.id},{'Competence.Spiritualite': NewSpi ,'Competence.Discretion': NewDis});
 		await FichePerso.findOneAndUpdate({_id: taggedUser.id},{LienFichePerso: argLienGdoc});
 		var fiche = await FichePerso.findOne({_id: taggedUser.id}); 
 		console.log(fiche)
@@ -672,13 +685,15 @@ client.on('message', async function (message, user)
                 { name : `Charisme`, value : fiche.Competence.Charisme, inline : true}
             )
             .addFields(
-                { name : `Intelligence`, value : fiche.Competence.Intelligence, inline : true},
-                { name : `Sagesse`, value : fiche.Competence.Sagesse, inline : true},
-                { name : `Dexterite`, value : fiche.Competence.Dexterite, inline : true}
-            )
-            .addFields(
-                    { name : `Lien Gdoc`, value : fiche.LienFichePerso, inline : true}
-            )
+				{ name : `Intelligence`, value : fiche.Competence.Intelligence, inline : true},
+				{ name : `Survie`, value : fiche.Competence.Survie, inline : true},
+				{ name : `Adresse`, value : fiche.Competence.Adresse, inline : true}
+			)
+			.addFields(
+				{ name : `Spiritualite`, value : fiche.Competence.Spiritualite, inline : true},
+				{ name : `Discretion`, value : fiche.Competence.Discretion, inline : true},
+				{ name : `Lien Gdoc`, value : fiche.LienFichePerso, inline : true}
+			)
             .setThumbnail(taggedUser.avatarURL())
             message.channel.send(exampleEmbed);
 	}
@@ -717,9 +732,13 @@ client.on('message', async function (message, user)
 			break;
 			case "intelligence" : await FichePerso.findOneAndUpdate({_id: taggedUser.id},{'Competence.Intelligence' : Number(ValueUpdate)}); 
 			break;
-			case "sagesse" : await FichePerso.findOneAndUpdate({_id: taggedUser.id},{'Competence.Sagesse' : Number(ValueUpdate)}); 
+			case "survie" : await FichePerso.findOneAndUpdate({_id: taggedUser.id},{'Competence.Survie' : Number(ValueUpdate)}); 
 			break;
-			case "dexterite" : await FichePerso.findOneAndUpdate({_id: taggedUser.id},{'Competence.Dexterite' : Number(ValueUpdate)}); 
+			case "adresse" : await FichePerso.findOneAndUpdate({_id: taggedUser.id},{'Competence.Adresse' : Number(ValueUpdate)}); 
+			break;
+			case "spiritualite" : await FichePerso.findOneAndUpdate({_id: taggedUser.id},{'Competence.Spiritualite' : Number(ValueUpdate)}); 
+			break;
+			case "discretion" : await FichePerso.findOneAndUpdate({_id: taggedUser.id},{'Competence.Discretion' : Number(ValueUpdate)}); 
 			break;
 			default:
 			break;
@@ -751,13 +770,15 @@ client.on('message', async function (message, user)
                 { name : `Charisme`, value : fiche.Competence.Charisme, inline : true}
             )
             .addFields(
-                { name : `Intelligence`, value : fiche.Competence.Intelligence, inline : true},
-                { name : `Sagesse`, value : fiche.Competence.Sagesse, inline : true},
-                { name : `Dexterite`, value : fiche.Competence.Dexterite, inline : true}
-            )
-            .addFields(
-                { name : `Lien Gdoc`, value : fiche.LienFichePerso, inline : true}
-            )
+				{ name : `Intelligence`, value : fiche.Competence.Intelligence, inline : true},
+				{ name : `Survie`, value : fiche.Competence.Survie, inline : true},
+				{ name : `Adresse`, value : fiche.Competence.Adresse, inline : true}
+			)
+			.addFields(
+				{ name : `Spiritualite`, value : fiche.Competence.Spiritualite, inline : true},
+				{ name : `Discretion`, value : fiche.Competence.Discretion, inline : true},
+				{ name : `Lien Gdoc`, value : fiche.LienFichePerso, inline : true}
+			)
             .setThumbnail(taggedUser.avatarURL())
             message.channel.send(exampleEmbed);
 			message.channel.send("Fiche update")
@@ -797,13 +818,15 @@ client.on('message', async function (message, user)
                     { name : `Charisme`, value : fiche.Competence.Charisme, inline : true}
                 )
                 .addFields(
-                    { name : `Intelligence`, value : fiche.Competence.Intelligence, inline : true},
-                    { name : `Sagesse`, value : fiche.Competence.Sagesse, inline : true},
-                    { name : `Dexterite`, value : fiche.Competence.Dexterite, inline : true}
-                )
-                .addFields(
-                   	{ name : `Lien Gdoc`, value : fiche.LienFichePerso, inline : true}
-            	)
+					{ name : `Intelligence`, value : fiche.Competence.Intelligence, inline : true},
+					{ name : `Survie`, value : fiche.Competence.Survie, inline : true},
+					{ name : `Adresse`, value : fiche.Competence.Adresse, inline : true}
+				)
+				.addFields(
+					{ name : `Spiritualite`, value : fiche.Competence.Spiritualite, inline : true},
+					{ name : `Discretion`, value : fiche.Competence.Discretion, inline : true},
+					{ name : `Lien Gdoc`, value : fiche.LienFichePerso, inline : true}
+				)
                 .setThumbnail(message.author.avatarURL())
 	            message.channel.send(exampleEmbed);
 		}
@@ -1703,10 +1726,10 @@ client.on('message', async function (message, user)
 							}
 						}
 						break;
-						case "sagesse" :
+						case "survie" :
 						if (!tableauDeMot[1])
 						{
-							var Nombre = Number(fiche.Competence.Sagesse)
+							var Nombre = Number(fiche.Competence.Survie)
 							var ValRoll = Rand(20);
 							if (ValRoll<=Nombre)
 							{
@@ -1719,7 +1742,7 @@ client.on('message', async function (message, user)
 						}
 						else
 						{
-							var Nombre = Number(fiche.Competence.Sagesse)
+							var Nombre = Number(fiche.Competence.Survie)
 							var BonusLieu = tableauDeMot[1]
 							var ValRoll1 = Rand(20);
 							var ValRoll= ValRoll1+Number(BonusLieu)
@@ -1733,10 +1756,10 @@ client.on('message', async function (message, user)
 							}
 						}
 						break;
-						case "dexterite" :
+						case "adresse" :
 						if (!tableauDeMot[1])
 						{
-							var Nombre = Number(fiche.Competence.Dexterite)
+							var Nombre = Number(fiche.Competence.Adresse)
 							var ValRoll = Rand(20);
 							if (ValRoll<=Nombre)
 							{
@@ -1749,7 +1772,67 @@ client.on('message', async function (message, user)
 						}
 						else
 						{
-							var Nombre = Number(fiche.Competence.Dexterite)
+							var Nombre = Number(fiche.Competence.Adresse)
+							var BonusLieu = tableauDeMot[1]
+							var ValRoll1 = Rand(20);
+							var ValRoll= ValRoll1+Number(BonusLieu)
+							if (ValRoll<=Nombre)
+							{
+								message.reply(" Ton roll est de " +ValRoll1+ " "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est une reussite");
+							}
+							else
+							{
+								message.reply(" Ton roll est de " +ValRoll1+ " "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est un echec");
+							}
+						}
+						break;
+						case "spiritualite" :
+						if (!tableauDeMot[1])
+						{
+							var Nombre = Number(fiche.Competence.Spiritualite)
+							var ValRoll = Rand(20);
+							if (ValRoll<=Nombre)
+							{
+								message.reply(" Ton roll est de " +ValRoll+ ", c'est une reussite");
+							}
+							else
+							{
+								message.reply(" Ton roll est de " +ValRoll+ ", c'est un echec");
+							}
+						}
+						else
+						{
+							var Nombre = Number(fiche.Competence.Spiritualite)
+							var BonusLieu = tableauDeMot[1]
+							var ValRoll1 = Rand(20);
+							var ValRoll= ValRoll1+Number(BonusLieu)
+							if (ValRoll<=Nombre)
+							{
+								message.reply(" Ton roll est de " +ValRoll1+ " "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est une reussite");
+							}
+							else
+							{
+								message.reply(" Ton roll est de " +ValRoll1+ " "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est un echec");
+							}
+						}
+						break;
+						case "discretion" :
+						if (!tableauDeMot[1])
+						{
+							var Nombre = Number(fiche.Competence.Discretion)
+							var ValRoll = Rand(20);
+							if (ValRoll<=Nombre)
+							{
+								message.reply(" Ton roll est de " +ValRoll+ ", c'est une reussite");
+							}
+							else
+							{
+								message.reply(" Ton roll est de " +ValRoll+ ", c'est un echec");
+							}
+						}
+						else
+						{
+							var Nombre = Number(fiche.Competence.Discretion)
 							var BonusLieu = tableauDeMot[1]
 							var ValRoll1 = Rand(20);
 							var ValRoll= ValRoll1+Number(BonusLieu)
@@ -2376,41 +2459,60 @@ client.on('message', async function (message, user)
 
 							}
 						break;
-						case "sagesse" :
+						case "survie" :
 							if(!tableauDeMot[2])
 							{
-								var Nombre = Number(fiche.Competence.Sagesse);
+								var Nombre = Number(fiche.Competence.Survie);
 								var ValRoll = Rand(20)+ Number(Nombre);
-								message.reply(" Ton roll de sagesse est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
+								message.reply(" Ton roll de survie est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
 								
 							}
 							else
 							{
-								var Nombre = Number(fiche.Competence.Sagesse)
+								var Nombre = Number(fiche.Competence.Survie)
 								console.log("bonus de lieu 0 "+tableauDeMot[2])
 								var BonusLieu = Number(tableauDeMot[2])
 								var ValRoll1 = Rand(20) + Number(Nombre);
 								var ValRoll = ValRoll1 + BonusLieu
-								message.reply(" Ton roll de Sagesse est de " +ValRoll1+ " + "+BonusLieu+ "(bonus/malus Lieu/Contexte) ="+ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
+								message.reply(" Ton roll de survie est de " +ValRoll1+ " + "+BonusLieu+ "(bonus/malus Lieu/Contexte) ="+ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
 
 							}
 						break;
-						case "dexterite" :
+						case "adresse" :
 							if(!tableauDeMot[2])
 							{
-								var Nombre = Number(fiche.Competence.Dexterite);
+								var Nombre = Number(fiche.Competence.Adresse);
 								var ValRoll = Rand(20)+ Number(Nombre);
-								message.reply(" Ton roll de dexterite est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
+								message.reply(" Ton roll d'adresse est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
 								
 							}
 							else
 							{
-								var Nombre = Number(fiche.Competence.Dexterite)
+								var Nombre = Number(fiche.Competence.Adresse)
 								console.log("bonus de lieu 0 "+tableauDeMot[2])
 								var BonusLieu = Number(tableauDeMot[2])
 								var ValRoll1 = Rand(20) + Number(Nombre);
 								var ValRoll = ValRoll1 + BonusLieu
-								message.reply(" Ton roll de Dexterite est de " +ValRoll1+ " + "+BonusLieu+ "(bonus/malus Lieu/Contexte) ="+ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
+								message.reply(" Ton roll d'adresse est de " +ValRoll1+ " + "+BonusLieu+ "(bonus/malus Lieu/Contexte) ="+ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
+
+							}
+						break;
+						case "spiritualite" :
+							if(!tableauDeMot[2])
+							{
+								var Nombre = Number(fiche.Competence.Spiritualite);
+								var ValRoll = Rand(20)+ Number(Nombre);
+								message.reply(" Ton roll de spiritualite est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
+								
+							}
+							else
+							{
+								var Nombre = Number(fiche.Competence.Spiritualite)
+								console.log("bonus de lieu 0 "+tableauDeMot[2])
+								var BonusLieu = Number(tableauDeMot[2])
+								var ValRoll1 = Rand(20) + Number(Nombre);
+								var ValRoll = ValRoll1 + BonusLieu
+								message.reply(" Ton roll de spiritualite est de " +ValRoll1+ " + "+BonusLieu+ "(bonus/malus Lieu/Contexte) ="+ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
 
 							}
 						break;
@@ -2674,10 +2776,15 @@ client.on('message', async function (message, user)
 	                { name : `Charisme`, value : fiche.Competence.Charisme, inline : true}
 	            )
 	            .addFields(
-	                { name : `Intelligence`, value : fiche.Competence.Intelligence, inline : true},
-	                { name : `Sagesse`, value : fiche.Competence.Sagesse, inline : true},
-	                { name : `Dexterite`, value : fiche.Competence.Dexterite, inline : true}
-	            )
+					{ name : `Intelligence`, value : fiche.Competence.Intelligence, inline : true},
+					{ name : `Survie`, value : fiche.Competence.Survie, inline : true},
+					{ name : `Adresse`, value : fiche.Competence.Adresse, inline : true}
+				)
+				.addFields(
+					{ name : `Spiritualite`, value : fiche.Competence.Spiritualite, inline : true},
+					{ name : `Discretion`, value : fiche.Competence.Discretion, inline : true},
+					{ name : `Lien Gdoc`, value : fiche.LienFichePerso, inline : true}
+				)
 	            .setThumbnail(message.author.avatarURL())
 	            message.channel.send(exampleEmbed);
 				}
@@ -2729,8 +2836,13 @@ client.on('message', async function (message, user)
 					)
 					.addFields(
 						{ name : `Intelligence`, value : fiche.Competence.Intelligence, inline : true},
-						{ name : `Sagesse`, value : fiche.Competence.Sagesse, inline : true},
-						{ name : `Dexterite`, value : fiche.Competence.Dexterite, inline : true}
+						{ name : `Survie`, value : fiche.Competence.Survie, inline : true},
+						{ name : `Adresse`, value : fiche.Competence.Adresse, inline : true}
+					)
+					.addFields(
+						{ name : `Spiritualite`, value : fiche.Competence.Spiritualite, inline : true},
+						{ name : `Discretion`, value : fiche.Competence.Discretion, inline : true},
+						{ name : `Lien Gdoc`, value : fiche.LienFichePerso, inline : true}
 					)
 					.setThumbnail(message.author.avatarURL())
 					message.channel.send(exampleEmbed);
@@ -2783,8 +2895,13 @@ client.on('message', async function (message, user)
 					)
 					.addFields(
 						{ name : `Intelligence`, value : fiche.Competence.Intelligence, inline : true},
-						{ name : `Sagesse`, value : fiche.Competence.Sagesse, inline : true},
-						{ name : `Dexterite`, value : fiche.Competence.Dexterite, inline : true}
+						{ name : `Survie`, value : fiche.Competence.Survie, inline : true},
+						{ name : `Adresse`, value : fiche.Competence.Adresse, inline : true}
+					)
+					.addFields(
+						{ name : `Spiritualite`, value : fiche.Competence.Spiritualite, inline : true},
+						{ name : `Discretion`, value : fiche.Competence.Discretion, inline : true},
+						{ name : `Lien Gdoc`, value : fiche.LienFichePerso, inline : true}
 					)
 					.setThumbnail(message.author.avatarURL())
 					message.channel.send(exampleEmbed);
@@ -2837,8 +2954,13 @@ client.on('message', async function (message, user)
 					)
 					.addFields(
 						{ name : `Intelligence`, value : fiche.Competence.Intelligence, inline : true},
-						{ name : `Sagesse`, value : fiche.Competence.Sagesse, inline : true},
-						{ name : `Dexterite`, value : fiche.Competence.Dexterite, inline : true}
+						{ name : `Survie`, value : fiche.Competence.Survie, inline : true},
+						{ name : `Adresse`, value : fiche.Competence.Adresse, inline : true}
+					)
+					.addFields(
+						{ name : `Spiritualite`, value : fiche.Competence.Spiritualite, inline : true},
+						{ name : `Discretion`, value : fiche.Competence.Discretion, inline : true},
+						{ name : `Lien Gdoc`, value : fiche.LienFichePerso, inline : true}
 					)
 					.setThumbnail(message.author.avatarURL())
 					message.channel.send(exampleEmbed);
@@ -2849,22 +2971,22 @@ client.on('message', async function (message, user)
 				}
 			}
 			break;
-			case "sagesse" : var OldSagesse = fiche.Competence.Sagesse
-			if (OldSagesse==20)
+			case "survie" : var OldSurvie = fiche.Competence.Survie
+			if (OldSurvie==20)
 			{
 				message.channel.send("Tu es au max sur cette competence")
 			}
-			else if ((OldSagesse==19) && (Number(ValueToAdd)==2))
+			else if ((OldSurvie==19) && (Number(ValueToAdd)==2))
 			{
 				message.channel.send("Attention tu es a 19 tu ne peux mettre plus qu'un point dans cette competence !")
 			}
 			else
 			{
-			var NewSagesse = fiche.Competence.Sagesse+Number(ValueToAdd)
-			await FichePerso.findOneAndUpdate({_id: message.author.id},{'Competence.Sagesse' : fiche.Competence.Sagesse + Number(ValueToAdd), GainCompetence : fiche.GainCompetence - Number(ValueToAdd)}); 
-			if (Number(NewSagesse) == Number(OldSagesse)+Number(ValueToAdd))
+			var NewSurvie = fiche.Competence.Survie+Number(ValueToAdd)
+			await FichePerso.findOneAndUpdate({_id: message.author.id},{'Competence.Survie' : fiche.Competence.Survie + Number(ValueToAdd), GainCompetence : fiche.GainCompetence - Number(ValueToAdd)}); 
+			if (Number(NewSurvie) == Number(OldSurvie)+Number(ValueToAdd))
 				{
-					message.channel.send("Competence sagesse update")
+					message.channel.send("Competence survie update")
 					var fiche = await FichePerso.findOne({_id: message.author.id}); 
 					const listeQualite=fiche.Qualite;
 					const listeFaiblesse=fiche.Faiblesse;			
@@ -2891,8 +3013,13 @@ client.on('message', async function (message, user)
 					)
 					.addFields(
 						{ name : `Intelligence`, value : fiche.Competence.Intelligence, inline : true},
-						{ name : `Sagesse`, value : fiche.Competence.Sagesse, inline : true},
-						{ name : `Dexterite`, value : fiche.Competence.Dexterite, inline : true}
+						{ name : `Survie`, value : fiche.Competence.Survie, inline : true},
+						{ name : `Adresse`, value : fiche.Competence.Adresse, inline : true}
+					)
+					.addFields(
+						{ name : `Spiritualite`, value : fiche.Competence.Spiritualite, inline : true},
+						{ name : `Discretion`, value : fiche.Competence.Discretion, inline : true},
+						{ name : `Lien Gdoc`, value : fiche.LienFichePerso, inline : true}
 					)
 					.setThumbnail(message.author.avatarURL())
 					message.channel.send(exampleEmbed);
@@ -2903,20 +3030,20 @@ client.on('message', async function (message, user)
 				}
 			}
 			break;
-			case "dexterite" : var OldDexterite = fiche.Competence.Dexterite
-			if (OldDexterite==20)
+			case "adresse" : var OldAdresse = fiche.Competence.Adresse
+			if (OldAdresse==20)
 			{
 				message.channel.send("Tu es au max sur cette competence")
 			}
-			else if ((OldDexterite==19) && (Number(ValueToAdd)==2))
+			else if ((OldAdresse==19) && (Number(ValueToAdd)==2))
 			{
 				message.channel.send("Attention tu es a 19 tu ne peux mettre plus qu'un point dans cette competence !")
 			}
 			else
 			{
-			var NewDexterite = fiche.Competence.Dexterite+Number(ValueToAdd)
-			await FichePerso.findOneAndUpdate({_id: message.author.id},{'Competence.Dexterite' : fiche.Competence.Dexterite + Number(ValueToAdd),GainCompetence : fiche.GainCompetence - Number(ValueToAdd)}); 
-			if (Number(NewDexterite) == Number(OldDexterite)+Number(ValueToAdd))
+			var NewAdresse = fiche.Competence.Adresse+Number(ValueToAdd)
+			await FichePerso.findOneAndUpdate({_id: message.author.id},{'Competence.Adresse' : fiche.Competence.Adresse + Number(ValueToAdd),GainCompetence : fiche.GainCompetence - Number(ValueToAdd)}); 
+			if (Number(NewAdresse) == Number(OldAdresse)+Number(ValueToAdd))
 				{
 					message.channel.send("Competence dexterite update")
 					var fiche = await FichePerso.findOne({_id: message.author.id}); 
@@ -2945,8 +3072,131 @@ client.on('message', async function (message, user)
 					)
 					.addFields(
 						{ name : `Intelligence`, value : fiche.Competence.Intelligence, inline : true},
-						{ name : `Sagesse`, value : fiche.Competence.Sagesse, inline : true},
-						{ name : `Dexterite`, value : fiche.Competence.Dexterite, inline : true}
+						{ name : `Survie`, value : fiche.Competence.Survie, inline : true},
+						{ name : `Adresse`, value : fiche.Competence.Adresse, inline : true}
+					)
+					.addFields(
+						{ name : `Spiritualite`, value : fiche.Competence.Spiritualite, inline : true},
+						{ name : `Discretion`, value : fiche.Competence.Discretion, inline : true},
+						{ name : `Lien Gdoc`, value : fiche.LienFichePerso, inline : true}
+					)
+					.setThumbnail(message.author.avatarURL())
+					message.channel.send(exampleEmbed);
+				}
+			else
+				{
+					message.channel.send("Tu as fait une erreur dans la commande ou dans l'orthographe, ta fiche n'a pas été mise a jour")
+				}
+			}
+			break;
+			case "spiritualite" : var OldSpiritualite = fiche.Competence.Spiritualite
+			if (OldSpiritualite==20)
+			{
+				message.channel.send("Tu es au max sur cette competence")
+			}
+			else if ((OldSpiritualite==19) && (Number(ValueToAdd)==2))
+			{
+				message.channel.send("Attention tu es a 19 tu ne peux mettre plus qu'un point dans cette competence !")
+			}
+			else
+			{
+			var NewSpiritualite = fiche.Competence.Spiritualite+Number(ValueToAdd)
+			await FichePerso.findOneAndUpdate({_id: message.author.id},{'Competence.Spiritualite' : fiche.Competence.Spiritualite + Number(ValueToAdd),GainCompetence : fiche.GainCompetence - Number(ValueToAdd)}); 
+			if (Number(NewSpiritualite) == Number(OldSpiritualite)+Number(ValueToAdd))
+				{
+					message.channel.send("Competence dexterite update")
+					var fiche = await FichePerso.findOne({_id: message.author.id}); 
+					const listeQualite=fiche.Qualite;
+					const listeFaiblesse=fiche.Faiblesse;			
+					const exampleEmbed = new Discord.MessageEmbed()
+					.setColor('#16EF0E')
+					.setTitle("Fiche de " +fiche.Username)
+					.setDescription(`Nom : `+fiche.Identite.Nom+`
+								 Prenom : `+fiche.Identite.Prenom+`
+								 Age: `+fiche.Identite.Age+`
+								 Metier : `+fiche.Identite.Metier+`
+								 Niveau de Maitrise : `+fiche.NiveauDeMaitrise+`
+								 Niveau XP : `+fiche.NiveauXP+`
+								 Point de Competence : `+fiche.GainCompetence+`
+								 Faiblesse : `+listeFaiblesse[0]+`, `+listeFaiblesse[1])
+					.addFields(
+						{ name : `Qualite 1`, value : listeQualite[0], inline : true},
+						{ name : `Qualite 2`, value : listeQualite[1], inline : true},
+						{ name : `Defaut 1`, value : fiche.Defaut, inline : true}
+					)
+					.addFields(
+						{ name : `Force`, value : fiche.Competence.Force, inline : true},
+						{ name : `Constitution`, value : fiche.Competence.Constitution, inline : true},
+						{ name : `Charisme`, value : fiche.Competence.Charisme, inline : true}
+					)
+					.addFields(
+						{ name : `Intelligence`, value : fiche.Competence.Intelligence, inline : true},
+						{ name : `Survie`, value : fiche.Competence.Survie, inline : true},
+						{ name : `Adresse`, value : fiche.Competence.Adresse, inline : true}
+					)
+					.addFields(
+						{ name : `Spiritualite`, value : fiche.Competence.Spiritualite, inline : true},
+						{ name : `Discretion`, value : fiche.Competence.Discretion, inline : true},
+						{ name : `Lien Gdoc`, value : fiche.LienFichePerso, inline : true}
+					)
+					.setThumbnail(message.author.avatarURL())
+					message.channel.send(exampleEmbed);
+				}
+			else
+				{
+					message.channel.send("Tu as fait une erreur dans la commande ou dans l'orthographe, ta fiche n'a pas été mise a jour")
+				}
+			}
+			break;
+			case "discretion" : var OldDiscretion = fiche.Competence.Discretion
+			if (OldDiscretion==20)
+			{
+				message.channel.send("Tu es au max sur cette competence")
+			}
+			else if ((OldDiscretion==19) && (Number(ValueToAdd)==2))
+			{
+				message.channel.send("Attention tu es a 19 tu ne peux mettre plus qu'un point dans cette competence !")
+			}
+			else
+			{
+			var NewDiscretion = fiche.Competence.Discretion+Number(ValueToAdd)
+			await FichePerso.findOneAndUpdate({_id: message.author.id},{'Competence.Spiritualite' : fiche.Competence.Discretion + Number(ValueToAdd),GainCompetence : fiche.GainCompetence - Number(ValueToAdd)}); 
+			if (Number(NewDiscretion) == Number(OldDiscretion)+Number(ValueToAdd))
+				{
+					message.channel.send("Competence dexterite update")
+					var fiche = await FichePerso.findOne({_id: message.author.id}); 
+					const listeQualite=fiche.Qualite;
+					const listeFaiblesse=fiche.Faiblesse;			
+					const exampleEmbed = new Discord.MessageEmbed()
+					.setColor('#16EF0E')
+					.setTitle("Fiche de " +fiche.Username)
+					.setDescription(`Nom : `+fiche.Identite.Nom+`
+								 Prenom : `+fiche.Identite.Prenom+`
+								 Age: `+fiche.Identite.Age+`
+								 Metier : `+fiche.Identite.Metier+`
+								 Niveau de Maitrise : `+fiche.NiveauDeMaitrise+`
+								 Niveau XP : `+fiche.NiveauXP+`
+								 Point de Competence : `+fiche.GainCompetence+`
+								 Faiblesse : `+listeFaiblesse[0]+`, `+listeFaiblesse[1])
+					.addFields(
+						{ name : `Qualite 1`, value : listeQualite[0], inline : true},
+						{ name : `Qualite 2`, value : listeQualite[1], inline : true},
+						{ name : `Defaut 1`, value : fiche.Defaut, inline : true}
+					)
+					.addFields(
+						{ name : `Force`, value : fiche.Competence.Force, inline : true},
+						{ name : `Constitution`, value : fiche.Competence.Constitution, inline : true},
+						{ name : `Charisme`, value : fiche.Competence.Charisme, inline : true}
+					)
+					.addFields(
+						{ name : `Intelligence`, value : fiche.Competence.Intelligence, inline : true},
+						{ name : `Survie`, value : fiche.Competence.Survie, inline : true},
+						{ name : `Adresse`, value : fiche.Competence.Adresse, inline : true}
+					)
+					.addFields(
+						{ name : `Spiritualite`, value : fiche.Competence.Spiritualite, inline : true},
+						{ name : `Discretion`, value : fiche.Competence.Discretion, inline : true},
+						{ name : `Lien Gdoc`, value : fiche.LienFichePerso, inline : true}
 					)
 					.setThumbnail(message.author.avatarURL())
 					message.channel.send(exampleEmbed);
@@ -3127,8 +3377,10 @@ function createFichePerso(message,Niveau) {
     	Constitution : 0,
         Charisme : 0, 
         Intelligence : 0, 
-        Sagesse : 0, 
-        Dexterite : 0
+        Survie : 0, 
+        Adresse : 0,
+		Spiritualite : 0,
+        Discretion : 0,
     },
     LienFichePerso : "Lien",
     time: Date()
