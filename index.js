@@ -825,6 +825,8 @@ client.on('message', async function (message, user)
 				.addFields(
 					{ name : `Spiritualite`, value : fiche.Competence.Spiritualite, inline : true},
 					{ name : `Discretion`, value : fiche.Competence.Discretion, inline : true},
+				)
+				.addFields(
 					{ name : `Lien Gdoc`, value : fiche.LienFichePerso, inline : true}
 				)
                 .setThumbnail(message.author.avatarURL())
