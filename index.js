@@ -2518,6 +2518,25 @@ client.on('message', async function (message, user)
 
 							}
 						break;
+						case "discretion" :
+							if(!tableauDeMot[2])
+							{
+								var Nombre = Number(fiche.Competence.Discretion);
+								var ValRoll = Rand(20)+ Number(Nombre);
+								message.reply(" Ton roll de discretion est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
+								
+							}
+							else
+							{
+								var Nombre = Number(fiche.Competence.Discretion)
+								console.log("bonus de lieu 0 "+tableauDeMot[2])
+								var BonusLieu = Number(tableauDeMot[2])
+								var ValRoll1 = Rand(20) + Number(Nombre);
+								var ValRoll = ValRoll1 + BonusLieu
+								message.reply(" Ton roll de discretion est de " +ValRoll1+ " + "+BonusLieu+ "(bonus/malus Lieu/Contexte) ="+ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
+
+							}
+						break;
 						default:
 						break;
 					}			
