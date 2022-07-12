@@ -1819,32 +1819,39 @@ client.on('message', async function (message, user)
 						}
 						break;
 						case "discretion" :
-						if (!tableauDeMot[1])
+						if  (message.member.roles.cache.has(auth.RoleRP.Putois))
 						{
-							var Nombre = Number(fiche.Competence.Discretion)
-							var ValRoll = Rand(20);
-							if (ValRoll<=Nombre)
-							{
-								message.reply(" Ton roll est de " +ValRoll+ ", c'est une reussite");
-							}
-							else
-							{
-								message.reply(" Ton roll est de " +ValRoll+ ", c'est un echec");
-							}
+							message.reply(" Ton roll de discretion echoue. Il va falloir trouve une solution a ce probleme.");
 						}
 						else
 						{
-							var Nombre = Number(fiche.Competence.Discretion)
-							var BonusLieu = tableauDeMot[1]
-							var ValRoll1 = Rand(20);
-							var ValRoll= ValRoll1+Number(BonusLieu)
-							if (ValRoll<=Nombre)
+							if (!tableauDeMot[1])
 							{
-								message.reply(" Ton roll est de " +ValRoll1+ " "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est une reussite");
+								var Nombre = Number(fiche.Competence.Discretion)
+								var ValRoll = Rand(20);
+								if (ValRoll<=Nombre)
+								{
+									message.reply(" Ton roll est de " +ValRoll+ ", c'est une reussite");
+								}
+								else
+								{
+									message.reply(" Ton roll est de " +ValRoll+ ", c'est un echec");
+								}
 							}
 							else
 							{
-								message.reply(" Ton roll est de " +ValRoll1+ " "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est un echec");
+								var Nombre = Number(fiche.Competence.Discretion)
+								var BonusLieu = tableauDeMot[1]
+								var ValRoll1 = Rand(20);
+								var ValRoll= ValRoll1+Number(BonusLieu)
+								if (ValRoll<=Nombre)
+								{
+									message.reply(" Ton roll est de " +ValRoll1+ " "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est une reussite");
+								}
+								else
+								{
+									message.reply(" Ton roll est de " +ValRoll1+ " "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est un echec");
+								}
 							}
 						}
 						break;
@@ -2519,6 +2526,12 @@ client.on('message', async function (message, user)
 							}
 						break;
 						case "discretion" :
+						if  (message.member.roles.cache.has(auth.RoleRP.Putois))
+							{
+								message.reply(" Ton roll de discretion echoue. Il va falloir trouve une solution a ce probleme.");
+							}
+						else
+						{
 							if(!tableauDeMot[2])
 							{
 								var Nombre = Number(fiche.Competence.Discretion);
@@ -2536,6 +2549,7 @@ client.on('message', async function (message, user)
 								message.reply(" Ton roll de discretion est de " +ValRoll1+ " + "+BonusLieu+ "(bonus/malus Lieu/Contexte) ="+ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
 
 							}
+						}
 						break;
 						default:
 						break;
@@ -3295,12 +3309,12 @@ client.on('message', async function (message, user)
 	}
 
 	//Commande pour lancer une quete avec un mot 
-	if (message.channel.id==auth.Salon.SalonBotAdmin)
+	if (message.channel.parent==auth.Salon.CategorieRPAzathys || message.channel.parent==auth.Salon.CategorieRPTempleAustral || message.channel.parent==auth.Salon.CategorieRPMasun || message.channel.parent==auth.Salon.CategorieRPCroissant || message.channel.parent==auth.Salon.CategorieRPTempOcci || message.channel.parent==auth.Salon.CategorieRPBraise || message.channel.parent==auth.Salon.CategorieRPBahSingSe || message.channel.parent==auth.Salon.CategorieRPOmashu || message.channel.parent==auth.Salon.CategorieRPMaraisBrumeux || message.channel.parent==auth.Salon.CategorieRPDesertSiWang || message.channel.parent==auth.Salon.CategorieRPTempOrient || message.channel.parent==auth.Salon.CategorieRPIleKyoshi || message.channel.parent==auth.Salon.CategorieRPTempBoreal|| message.channel.parent==auth.Salon.CategorieRPTribuSud || message.channel.parent==auth.Salon.CategorieTempleTerre)
 	{
 		WordOne="putois"
 		if (petitMessage.includes(WordOne))
 		{
-			message.reply("Oh une cariole de putois se renverse devant toi et une floppee de putois te tombent dessus. De peur ils secretent une odeur nauseabonde qui va t'entourer pour jusqu'a que tu trouves une solution ! Tout tes jets de Discretion rateront tant que la solution n'est pas trouvee ")
+			message.reply("Oh une cariole de putois se renverse devant toi et une floppee de putois te tombent dessus. De peur ils secretent une odeur nauseabonde qui va t'entourer pour jusqu'a ce que tu trouves une solution ! Tout tes jets de Discretion rateront tant que la solution n'est pas trouvee ")
 			message.member.roles.add(auth.RoleRP.Putois);
 		}
 	}
