@@ -577,7 +577,7 @@ client.on('message', async function (message, user)
 	}
 
 
-	//Fonction pour set up la fiche Force/Constitution/Charisme/Intelligence/Sagesse/Dexterite/Faiblesse2
+	//Fonction pour set up la fiche Force/Constitution/Charisme/Intelligence/Survie/Adresse/Faiblesse2
 	if (message.channel.id==auth.Salon.GestionFiche && message.member.roles.cache.has(auth.RoleRP.RoleStaff) && petitMessage.startsWith(prefixCreateFicheStep3))
 	{
 		const taggedUser = message.mentions.users.first();
@@ -643,11 +643,11 @@ client.on('message', async function (message, user)
             message.channel.send(exampleEmbed);
 	}
 
-	//Fonction pour set up la fiche Ĺien Gdoc
+	//Fonction pour set up la fiche Spiritualite/Discretion/Ĺien Gdoc
 	if (message.channel.id==auth.Salon.GestionFiche && message.member.roles.cache.has(auth.RoleRP.RoleStaff) && petitMessage.startsWith(prefixCreateFicheStep4))
 	{
 		const taggedUser = message.mentions.users.first();
-			if (!taggedUser) return message.channel.send("remplirfiche4 @joueur Lien Gdoc");
+			if (!taggedUser) return message.channel.send("remplirfiche4 @joueur Spiritualite Discretion Lien Gdoc");
         	if (isNaN(taggedUser)) return message.author.send("Le paramètre que vous avez saisi n'est pas un pseudo.").then(msg => msg.delete({ timeout: 10000 }));
 		const argSpi = message.content.split(' ').slice(2); // All arguments behind the command name with the prefix
 		const argDis = message.content.split(' ').slice(3); // All arguments behind the command name with the prefix
