@@ -3298,7 +3298,7 @@ client.on('message', async function (message, user)
 	if (message.channel.id==auth.Salon.SalonBotAdmin)
 	{
 		WordOne="putois"
-		if (petitMessage.content.includes(WordOne))
+		if (petitMessage.includes(WordOne))
 		{
 			channel.send("Oh une cariole de putois se renverse devant toi et une floppee de putois te tombent dessus. De peur ils secretent une odeur nauseabonde qui va t'entourer pour jusqu'a que tu trouves une solution ! Tout tes jets de Discretion rateront tant que la solution n'est pas trouvee ")
 			message.member.roles.add(auth.RoleRP.Putois);
