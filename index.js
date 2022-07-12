@@ -3311,11 +3311,15 @@ client.on('message', async function (message, user)
 	//Commande pour lancer une quete avec un mot 
 	if ((message.channel.id==auth.Salon.SalonBotAdmin)&&(message.channel.parent==auth.Salon.CategorieRPAzathys || message.channel.parent==auth.Salon.CategorieRPTempleAustral || message.channel.parent==auth.Salon.CategorieRPMasun || message.channel.parent==auth.Salon.CategorieRPCroissant || message.channel.parent==auth.Salon.CategorieRPTempOcci || message.channel.parent==auth.Salon.CategorieRPBraise || message.channel.parent==auth.Salon.CategorieRPBahSingSe || message.channel.parent==auth.Salon.CategorieRPOmashu || message.channel.parent==auth.Salon.CategorieRPMaraisBrumeux || message.channel.parent==auth.Salon.CategorieRPDesertSiWang || message.channel.parent==auth.Salon.CategorieRPTempOrient || message.channel.parent==auth.Salon.CategorieRPIleKyoshi || message.channel.parent==auth.Salon.CategorieRPTempBoreal|| message.channel.parent==auth.Salon.CategorieRPTribuSud || message.channel.parent==auth.Salon.CategorieTempleTerre || message.channel.parent==auth.Salon.CategorieSaloncache))
 	{
-		WordOne="putois"
-		if (petitMessage.includes(WordOne))
+		if (petitMessage.includes("putois"))
 		{
 			message.reply("Oh une cariole de putois se renverse devant toi et une floppee de putois te tombent dessus. De peur ils secretent une odeur nauseabonde qui va t'entourer pour jusqu'a ce que tu trouves une solution ! Tout tes jets de Discretion rateront tant que la solution n'est pas trouvee ")
 			message.member.roles.add(auth.RoleRP.Putois);
+		}
+		if ((petitMessage.includes("lave") || petitMessage.includes("laver"))  && (message.member.roles.cache.has(auth.RoleRP.Putois)))
+		{
+			message.reply("Cette odeur de putois ne te suivra plus partout ! Tu pourras de nouveau utiliser tes capacites en discretion.")
+			message.member.roles.remove(auth.RoleRP.Putois);
 		}
 	}
 		
