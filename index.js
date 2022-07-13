@@ -3080,7 +3080,7 @@ client.on('message', async function (message, user)
 			await FichePerso.findOneAndUpdate({_id: message.author.id},{'Competence.Adresse' : fiche.Competence.Adresse + Number(ValueToAdd),GainCompetence : fiche.GainCompetence - Number(ValueToAdd)}); 
 			if (Number(NewAdresse) == Number(OldAdresse)+Number(ValueToAdd))
 				{
-					message.channel.send("Competence dexterite update")
+					message.channel.send("Competence adresse update")
 					var fiche = await FichePerso.findOne({_id: message.author.id}); 
 					const listeQualite=fiche.Qualite;
 					const listeFaiblesse=fiche.Faiblesse;			
@@ -3139,7 +3139,7 @@ client.on('message', async function (message, user)
 			await FichePerso.findOneAndUpdate({_id: message.author.id},{'Competence.Spiritualite' : fiche.Competence.Spiritualite + Number(ValueToAdd),GainCompetence : fiche.GainCompetence - Number(ValueToAdd)}); 
 			if (Number(NewSpiritualite) == Number(OldSpiritualite)+Number(ValueToAdd))
 				{
-					message.channel.send("Competence dexterite update")
+					message.channel.send("Competence spiritualite update")
 					var fiche = await FichePerso.findOne({_id: message.author.id}); 
 					const listeQualite=fiche.Qualite;
 					const listeFaiblesse=fiche.Faiblesse;			
@@ -3195,10 +3195,10 @@ client.on('message', async function (message, user)
 			else
 			{
 			var NewDiscretion = fiche.Competence.Discretion+Number(ValueToAdd)
-			await FichePerso.findOneAndUpdate({_id: message.author.id},{'Competence.Spiritualite' : fiche.Competence.Discretion + Number(ValueToAdd),GainCompetence : fiche.GainCompetence - Number(ValueToAdd)}); 
+			await FichePerso.findOneAndUpdate({_id: message.author.id},{'Competence.Discretion' : fiche.Competence.Discretion + Number(ValueToAdd),GainCompetence : fiche.GainCompetence - Number(ValueToAdd)}); 
 			if (Number(NewDiscretion) == Number(OldDiscretion)+Number(ValueToAdd))
 				{
-					message.channel.send("Competence dexterite update")
+					message.channel.send("Competence discretion update")
 					var fiche = await FichePerso.findOne({_id: message.author.id}); 
 					const listeQualite=fiche.Qualite;
 					const listeFaiblesse=fiche.Faiblesse;			
@@ -3309,7 +3309,9 @@ client.on('message', async function (message, user)
 	}
 
 	//Commande pour lancer une quete avec un mot 
-	if ((message.channel.id==auth.Salon.SalonBotAdmin) || (message.channel.parent==auth.Salon.CategorieRPAzathys || message.channel.parent==auth.Salon.CategorieRPTempleAustral || message.channel.parent==auth.Salon.CategorieRPMasun || message.channel.parent==auth.Salon.CategorieRPCroissant || message.channel.parent==auth.Salon.CategorieRPTempOcci || message.channel.parent==auth.Salon.CategorieRPBraise || message.channel.parent==auth.Salon.CategorieRPBahSingSe || message.channel.parent==auth.Salon.CategorieRPOmashu || message.channel.parent==auth.Salon.CategorieRPMaraisBrumeux || message.channel.parent==auth.Salon.CategorieRPDesertSiWang || message.channel.parent==auth.Salon.CategorieRPTempOrient || message.channel.parent==auth.Salon.CategorieRPIleKyoshi || message.channel.parent==auth.Salon.CategorieRPTempBoreal|| message.channel.parent==auth.Salon.CategorieRPTribuSud || message.channel.parent==auth.Salon.CategorieTempleTerre || message.channel.parent==auth.Salon.CategorieSaloncache))
+	if (message.channel.id==auth.Salon.SalonBotAdmin)
+	//if ((message.channel.id==auth.Salon.SalonBotAdmin) || (message.channel.parent==auth.Salon.CategorieRPAzathys || message.channel.parent==auth.Salon.CategorieRPTempleAustral || message.channel.parent==auth.Salon.CategorieRPMasun || message.channel.parent==auth.Salon.CategorieRPCroissant || message.channel.parent==auth.Salon.CategorieRPTempOcci || message.channel.parent==auth.Salon.CategorieRPBraise || message.channel.parent==auth.Salon.CategorieRPBahSingSe || message.channel.parent==auth.Salon.CategorieRPOmashu || message.channel.parent==auth.Salon.CategorieRPMaraisBrumeux || message.channel.parent==auth.Salon.CategorieRPDesertSiWang || message.channel.parent==auth.Salon.CategorieRPTempOrient || message.channel.parent==auth.Salon.CategorieRPIleKyoshi || message.channel.parent==auth.Salon.CategorieRPTempBoreal|| message.channel.parent==auth.Salon.CategorieRPTribuSud || message.channel.parent==auth.Salon.CategorieTempleTerre || message.channel.parent==auth.Salon.CategorieSaloncache))
+
 	{
 		if (petitMessage.includes("putois"))
 		{
