@@ -3360,7 +3360,7 @@ client.on('message', async function (message, user)
 	if (message.channel.id==auth.Salon.SalonBotAdmin)
 	//if ((message.channel.id==auth.Salon.BarBraise))
 		{
-			if (petitMessage.includes("pinte"))
+			if ((petitMessage.includes("pinte")) && !(message.member.roles.cache.has(auth.RoleRP.Pinte))) 
 			{
 				message.reply("La pinte servie était en fait une gnole de chou. Vous étiez tellement assoifé que vous avez tout bu ! Votre constitution n'aura rien pu faire pour vous sauver ! Vous vous réveillerez au petit matin avec une sacré gueule de bois et 3000 <:zap:997455359730003998> en moins ! Des marauds vous auront fait les poches dans votre sommeil ! Les salauds !")
 				message.member.roles.add(auth.RoleRP.Pinte);
