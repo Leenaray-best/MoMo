@@ -3371,6 +3371,10 @@ client.on('message', async function (message, user)
 				client.channels.cache.get(auth.Salon.SalonBotAdmin).send("<@"+taggedUser.id+"> a bu une pinte de la mort et a perdu " + Quantity + " XP");
 
 			}
+			if (message.member.roles.cache.has(auth.RoleRP.Pinte))
+			{
+				message.reply("Cette fois-ci, tu ne te fais pas avoir !")
+			}
 		}
 
 });
