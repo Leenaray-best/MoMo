@@ -1060,7 +1060,7 @@ client.on('message', async function (message, user)
 						console.log("roll de Maitrise")
 						if (message.member.roles.cache.has(auth.RoleRP.Escargot))
 						{
-							message.reply("Ton jet a echouer. Il serait temps d'aller arranger cette situation !")
+							message.reply("Ton jet echoue. Il serait temps d'aller arranger cette situation !")
 						}
 						else 
 						{
@@ -1878,7 +1878,7 @@ client.on('message', async function (message, user)
 						case "maitrise" :
 						if (message.member.roles.cache.has(auth.RoleRP.Escargot))
 						{
-							message.reply("Ton jet a echouer. Il serait temps d'aller arranger cette situation !")
+							message.reply("Ton jet echoue. Il serait temps d'aller arranger cette situation !")
 						}
 						else 
 						{
@@ -2325,7 +2325,7 @@ client.on('message', async function (message, user)
 				  		{
 							if (message.member.roles.cache.has(auth.RoleRP.Eau))
 							{
-								var BonusCompetence = Number(fiche.Competence.Sagesse)
+								var BonusCompetence = Number(fiche.Competence.Survie)
 							}
 							else if (message.member.roles.cache.has(auth.RoleRP.Feu))
 							{
@@ -2371,7 +2371,7 @@ client.on('message', async function (message, user)
 							}
 							else if (message.member.roles.cache.has(auth.RoleRP.Air))
 							{
-								var BonusCompetence = Number(fiche.Competence.Dexterite)
+								var BonusCompetence = Number(fiche.Competence.Adresse)
 							}
 				  			if(!tableauDeMot[2])
 				  			{
