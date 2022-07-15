@@ -3371,7 +3371,7 @@ client.on('message', async function (message, user)
 				client.channels.cache.get(auth.Salon.SalonBotAdmin).send("<@"+message.author.id+"> a bu une pinte de la mort et a perdu " + Quantity + " XP");
 
 			}
-			if (message.member.roles.cache.has(auth.RoleRP.Pinte))
+			if ((petitMessage.includes("pinte")) && (message.member.roles.cache.has(auth.RoleRP.Pinte))) 
 			{
 				message.reply("Cette fois-ci, tu ne te fais pas avoir !")
 			}
