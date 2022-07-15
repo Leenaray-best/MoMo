@@ -698,7 +698,6 @@ client.on('message', async function (message, user)
             message.channel.send(exampleEmbed);
 	}
 
-
 	//commande admin update fiche des gens
 	if (message.channel.id==auth.Salon.GestionFiche && message.member.roles.cache.has(auth.RoleRP.RoleStaff) && petitMessage.startsWith(prefixUpdateFiche))
 	{
@@ -1059,6 +1058,12 @@ client.on('message', async function (message, user)
 					{
 						case "maitrise" :
 						console.log("roll de Maitrise")
+						if (message.member.roles.cache.has(auth.RoleRP.Escargot))
+						{
+							message.reply("Ton jet a echouer. Il serait temps d'aller arranger cette situation !")
+						}
+						else 
+						{
 						NiveauMaitrise = fiche.NiveauDeMaitrise
 						switch (NiveauMaitrise) 
 						{
@@ -1606,6 +1611,7 @@ client.on('message', async function (message, user)
 								}	
 							}	
 						}
+						}
 						break;
 						case "force" :
 						console.log("roll de force")
@@ -1870,6 +1876,12 @@ client.on('message', async function (message, user)
 					switch (TypeAttaque) 
 					{
 						case "maitrise" :
+						if (message.member.roles.cache.has(auth.RoleRP.Escargot))
+						{
+							message.reply("Ton jet a echouer. Il serait temps d'aller arranger cette situation !")
+						}
+						else 
+						{
 						console.log("je fais une attaque opposition de maitrise")
 						NiveauMaitrise = fiche.NiveauDeMaitrise
 						switch (NiveauMaitrise) 
@@ -2391,8 +2403,10 @@ client.on('message', async function (message, user)
 								}
 				  			}
 				  			
-						}	
+						}
+						}
 						break;
+						
 						case "force" :
 						console.log("roll d'attaque d'opposition")
 						if(!tableauDeMot[2])
