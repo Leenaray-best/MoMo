@@ -3367,8 +3367,8 @@ client.on('message', async function (message, user)
 				var Quantity = 3000; // Amount of Joker
 				var fiche = await FichePerso.findOne({_id: message.author.id}); 
 				var NewXP = fiche.NiveauXP-Quantity
-				await FichePerso.findOneAndUpdate({_id: taggedUser.id},{NiveauXP: NewXP});
-				client.channels.cache.get(auth.Salon.SalonBotAdmin).send("<@"+taggedUser.id+"> a bu une pinte de la mort et a perdu " + Quantity + " XP");
+				await FichePerso.findOneAndUpdate({_id: message.author.id},{NiveauXP: NewXP});
+				client.channels.cache.get(auth.Salon.SalonBotAdmin).send("<@"+message.author.id+"> a bu une pinte de la mort et a perdu " + Quantity + " XP");
 
 			}
 			if (message.member.roles.cache.has(auth.RoleRP.Pinte))
