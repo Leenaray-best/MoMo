@@ -3325,7 +3325,6 @@ client.on('message', async function (message, user)
 	//Commande pour lancer une quete avec un mot 
 	if (message.channel.id==auth.Salon.SalonBotAdmin)
 	//if ((message.channel.id==auth.Salon.SalonBotAdmin) || (message.channel.parent==auth.Salon.CategorieRPAzathys || message.channel.parent==auth.Salon.CategorieRPTempleAustral || message.channel.parent==auth.Salon.CategorieRPMasun || message.channel.parent==auth.Salon.CategorieRPCroissant || message.channel.parent==auth.Salon.CategorieRPTempOcci || message.channel.parent==auth.Salon.CategorieRPBraise || message.channel.parent==auth.Salon.CategorieRPBahSingSe || message.channel.parent==auth.Salon.CategorieRPOmashu || message.channel.parent==auth.Salon.CategorieRPMaraisBrumeux || message.channel.parent==auth.Salon.CategorieRPDesertSiWang || message.channel.parent==auth.Salon.CategorieRPTempOrient || message.channel.parent==auth.Salon.CategorieRPIleKyoshi || message.channel.parent==auth.Salon.CategorieRPTempBoreal|| message.channel.parent==auth.Salon.CategorieRPTribuSud || message.channel.parent==auth.Salon.CategorieTempleTerre || message.channel.parent==auth.Salon.CategorieSaloncache))
-
 	{
 		// quete du putois
 		if (petitMessage.includes("putois"))
@@ -3350,10 +3349,27 @@ client.on('message', async function (message, user)
 				message.reply("Sortant de nul part des cris de foule et de panique se font entendre dans diverses directions. Un nuage violet court sur une grande zone ; une horde d'esprit s'en prend à vous ! Coups ! Toux ! Désolations ! Vous vous sentez soudainement faible, démuni, comme privé de quelque chose dont vous n'auriez jamais pensé l'être... \n Quelques secondes, quelques minutes peut-être. Vous voilà revenu à vous. Tout semble calme, totalement... normal. Etrange. Auriez-vous rêvé ? En commençant à marcher vous remarquerez une coquille brisé sous votre chaussure : vous avez marchez sur un escargot améthyste ! Des sbires d'esprits puissants ! Horreur ! Vous voilà désormais privé de votre maitrise. Tous vos jets de maitrise échouent. Il faudra aller prier et apporter une offrande aux esprits locaux pour implorer leur pardon au plus vite...")
 				message.member.roles.add(auth.RoleRP.Escargot);
 			}
-			if ((petitMessage.includes("prie") || petitMessage.includes("prier") || petitMessage.includes("offrande"))  && (message.member.roles.cache.has(auth.RoleRP.Escargot)))
+		}
+	if ((petitMessage.includes("pardon") || petitMessage.includes("prie") || petitMessage.includes("prier") || petitMessage.includes("offrande"))  && (message.member.roles.cache.has(auth.RoleRP.Escargot)) && ((message.channel.id==auth.Salon.TempleAgna) || (message.channel.id==auth.Salon.TempleCaldera) || (message.channel.id==auth.Salon.TempleBSS) || (message.channel.id==auth.Salon.TempleOmashu)))
+		{
+		message.reply("Tout est revenue a la normale.")
+		message.member.roles.remove(auth.RoleRP.Escargot);
+		}
+
+	// quete de la pinte
+	if (message.channel.id==auth.Salon.SalonBotAdmin)
+	//if ((message.channel.id==auth.Salon.BarBraise))
+		{
+			if (petitMessage.includes("pinte"))
 			{
-			message.reply("Tout est revenue a la normale.")
-			message.member.roles.remove(auth.RoleRP.Escargot);
+				message.reply("La pinte servie était en fait une gnole de chou. Vous étiez tellement assoifé que vous avez tout bu ! Votre constitution n'aura rien pu faire pour vous sauver ! Vous vous réveillerez au petit matin avec une sacré gueule de bois et 3000 <:zap:997455359730003998> en moins ! Des marauds vous auront fait les poches dans votre sommeil ! Les salauds !")
+				message.member.roles.add(auth.RoleRP.Pinte);
+				var Quantity = 3000; // Amount of Joker
+				var fiche = await FichePerso.findOne({_id: message.author.id}); 
+				var NewXP = fiche.NiveauXP-Quantity
+				await FichePerso.findOneAndUpdate({_id: taggedUser.id},{NiveauXP: NewXP});
+				client.channels.cache.get(auth.Salon.SalonBotAdmin).send("<@"+taggedUser.id+"> a bu une pinte de la mort et a perdu " + Quantity + " XP");
+
 			}
 		}
 
