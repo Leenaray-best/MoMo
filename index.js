@@ -3313,6 +3313,7 @@ client.on('message', async function (message, user)
 	//if ((message.channel.id==auth.Salon.SalonBotAdmin) || (message.channel.parent==auth.Salon.CategorieRPAzathys || message.channel.parent==auth.Salon.CategorieRPTempleAustral || message.channel.parent==auth.Salon.CategorieRPMasun || message.channel.parent==auth.Salon.CategorieRPCroissant || message.channel.parent==auth.Salon.CategorieRPTempOcci || message.channel.parent==auth.Salon.CategorieRPBraise || message.channel.parent==auth.Salon.CategorieRPBahSingSe || message.channel.parent==auth.Salon.CategorieRPOmashu || message.channel.parent==auth.Salon.CategorieRPMaraisBrumeux || message.channel.parent==auth.Salon.CategorieRPDesertSiWang || message.channel.parent==auth.Salon.CategorieRPTempOrient || message.channel.parent==auth.Salon.CategorieRPIleKyoshi || message.channel.parent==auth.Salon.CategorieRPTempBoreal|| message.channel.parent==auth.Salon.CategorieRPTribuSud || message.channel.parent==auth.Salon.CategorieTempleTerre || message.channel.parent==auth.Salon.CategorieSaloncache))
 
 	{
+		// quete du putois
 		if (petitMessage.includes("putois"))
 		{
 			message.reply("Oh une cariole de putois se renverse devant toi et une floppee de putois te tombent dessus. De peur ils secretent une odeur nauseabonde qui va t'entourer pour jusqu'a ce que tu trouves une solution ! Tout tes jets de Discretion rateront tant que la solution n'est pas trouvee ")
@@ -3323,8 +3324,25 @@ client.on('message', async function (message, user)
 			message.reply("Cette odeur de putois ne te suivra plus partout ! Tu pourras de nouveau utiliser tes capacites en discretion.")
 			message.member.roles.remove(auth.RoleRP.Putois);
 		}
+
 	}
-		
+
+	// quete du escargot
+	if (message.channel.id==auth.Salon.SalonBotAdmin)
+	//if ((message.channel.id==auth.Salon.rueAgna) || (message.channel.id==auth.Salon.rueCaldera) || (message.channel.id==auth.Salon.rueBSS) || (message.channel.id==auth.Salon.rueOmashu))
+		{
+			if (petitMessage.includes("escargot") || petitMessage.includes("coquille"))
+			{
+				message.reply("Sortant de nul part des cris de foule et de panique se font entendre dans diverses directions. Un nuage violet court sur une grande zone ; une horde d'esprit s'en prend à vous ! Coups ! Toux ! Désolations ! Vous vous sentez soudainement faible, démuni, comme privé de quelque chose dont vous n'auriez jamais pensé l'être...")
+				message.reply("Quelques secondes, quelques minutes peut-être. Vous voilà revenu à vous. Tout semble calme, totalement... normal. Etrange. Auriez-vous rêvé ? En commençant à marcher vous remarquerez une coquille brisé sous votre chaussure : vous avez marchez sur un escargot améthyste ! Des sbires d'esprits puissants ! Horreur ! Vous voilà désormais privé de votre maitrise. Tous vos jets de maitrise échouent. Il faudra aller prier et apporter une offrande aux esprits locaux pour implorer leur pardon au plus vite...")
+				message.member.roles.add(auth.RoleRP.Escargot);
+			}
+			if ((petitMessage.includes("prie") || petitMessage.includes("prier") || petitMessage.includes("offrande"))  && (message.member.roles.cache.has(auth.RoleRP.Escargot)))
+			{
+			message.reply("Tout est revenue a la normale.")
+			message.member.roles.remove(auth.RoleRP.Escargot);
+			}
+		}
 
 });
 
