@@ -3398,8 +3398,8 @@ client.on('message', async function (message, user)
 
 
 	//quetes positive statue
-	if (message.channel.id==auth.Salon.SalonBotAdmin)
-	//if ((message.channel.id==auth.Salon.TempleAgna) || (message.channel.id==auth.Salon.TempleCaldera) || (message.channel.id==auth.Salon.TempleBSS) || (message.channel.id==auth.Salon.TempleOmashu) || (message.channel.id==auth.Salon.SancBoreal) || (message.channel.id==auth.Salon.SancOcci) || (message.channel.id==auth.Salon.SancOri) || (message.channel.id==auth.Salon.SancKyoshi) || (message.channel.id==auth.Salon.SancAus) || (message.channel.id==auth.Salon.TempRoku))
+	//if (message.channel.id==auth.Salon.SalonBotAdmin)
+	if ((message.channel.id==auth.Salon.TempleAgna) || (message.channel.id==auth.Salon.TempleCaldera) || (message.channel.id==auth.Salon.TempleBSS) || (message.channel.id==auth.Salon.TempleOmashu) || (message.channel.id==auth.Salon.SancBoreal) || (message.channel.id==auth.Salon.SancOcci) || (message.channel.id==auth.Salon.SancOri) || (message.channel.id==auth.Salon.SancKyoshi) || (message.channel.id==auth.Salon.SancAus) || (message.channel.id==auth.Salon.TempRoku))
 		{
 			if (petitMessage.includes("statue") && (Math.random()<=0.5))
 			{
@@ -3418,8 +3418,8 @@ client.on('message', async function (message, user)
 		}
 
 	// quetes positive attendre ALEATOIRE
-	if (message.channel.id==auth.Salon.SalonBotAdmin)
-	//if ((message.channel.id==auth.Salon.CommerceCaldera) || (message.channel.id==auth.Salon.CommerceBSS) || (message.channel.id==auth.Salon.CommerceOmashu) || (message.channel.id==auth.Salon.ParcOmashu) || (message.channel.id==auth.Salon.PlageCroissant) || (message.channel.id==auth.Salon.PlageBraise) || (message.channel.id==auth.Salon.PlageOrient) || (message.channel.id==auth.Salon.PlageAus) || (message.channel.id==auth.Salon.GrPlaceCaldera) || (message.channel.id==auth.Salon.PlaceKyoshi))
+	//if (message.channel.id==auth.Salon.SalonBotAdmin)
+	if ((message.channel.id==auth.Salon.CommerceCaldera) || (message.channel.id==auth.Salon.CommerceBSS) || (message.channel.id==auth.Salon.CommerceOmashu) || (message.channel.id==auth.Salon.ParcOmashu) || (message.channel.id==auth.Salon.PlageCroissant) || (message.channel.id==auth.Salon.PlageBraise) || (message.channel.id==auth.Salon.PlageOrient) || (message.channel.id==auth.Salon.PlageAus) || (message.channel.id==auth.Salon.GrPlaceCaldera) || (message.channel.id==auth.Salon.PlaceKyoshi))
 		{
 			if ((petitMessage.includes("attendre") || petitMessage.includes("attend") || petitMessage.includes("patienter") || petitMessage.includes("patiente")) && (Math.random()<=0.5))
 				{
@@ -3433,8 +3433,8 @@ client.on('message', async function (message, user)
 		}
 
 	//quetes negative sans force
-	if (message.channel.id==auth.Salon.SalonBotAdmin)
-	//if ((message.channel.id==auth.Salon.BoisMarecageuxMarais) || (message.channel.id==auth.Salon.ForetOubli) || (message.channel.id==auth.Salon.ForetGlace) || (message.channel.id==auth.Salon.ForetKyoshi) || (message.channel.id==auth.Salon.ForetOmashu))
+	//if (message.channel.id==auth.Salon.SalonBotAdmin)
+	if ((message.channel.id==auth.Salon.BoisMarecageuxMarais) || (message.channel.id==auth.Salon.ForetOubli) || (message.channel.id==auth.Salon.ForetGlace) || (message.channel.id==auth.Salon.ForetKyoshi) || (message.channel.id==auth.Salon.ForetOmashu))
 	{
 		if ((petitMessage.includes("branche") || petitMessage.includes("racine"))&& (Math.random()<=0.5))
 			{
