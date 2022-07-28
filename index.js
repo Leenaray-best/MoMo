@@ -1061,7 +1061,7 @@ client.on('message', async function (message, user)
 						console.log("roll de Maitrise")
 						if (message.member.roles.cache.has(auth.RoleRP.Escargot))
 						{
-							message.reply("Ton jet echoue. Il serait temps d'aller arranger cette situation !")
+							client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton jet echoue. Il serait temps d'aller arranger cette situation !")
 						}
 						else 
 						{
@@ -1512,23 +1512,23 @@ client.on('message', async function (message, user)
 					  			var ValRoll= ValRand + Number(bonusAttaque)+ Number(BonusMeteo);
 								if (ValRoll<=1)
 								{
-									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) + " + BonusMeteo + " (bonus/malus Meteo) = " + ValRoll +"\rOuhla c'est un echec critique ! Tu dois t'infliger une blessure");
+									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) + " + BonusMeteo + " (bonus/malus Meteo) = " + ValRoll +"\rOuhla c'est un echec critique ! Tu dois t'infliger une blessure");
 								}
 								else if (ValRoll<=12)
 								{
-									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) + " + BonusMeteo + " (bonus/malus Meteo) = " + ValRoll +"\rTu n'as pas su utiliser ta maitrise correctement, c'est un echec sans dommage physique");
+									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) + " + BonusMeteo + " (bonus/malus Meteo) = " + ValRoll +"\rTu n'as pas su utiliser ta maitrise correctement, c'est un echec sans dommage physique");
 								}
 								else if (ValRoll<=19)
 								{
-									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) + " + BonusMeteo + " (bonus/malus Meteo) = " + ValRoll +"\rLa maitrise de ton element est correcte, tu reussis ton action sans briller");
+									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) + " + BonusMeteo + " (bonus/malus Meteo) = " + ValRoll +"\rLa maitrise de ton element est correcte, tu reussis ton action sans briller");
 								}
 								else if (ValRoll<=24)
 								{
-									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) + " + BonusMeteo + " (bonus/malus Meteo) = " + ValRoll +"\rLa maitrise de ton element est tres bonne, tu reussis ton action !");
+									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) + " + BonusMeteo + " (bonus/malus Meteo) = " + ValRoll +"\rLa maitrise de ton element est tres bonne, tu reussis ton action !");
 								}
 								else
 								{
-									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) + " + BonusMeteo + " (bonus/malus Meteo) = " + ValRoll +"\rBravo c'est une reussite critique ! Ton action est juste parfait");
+									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) + " + BonusMeteo + " (bonus/malus Meteo) = " + ValRoll +"\rBravo c'est une reussite critique ! Ton action est juste parfait");
 								}
 							}
 							else 
@@ -1538,77 +1538,85 @@ client.on('message', async function (message, user)
 								var ValRoll= ValRand + Number(bonusAttaque)+ Number(BonusMeteo) + Number(BonusLieu);
 								if (ValRoll<=1)
 								{
-									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) " + BonusMeteo + " (bonus/malus Meteo) " + BonusLieu + " (bonus/malus Lieu/Contexte)  = " + ValRoll +"\rOuhla c'est un echec critique ! Tu dois t'infliger une blessure");
+									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) " + BonusMeteo + " (bonus/malus Meteo) " + BonusLieu + " (bonus/malus Lieu/Contexte)  = " + ValRoll +"\rOuhla c'est un echec critique ! Tu dois t'infliger une blessure");
 								}
 								else if (ValRoll<=12)
 								{
-									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) " + BonusMeteo + " (bonus/malus Meteo) " + BonusLieu + " (bonus/malus Lieu/Contexte) = " + ValRoll +"\rTu n'as pas su utiliser ta maitrise correctement, c'est un echec sans dommage physique");
+									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) " + BonusMeteo + " (bonus/malus Meteo) " + BonusLieu + " (bonus/malus Lieu/Contexte) = " + ValRoll +"\rTu n'as pas su utiliser ta maitrise correctement, c'est un echec sans dommage physique");
 								}
 								else if (ValRoll<=19)
 								{
-									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) " + BonusMeteo + " (bonus/malus Meteo) " + BonusLieu + " (bonus/malus Lieu/Contexte) = " + ValRoll +"\rLa maitrise de ton element est correcte, tu reussis ton action sans briller");
+									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) " + BonusMeteo + " (bonus/malus Meteo) " + BonusLieu + " (bonus/malus Lieu/Contexte) = " + ValRoll +"\rLa maitrise de ton element est correcte, tu reussis ton action sans briller");
 								}
 								else if (ValRoll<=24)
 								{
-									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) " + BonusMeteo + " (bonus/malus Meteo) " + BonusLieu + " (bonus/malus Lieu/Contexte) = " + ValRoll +"\rLa maitrise de ton element est tres bonne, tu reussis ton action !");
+									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) " + BonusMeteo + " (bonus/malus Meteo) " + BonusLieu + " (bonus/malus Lieu/Contexte) = " + ValRoll +"\rLa maitrise de ton element est tres bonne, tu reussis ton action !");
 								}
 								else
 								{
-									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) " + BonusMeteo + " (bonus/malus Meteo) " + BonusLieu + " (bonus/malus Lieu/Contexte) = " + ValRoll +"\rBravo c'est une reussite critique ! Ton action est juste parfait");
+									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) " + BonusMeteo + " (bonus/malus Meteo) " + BonusLieu + " (bonus/malus Lieu/Contexte) = " + ValRoll +"\rBravo c'est une reussite critique ! Ton action est juste parfait");
 								}
 							}	
 						}
 						if (message.member.roles.cache.has(auth.RoleRP.Terre) || message.member.roles.cache.has(auth.RoleRP.Air))
 				  		{
+							if (message.member.roles.cache.has(auth.RoleRP.Chauve))
+							{
+								BonusChauve = Number(1)
+							}
+							else
+							{
+								BonusChauve = Number(0)
+							}
 				  			if (!tableauDeMot[1])
 							{
 								console.log("pas de boost de lieu")
-					  			var ValRoll= ValRand + Number(bonusAttaque)
+					  			var ValRoll= ValRand + Number(bonusAttaque) + Number(BonusChauve)
 								if (ValRoll<=1)
 								{
-									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) = " + ValRoll +"\rOuhla c'est un echec critique ! Tu dois t'infliger une blessure");
+									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) = " + ValRoll +"\rOuhla c'est un echec critique ! Tu dois t'infliger une blessure");
 								}
 								else if (ValRoll<=12)
 								{
-									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) = " + ValRoll +"\rTu n'as pas su utiliser ta maitrise correctement, c'est un echec sans dommage physique");
+									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) = " + ValRoll +"\rTu n'as pas su utiliser ta maitrise correctement, c'est un echec sans dommage physique");
 								}
 								else if (ValRoll<=19)
 								{
-									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) = " + ValRoll +"\rLa maitrise de ton element est correcte, tu reussis ton action sans briller");
+									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) = " + ValRoll +"\rLa maitrise de ton element est correcte, tu reussis ton action sans briller");
 								}
 								else if (ValRoll<=24)
 								{
-									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) = " + ValRoll +"\rLa maitrise de ton element est tres bonne, tu reussis ton action !");
+									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) = " + ValRoll +"\rLa maitrise de ton element est tres bonne, tu reussis ton action !");
 								}
 								else
 								{
-									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) = " + ValRoll +"\rBravo c'est une reussite critique ! Ton action est juste parfait");
+									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) = " + ValRoll +"\rBravo c'est une reussite critique ! Ton action est juste parfait");
 								}
 							}
 							else 
 							{
 								console.log(tableauDeMot[1])
 								var BonusLieu = tableauDeMot[1]
-								var ValRoll= ValRand + Number(bonusAttaque)+ Number(BonusLieu)
+								var ValRoll= ValRand + Number(bonusAttaque)+ Number(BonusLieu) + Number(BonusChauve)
 								if (ValRoll<=1)
 								{
-									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) " + BonusLieu + " (bonus/malus Lieu/Contexte) = " + ValRoll +"\rOuhla c'est un echec critique ! Tu dois t'infliger une blessure");
+									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) " + BonusLieu + " (bonus/malus Lieu/Contexte) = " + ValRoll +"\rOuhla c'est un echec critique ! Tu dois t'infliger une blessure");
 								}
 								else if (ValRoll<=12)
 								{
-									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) " + BonusLieu + " (bonus/malus Lieu/Contexte) = " + ValRoll +"\rTu n'as pas su utiliser ta maitrise correctement, c'est un echec sans dommage physique");
+									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) " + BonusLieu + " (bonus/malus Lieu/Contexte) = " + ValRoll +"\rTu n'as pas su utiliser ta maitrise correctement, c'est un echec sans dommage physique");
 								}
 								else if (ValRoll<=19)
 								{
-									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) " + BonusLieu + " (bonus/malus Lieu/Contexte) = " + ValRoll +"\rLa maitrise de ton element est correcte, tu reussis ton action sans briller");
+									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) " + BonusLieu + " (bonus/malus Lieu/Contexte) = " + ValRoll +"\rLa maitrise de ton element est correcte, tu reussis ton action sans briller");
 								}
 								else if (ValRoll<=24)
 								{
-									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) " + BonusLieu + " (bonus/malus Lieu/Contexte) = " + ValRoll +"\rLa maitrise de ton element est tres bonne, tu reussis ton action !");
+									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) " + BonusLieu + " (bonus/malus Lieu/Contexte) = " + ValRoll +"\rLa maitrise de ton element est tres bonne, tu reussis ton action !");
 								}
 								else
 								{
-									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) " + BonusLieu + " (bonus/malus Lieu/Contexte) = " + ValRoll +"\rBravo c'est une reussite critique ! Ton action est juste parfait");
+									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) " + BonusLieu + " (bonus/malus Lieu/Contexte) = " + ValRoll +"\rBravo c'est une reussite critique ! Ton action est juste parfait");
 								}	
 							}	
 						}
@@ -1618,7 +1626,7 @@ client.on('message', async function (message, user)
 						console.log("roll de force")
 						if (message.member.roles.cache.has(auth.RoleRP.SansForce))
 						{
-							message.reply("Ton jet echoue. Il serait temps d'aller arranger cette situation !")
+							client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+">Ton jet echoue. Il serait temps d'aller arranger cette situation !")
 						}
 						else
 						{
@@ -1628,11 +1636,11 @@ client.on('message', async function (message, user)
 								var ValRoll = Rand(20);
 								if (ValRoll<=Nombre)
 								{
-									message.reply(" Ton roll est de " +ValRoll+ ", c'est une reussite");
+									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton roll est de " +ValRoll+ ", c'est une reussite");
 								}
 								else
 								{
-									message.reply(" Ton roll est de " +ValRoll+ ", c'est un echec");
+									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton roll est de " +ValRoll+ ", c'est un echec");
 								}
 							}
 							else
@@ -1643,11 +1651,11 @@ client.on('message', async function (message, user)
 								var ValRoll= ValRoll1+Number(BonusLieu)
 								if (ValRoll<=Nombre)
 								{
-									message.reply(" Ton roll est de " +ValRoll1+ " "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est une reussite");
+									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton roll est de " +ValRoll1+ " "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est une reussite");
 								}
 								else
 								{
-									message.reply(" Ton roll est de " +ValRoll1+ " "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est un echec");
+									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton roll est de " +ValRoll1+ " "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est un echec");
 								}
 							}
 						}
@@ -1659,11 +1667,11 @@ client.on('message', async function (message, user)
 							var ValRoll = Rand(20);
 							if (ValRoll<=Nombre)
 							{
-								message.reply(" Ton roll est de " +ValRoll+ ", c'est une reussite");
+								client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton roll est de " +ValRoll+ ", c'est une reussite");
 							}
 							else
 							{
-								message.reply(" Ton roll est de " +ValRoll+ ", c'est un echec");
+								client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton roll est de " +ValRoll+ ", c'est un echec");
 							}
 						}
 						else
@@ -1674,11 +1682,11 @@ client.on('message', async function (message, user)
 							var ValRoll= ValRoll1+Number(BonusLieu)
 							if (ValRoll<=Nombre)
 							{
-								message.reply(" Ton roll est de " +ValRoll1+ " "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est une reussite");
+								client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton roll est de " +ValRoll1+ " "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est une reussite");
 							}
 							else
 							{
-								message.reply(" Ton roll est de " +ValRoll1+ " "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est un echec");
+								client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton roll est de " +ValRoll1+ " "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est un echec");
 							}
 						}
 						break;
@@ -1689,11 +1697,11 @@ client.on('message', async function (message, user)
 							var ValRoll = Rand(20);
 							if (ValRoll<=Nombre)
 							{
-								message.reply(" Ton roll est de " +ValRoll+ ", c'est une reussite");
+								client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton roll est de " +ValRoll+ ", c'est une reussite");
 							}
 							else
 							{
-								message.reply(" Ton roll est de " +ValRoll+ ", c'est un echec");
+								client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton roll est de " +ValRoll+ ", c'est un echec");
 							}
 						}
 						else
@@ -1704,11 +1712,11 @@ client.on('message', async function (message, user)
 							var ValRoll= ValRoll1+Number(BonusLieu)
 							if (ValRoll<=Nombre)
 							{
-								message.reply(" Ton roll est de " +ValRoll1+ " "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est une reussite");
+								client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton roll est de " +ValRoll1+ " "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est une reussite");
 							}
 							else
 							{
-								message.reply(" Ton roll est de " +ValRoll1+ " "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est un echec");
+								client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton roll est de " +ValRoll1+ " "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est un echec");
 							}
 						}
 						break;						
@@ -1719,11 +1727,11 @@ client.on('message', async function (message, user)
 							var ValRoll = Rand(20);
 							if (ValRoll<=Nombre)
 							{
-								message.reply(" Ton roll est de " +ValRoll+ ", c'est une reussite");
+								client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton roll est de " +ValRoll+ ", c'est une reussite");
 							}
 							else
 							{
-								message.reply(" Ton roll est de " +ValRoll+ ", c'est un echec");
+								client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton roll est de " +ValRoll+ ", c'est un echec");
 							}
 						}
 						else
@@ -1734,11 +1742,11 @@ client.on('message', async function (message, user)
 							var ValRoll= ValRoll1+Number(BonusLieu)
 							if (ValRoll<=Nombre)
 							{
-								message.reply(" Ton roll est de " +ValRoll1+ " "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est une reussite");
+								client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton roll est de " +ValRoll1+ " "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est une reussite");
 							}
 							else
 							{
-								message.reply(" Ton roll est de " +ValRoll1+ " "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est un echec");
+								client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton roll est de " +ValRoll1+ " "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est un echec");
 							}
 						}
 						break;
@@ -1749,11 +1757,11 @@ client.on('message', async function (message, user)
 							var ValRoll = Rand(20);
 							if (ValRoll<=Nombre)
 							{
-								message.reply(" Ton roll est de " +ValRoll+ ", c'est une reussite");
+								client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton roll est de " +ValRoll+ ", c'est une reussite");
 							}
 							else
 							{
-								message.reply(" Ton roll est de " +ValRoll+ ", c'est un echec");
+								client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton roll est de " +ValRoll+ ", c'est un echec");
 							}
 						}
 						else
@@ -1764,11 +1772,11 @@ client.on('message', async function (message, user)
 							var ValRoll= ValRoll1+Number(BonusLieu)
 							if (ValRoll<=Nombre)
 							{
-								message.reply(" Ton roll est de " +ValRoll1+ " "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est une reussite");
+								client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton roll est de " +ValRoll1+ " "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est une reussite");
 							}
 							else
 							{
-								message.reply(" Ton roll est de " +ValRoll1+ " "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est un echec");
+								client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton roll est de " +ValRoll1+ " "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est un echec");
 							}
 						}
 						break;
@@ -1779,11 +1787,11 @@ client.on('message', async function (message, user)
 							var ValRoll = Rand(20);
 							if (ValRoll<=Nombre)
 							{
-								message.reply(" Ton roll est de " +ValRoll+ ", c'est une reussite");
+								client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton roll est de " +ValRoll+ ", c'est une reussite");
 							}
 							else
 							{
-								message.reply(" Ton roll est de " +ValRoll+ ", c'est un echec");
+								client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton roll est de " +ValRoll+ ", c'est un echec");
 							}
 						}
 						else
@@ -1794,11 +1802,11 @@ client.on('message', async function (message, user)
 							var ValRoll= ValRoll1+Number(BonusLieu)
 							if (ValRoll<=Nombre)
 							{
-								message.reply(" Ton roll est de " +ValRoll1+ " "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est une reussite");
+								client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton roll est de " +ValRoll1+ " "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est une reussite");
 							}
 							else
 							{
-								message.reply(" Ton roll est de " +ValRoll1+ " "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est un echec");
+								client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton roll est de " +ValRoll1+ " "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est un echec");
 							}
 						}
 						break;
@@ -1809,11 +1817,11 @@ client.on('message', async function (message, user)
 							var ValRoll = Rand(20);
 							if (ValRoll<=Nombre)
 							{
-								message.reply(" Ton roll est de " +ValRoll+ ", c'est une reussite");
+								client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton roll est de " +ValRoll+ ", c'est une reussite");
 							}
 							else
 							{
-								message.reply(" Ton roll est de " +ValRoll+ ", c'est un echec");
+								client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton roll est de " +ValRoll+ ", c'est un echec");
 							}
 						}
 						else
@@ -1824,18 +1832,18 @@ client.on('message', async function (message, user)
 							var ValRoll= ValRoll1+Number(BonusLieu)
 							if (ValRoll<=Nombre)
 							{
-								message.reply(" Ton roll est de " +ValRoll1+ " "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est une reussite");
+								client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton roll est de " +ValRoll1+ " "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est une reussite");
 							}
 							else
 							{
-								message.reply(" Ton roll est de " +ValRoll1+ " "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est un echec");
+								client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton roll est de " +ValRoll1+ " "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est un echec");
 							}
 						}
 						break;
 						case "discretion" :
 						if  (message.member.roles.cache.has(auth.RoleRP.Putois))
 						{
-							message.reply(" Ton roll de discretion echoue. Il va falloir trouve une solution a ce probleme.");
+							client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton roll de discretion echoue. Il va falloir trouve une solution a ce probleme.");
 						}
 						else
 						{
@@ -1845,11 +1853,11 @@ client.on('message', async function (message, user)
 								var ValRoll = Rand(20);
 								if (ValRoll<=Nombre)
 								{
-									message.reply(" Ton roll est de " +ValRoll+ ", c'est une reussite");
+									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton roll est de " +ValRoll+ ", c'est une reussite");
 								}
 								else
 								{
-									message.reply(" Ton roll est de " +ValRoll+ ", c'est un echec");
+									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton roll est de " +ValRoll+ ", c'est un echec");
 								}
 							}
 							else
@@ -1860,11 +1868,11 @@ client.on('message', async function (message, user)
 								var ValRoll= ValRoll1+Number(BonusLieu)
 								if (ValRoll<=Nombre)
 								{
-									message.reply(" Ton roll est de " +ValRoll1+ " "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est une reussite");
+									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton roll est de " +ValRoll1+ " "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est une reussite");
 								}
 								else
 								{
-									message.reply(" Ton roll est de " +ValRoll1+ " "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est un echec");
+									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton roll est de " +ValRoll1+ " "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est un echec");
 								}
 							}
 						}
@@ -1886,7 +1894,7 @@ client.on('message', async function (message, user)
 						case "maitrise" :
 						if (message.member.roles.cache.has(auth.RoleRP.Escargot))
 						{
-							message.reply("Ton jet echoue. Il serait temps d'aller arranger cette situation !")
+							client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton jet echoue. Il serait temps d'aller arranger cette situation !")
 						}
 						else 
 						{
@@ -2346,11 +2354,11 @@ client.on('message', async function (message, user)
 								var BonnusAttaqueMix = Number(bonusAttaque)+Number(BonusCompetence);
 								if (ValRoll<15)
 								{
-									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ BonnusAttaqueMix + " (bonus maitrise) + " +BonusMeteo+ " (bonus/malus Meteo) = " + ValRoll + " \rTu n'as pas su utiliser ta maitrise efficacement, meme si ton score est plus haut que ton adversaire, tu ne lui fera pas de degat");
+									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ BonnusAttaqueMix + " (bonus maitrise) + " +BonusMeteo+ " (bonus/malus Meteo) = " + ValRoll + " \rTu n'as pas su utiliser ta maitrise efficacement, meme si ton score est plus haut que ton adversaire, tu ne lui fera pas de degat");
 								}
 								else
 								{
-									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ BonnusAttaqueMix + " (bonus maitrise) + " +BonusMeteo+ " (bonus/malus Meteo) = " + ValRoll +" \rL'utilisation de ta maitrise est une reussite, si ton score est plus haut que ton adversaire tu l'emportes");
+									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ BonnusAttaqueMix + " (bonus maitrise) + " +BonusMeteo+ " (bonus/malus Meteo) = " + ValRoll +" \rL'utilisation de ta maitrise est une reussite, si ton score est plus haut que ton adversaire tu l'emportes");
 								}
 				  			}
 				  			else
@@ -2361,11 +2369,11 @@ client.on('message', async function (message, user)
 								var BonnusAttaqueMix = Number(bonusAttaque)+Number(BonusCompetence);
 								if (ValRoll<15)
 								{
-									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ BonnusAttaqueMix + " (bonus maitrise) + " +BonusMeteo+ " (bonus/malus Meteo) + " +BonusLieu+ " (bonus/malus Lieu/Contexte) = " + ValRoll + " \rTu n'as pas su utiliser ta maitrise efficacement, meme si ton score est plus haut que ton adversaire, tu ne lui fera pas de degat");
+									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ BonnusAttaqueMix + " (bonus maitrise) + " +BonusMeteo+ " (bonus/malus Meteo) + " +BonusLieu+ " (bonus/malus Lieu/Contexte) = " + ValRoll + " \rTu n'as pas su utiliser ta maitrise efficacement, meme si ton score est plus haut que ton adversaire, tu ne lui fera pas de degat");
 								}
 								else
 								{
-									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ BonnusAttaqueMix + " (bonus maitrise) + " +BonusMeteo+ " (bonus/malus Meteo) + " +BonusLieu+ " (bonus/malus Lieu/Contexte) = " + ValRoll +" \rL'utilisation de ta maitrise est une reussite, si ton score est plus haut que ton adversaire tu l'emportes");
+									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ BonnusAttaqueMix + " (bonus maitrise) + " +BonusMeteo+ " (bonus/malus Meteo) + " +BonusLieu+ " (bonus/malus Lieu/Contexte) = " + ValRoll +" \rL'utilisation de ta maitrise est une reussite, si ton score est plus haut que ton adversaire tu l'emportes");
 								}
 				  			}
 				  				
@@ -2373,6 +2381,14 @@ client.on('message', async function (message, user)
 						
 						if (message.member.roles.cache.has(auth.RoleRP.Terre) || message.member.roles.cache.has(auth.RoleRP.Air))
 				  		{
+							if (message.member.roles.cache.has(auth.RoleRP.Chauve))
+							{
+								BonusChauve= Number(1)
+							}
+							else
+							{
+								BonusChauve= Number(0)
+							}
 							if (message.member.roles.cache.has(auth.RoleRP.Terre))
 							{
 								var BonusCompetence = Number(fiche.Competence.Constitution)
@@ -2384,30 +2400,30 @@ client.on('message', async function (message, user)
 				  			if(!tableauDeMot[2])
 				  			{
 				  				console.log("Pas de bonus de lieu")
-					  			var ValRoll= ValRand + Number(bonusAttaque)+Number(BonusCompetence)
-								var BonnusAttaqueMix = Number(bonusAttaque)+Number(BonusCompetence);
+					  			var ValRoll= ValRand + Number(bonusAttaque)+Number(BonusCompetence)+Number(BonusChauve)
+								var BonnusAttaqueMix = Number(bonusAttaque)+Number(BonusCompetence)+Number(BonusChauve);
 								if (ValRoll<15)
 								{
-									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ BonnusAttaqueMix + " (bonus maitrise) = " + ValRoll + " \rTu n'as pas su utiliser ta maitrise efficacement, meme si ton score est plus haut que ton adversaire, tu ne lui feras pas de degat");
+									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ BonnusAttaqueMix + " (bonus maitrise) = " + ValRoll + " \rTu n'as pas su utiliser ta maitrise efficacement, meme si ton score est plus haut que ton adversaire, tu ne lui feras pas de degat");
 								}
 								else
 								{
-									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ BonnusAttaqueMix + " (bonus maitrise) = " + ValRoll +" \rL'utilisation de ta maitrise est une reussite, si ton score est plus haut que ton adversaire tu l'emportes");
+									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ BonnusAttaqueMix + " (bonus maitrise) = " + ValRoll +" \rL'utilisation de ta maitrise est une reussite, si ton score est plus haut que ton adversaire tu l'emportes");
 								}
 				  			}
 				  			else
 				  			{
 				  				console.log("bonnus de lieu = "+tableauDeMot[2])
 				  				var BonusLieu = Number(tableauDeMot[2])
-				  				var ValRoll= ValRand + Number(bonusAttaque) + Number(BonusLieu)+Number(BonusCompetence)
-								var BonnusAttaqueMix = Number(bonusAttaque)+Number(BonusCompetence);
+				  				var ValRoll= ValRand + Number(bonusAttaque) + Number(BonusLieu)+Number(BonusCompetence)+Number(BonusChauve)
+								var BonnusAttaqueMix = Number(bonusAttaque)+Number(BonusCompetence)+Number(BonusChauve);
 								if (ValRoll<15)
 								{
-									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ BonnusAttaqueMix + " (bonus maitrise) + "+ BonusLieu + " (bonus/malus Lieu/Contexte) = " + ValRoll + " \rTu n'as pas su utiliser ta maitrise efficacement, meme si ton score est plus haut que ton adversaire, tu ne lui feras pas de degat");
+									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ BonnusAttaqueMix + " (bonus maitrise) + "+ BonusLieu + " (bonus/malus Lieu/Contexte) = " + ValRoll + " \rTu n'as pas su utiliser ta maitrise efficacement, meme si ton score est plus haut que ton adversaire, tu ne lui feras pas de degat");
 								}
 								else
 								{
-									message.reply(" Ton attaque est de " +ValRand+ " (roll) + "+ BonnusAttaqueMix + " (bonus maitrise) + "+ BonusLieu + " (bonus/malus Lieu/Contexte) = " + ValRoll +" \rL'utilisation de ta maitrise est une reussite, si ton score est plus haut que ton adversaire tu l'emportes");
+									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ BonnusAttaqueMix + " (bonus maitrise) + "+ BonusLieu + " (bonus/malus Lieu/Contexte) = " + ValRoll +" \rL'utilisation de ta maitrise est une reussite, si ton score est plus haut que ton adversaire tu l'emportes");
 								}
 				  			}
 				  			
@@ -2419,7 +2435,7 @@ client.on('message', async function (message, user)
 						console.log("roll d'attaque d'opposition")
 						if (message.member.roles.cache.has(auth.RoleRP.SansForce))
 						{
-							message.reply("Ton jet echoue. Il serait temps d'aller arranger cette situation !")
+							client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton jet echoue. Il serait temps d'aller arranger cette situation !")
 						}
 						else
 						{
@@ -2427,7 +2443,7 @@ client.on('message', async function (message, user)
 							{
 								var Nombre = Number(fiche.Competence.Force)
 								var ValRoll = Rand(20) + Number(Nombre);
-								message.reply(" Ton roll de Force est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
+								client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton roll de Force est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
 								
 							}
 							else
@@ -2437,7 +2453,7 @@ client.on('message', async function (message, user)
 								var BonusLieu = Number(tableauDeMot[2])
 								var ValRoll1 = Rand(20) + Number(Nombre);
 								var ValRoll = ValRoll1 + BonusLieu
-								message.reply(" Ton roll de Force est de " +ValRoll1+ " + "+BonusLieu+ "(bonus/malus Lieu/Contexte) ="+ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
+								client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton roll de Force est de " +ValRoll1+ " + "+BonusLieu+ "(bonus/malus Lieu/Contexte) ="+ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
 							
 							}
 						}
@@ -2447,7 +2463,7 @@ client.on('message', async function (message, user)
 						{
 							var Nombre = Number(fiche.Competence.Constitution)
 							var ValRoll = Rand(20) + Number(Nombre);
-							message.reply(" Ton roll de Constitution est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
+							client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton roll de Constitution est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
 						}
 						else
 						{
@@ -2456,7 +2472,7 @@ client.on('message', async function (message, user)
 				  			var BonusLieu = Number(tableauDeMot[2])
 							var ValRoll1 = Rand(20) + Number(Nombre);
 							var ValRoll = ValRoll1 + BonusLieu
-							message.reply(" Ton roll de Constitution est de " +ValRoll1+ " + "+BonusLieu+ "(bonus/malus Lieu/Contexte) ="+ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
+							client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton roll de Constitution est de " +ValRoll1+ " + "+BonusLieu+ "(bonus/malus Lieu/Contexte) ="+ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
 
 						}
 						break;
@@ -2465,7 +2481,7 @@ client.on('message', async function (message, user)
 							{
 								var Nombre = Number(fiche.Competence.Charisme);
 								var ValRoll = Rand(20)+ Number(Nombre);
-								message.reply(" Ton roll de Charisme est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
+								client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton roll de Charisme est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
 							}
 							else
 							{
@@ -2474,7 +2490,7 @@ client.on('message', async function (message, user)
 								var BonusLieu = Number(tableauDeMot[2])
 								var ValRoll1 = Rand(20) + Number(Nombre);
 								var ValRoll = ValRoll1 + BonusLieu
-								message.reply(" Ton roll de Charisme est de " +ValRoll1+ " + "+BonusLieu+ "(bonus/malus Lieu/Contexte) ="+ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
+								client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton roll de Charisme est de " +ValRoll1+ " + "+BonusLieu+ "(bonus/malus Lieu/Contexte) ="+ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
 
 							}
 						break;
@@ -2483,7 +2499,7 @@ client.on('message', async function (message, user)
 							{
 								var Nombre = Number(fiche.Competence.Intelligence);
 								var ValRoll = Rand(20)+ Number(Nombre);
-								message.reply(" Ton roll d'Intelligence est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
+								client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton roll d'Intelligence est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
 								
 							}
 							else
@@ -2493,7 +2509,7 @@ client.on('message', async function (message, user)
 								var BonusLieu = Number(tableauDeMot[2])
 								var ValRoll1 = Rand(20) + Number(Nombre);
 								var ValRoll = ValRoll1 + BonusLieu
-								message.reply(" Ton roll d'Intelligence est de " +ValRoll1+ " + "+BonusLieu+ "(bonus/malus Lieu/Contexte) ="+ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
+								client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton roll d'Intelligence est de " +ValRoll1+ " + "+BonusLieu+ "(bonus/malus Lieu/Contexte) ="+ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
 
 							}
 						break;
@@ -2502,7 +2518,7 @@ client.on('message', async function (message, user)
 							{
 								var Nombre = Number(fiche.Competence.Survie);
 								var ValRoll = Rand(20)+ Number(Nombre);
-								message.reply(" Ton roll de survie est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
+								client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton roll de survie est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
 								
 							}
 							else
@@ -2512,7 +2528,7 @@ client.on('message', async function (message, user)
 								var BonusLieu = Number(tableauDeMot[2])
 								var ValRoll1 = Rand(20) + Number(Nombre);
 								var ValRoll = ValRoll1 + BonusLieu
-								message.reply(" Ton roll de survie est de " +ValRoll1+ " + "+BonusLieu+ "(bonus/malus Lieu/Contexte) ="+ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
+								client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton roll de survie est de " +ValRoll1+ " + "+BonusLieu+ "(bonus/malus Lieu/Contexte) ="+ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
 
 							}
 						break;
@@ -2521,7 +2537,7 @@ client.on('message', async function (message, user)
 							{
 								var Nombre = Number(fiche.Competence.Adresse);
 								var ValRoll = Rand(20)+ Number(Nombre);
-								message.reply(" Ton roll d'adresse est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
+								client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton roll d'adresse est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
 								
 							}
 							else
@@ -2531,7 +2547,7 @@ client.on('message', async function (message, user)
 								var BonusLieu = Number(tableauDeMot[2])
 								var ValRoll1 = Rand(20) + Number(Nombre);
 								var ValRoll = ValRoll1 + BonusLieu
-								message.reply(" Ton roll d'adresse est de " +ValRoll1+ " + "+BonusLieu+ "(bonus/malus Lieu/Contexte) ="+ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
+								client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton roll d'adresse est de " +ValRoll1+ " + "+BonusLieu+ "(bonus/malus Lieu/Contexte) ="+ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
 
 							}
 						break;
@@ -2540,7 +2556,7 @@ client.on('message', async function (message, user)
 							{
 								var Nombre = Number(fiche.Competence.Spiritualite);
 								var ValRoll = Rand(20)+ Number(Nombre);
-								message.reply(" Ton roll de spiritualite est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
+								client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton roll de spiritualite est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
 								
 							}
 							else
@@ -2550,14 +2566,14 @@ client.on('message', async function (message, user)
 								var BonusLieu = Number(tableauDeMot[2])
 								var ValRoll1 = Rand(20) + Number(Nombre);
 								var ValRoll = ValRoll1 + BonusLieu
-								message.reply(" Ton roll de spiritualite est de " +ValRoll1+ " + "+BonusLieu+ "(bonus/malus Lieu/Contexte) ="+ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
+								client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton roll de spiritualite est de " +ValRoll1+ " + "+BonusLieu+ "(bonus/malus Lieu/Contexte) ="+ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
 
 							}
 						break;
 						case "discretion" :
 						if  (message.member.roles.cache.has(auth.RoleRP.Putois))
 							{
-								message.reply(" Ton roll de discretion echoue. Il va falloir trouve une solution a ce probleme.");
+								client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton roll de discretion echoue. Il va falloir trouve une solution a ce probleme.");
 							}
 						else
 						{
@@ -2565,7 +2581,7 @@ client.on('message', async function (message, user)
 							{
 								var Nombre = Number(fiche.Competence.Discretion);
 								var ValRoll = Rand(20)+ Number(Nombre);
-								message.reply(" Ton roll de discretion est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
+								client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton roll de discretion est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
 								
 							}
 							else
@@ -2575,7 +2591,7 @@ client.on('message', async function (message, user)
 								var BonusLieu = Number(tableauDeMot[2])
 								var ValRoll1 = Rand(20) + Number(Nombre);
 								var ValRoll = ValRoll1 + BonusLieu
-								message.reply(" Ton roll de discretion est de " +ValRoll1+ " + "+BonusLieu+ "(bonus/malus Lieu/Contexte) ="+ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
+								client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton roll de discretion est de " +ValRoll1+ " + "+BonusLieu+ "(bonus/malus Lieu/Contexte) ="+ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
 
 							}
 						}
