@@ -1615,32 +1615,39 @@ client.on('message', async function (message, user)
 						break;
 						case "force" :
 						console.log("roll de force")
-						if (!tableauDeMot[1])
+						if (message.member.roles.cache.has(auth.RoleRP.SansForce))
 						{
-							var Nombre = Number(fiche.Competence.Force)
-							var ValRoll = Rand(20);
-							if (ValRoll<=Nombre)
-							{
-								message.reply(" Ton roll est de " +ValRoll+ ", c'est une reussite");
-							}
-							else
-							{
-								message.reply(" Ton roll est de " +ValRoll+ ", c'est un echec");
-							}
+							message.reply("Ton jet echoue. Il serait temps d'aller arranger cette situation !")
 						}
 						else
 						{
-							var Nombre = Number(fiche.Competence.Force)
-							var BonusLieu = tableauDeMot[1]
-							var ValRoll1 = Rand(20);
-							var ValRoll= ValRoll1+Number(BonusLieu)
-							if (ValRoll<=Nombre)
+							if (!tableauDeMot[1])
 							{
-								message.reply(" Ton roll est de " +ValRoll1+ " "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est une reussite");
+								var Nombre = Number(fiche.Competence.Force)
+								var ValRoll = Rand(20);
+								if (ValRoll<=Nombre)
+								{
+									message.reply(" Ton roll est de " +ValRoll+ ", c'est une reussite");
+								}
+								else
+								{
+									message.reply(" Ton roll est de " +ValRoll+ ", c'est un echec");
+								}
 							}
 							else
 							{
-								message.reply(" Ton roll est de " +ValRoll1+ " "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est un echec");
+								var Nombre = Number(fiche.Competence.Force)
+								var BonusLieu = tableauDeMot[1]
+								var ValRoll1 = Rand(20);
+								var ValRoll= ValRoll1+Number(BonusLieu)
+								if (ValRoll<=Nombre)
+								{
+									message.reply(" Ton roll est de " +ValRoll1+ " "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est une reussite");
+								}
+								else
+								{
+									message.reply(" Ton roll est de " +ValRoll1+ " "+BonusLieu+ " (bonus/malus lieu/contexte)= "+ValRoll+", c'est un echec");
+								}
 							}
 						}
 						break;
@@ -2409,22 +2416,29 @@ client.on('message', async function (message, user)
 						
 						case "force" :
 						console.log("roll d'attaque d'opposition")
-						if(!tableauDeMot[2])
+						if (message.member.roles.cache.has(auth.RoleRP.SansForce))
 						{
-							var Nombre = Number(fiche.Competence.Force)
-							var ValRoll = Rand(20) + Number(Nombre);
-							message.reply(" Ton roll de Force est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
-							
+							message.reply("Ton jet echoue. Il serait temps d'aller arranger cette situation !")
 						}
 						else
 						{
-							var Nombre = Number(fiche.Competence.Force)
-							console.log("bonus de lieu 0 "+tableauDeMot[2])
-				  			var BonusLieu = Number(tableauDeMot[2])
-							var ValRoll1 = Rand(20) + Number(Nombre);
-							var ValRoll = ValRoll1 + BonusLieu
-							message.reply(" Ton roll de Force est de " +ValRoll1+ " + "+BonusLieu+ "(bonus/malus Lieu/Contexte) ="+ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
-						
+							if(!tableauDeMot[2])
+							{
+								var Nombre = Number(fiche.Competence.Force)
+								var ValRoll = Rand(20) + Number(Nombre);
+								message.reply(" Ton roll de Force est de " +ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
+								
+							}
+							else
+							{
+								var Nombre = Number(fiche.Competence.Force)
+								console.log("bonus de lieu 0 "+tableauDeMot[2])
+								var BonusLieu = Number(tableauDeMot[2])
+								var ValRoll1 = Rand(20) + Number(Nombre);
+								var ValRoll = ValRoll1 + BonusLieu
+								message.reply(" Ton roll de Force est de " +ValRoll1+ " + "+BonusLieu+ "(bonus/malus Lieu/Contexte) ="+ValRoll+ ", si ton roll est plus haut que ton adversaire tu l'emportes");
+							
+							}
 						}
 						break;
 						case "constitution" :
@@ -3323,8 +3337,8 @@ client.on('message', async function (message, user)
 	}
 
 	//Commande pour lancer une quete avec un mot 
-	if (message.channel.id==auth.Salon.SalonBotAdmin)
-	//if ((message.channel.id==auth.Salon.SalonBotAdmin) || (message.channel.parent==auth.Salon.CategorieRPAzathys || message.channel.parent==auth.Salon.CategorieRPTempleAustral || message.channel.parent==auth.Salon.CategorieRPMasun || message.channel.parent==auth.Salon.CategorieRPCroissant || message.channel.parent==auth.Salon.CategorieRPTempOcci || message.channel.parent==auth.Salon.CategorieRPBraise || message.channel.parent==auth.Salon.CategorieRPBahSingSe || message.channel.parent==auth.Salon.CategorieRPOmashu || message.channel.parent==auth.Salon.CategorieRPMaraisBrumeux || message.channel.parent==auth.Salon.CategorieRPDesertSiWang || message.channel.parent==auth.Salon.CategorieRPTempOrient || message.channel.parent==auth.Salon.CategorieRPIleKyoshi || message.channel.parent==auth.Salon.CategorieRPTempBoreal|| message.channel.parent==auth.Salon.CategorieRPTribuSud || message.channel.parent==auth.Salon.CategorieTempleTerre || message.channel.parent==auth.Salon.CategorieSaloncache))
+	//if (message.channel.id==auth.Salon.SalonBotAdmin)
+	if ((message.channel.id==auth.Salon.SalonBotAdmin) || (message.channel.parent==auth.Salon.CategorieRPAzathys || message.channel.parent==auth.Salon.CategorieRPTempleAustral || message.channel.parent==auth.Salon.CategorieRPMasun || message.channel.parent==auth.Salon.CategorieRPCroissant || message.channel.parent==auth.Salon.CategorieRPTempOcci || message.channel.parent==auth.Salon.CategorieRPBraise || message.channel.parent==auth.Salon.CategorieRPBahSingSe || message.channel.parent==auth.Salon.CategorieRPOmashu || message.channel.parent==auth.Salon.CategorieRPMaraisBrumeux || message.channel.parent==auth.Salon.CategorieRPDesertSiWang || message.channel.parent==auth.Salon.CategorieRPTempOrient || message.channel.parent==auth.Salon.CategorieRPIleKyoshi || message.channel.parent==auth.Salon.CategorieRPTempBoreal|| message.channel.parent==auth.Salon.CategorieRPTribuSud || message.channel.parent==auth.Salon.CategorieTempleTerre || message.channel.parent==auth.Salon.CategorieSaloncache))
 	{
 		// quete du putois
 		if (petitMessage.includes("putois"))
@@ -3341,10 +3355,10 @@ client.on('message', async function (message, user)
 	}
 
 	// quete du escargot
-	if (message.channel.id==auth.Salon.SalonBotAdmin)
-	//if ((message.channel.id==auth.Salon.rueAgna) || (message.channel.id==auth.Salon.rueCaldera) || (message.channel.id==auth.Salon.rueBSS) || (message.channel.id==auth.Salon.rueOmashu))
+	//if (message.channel.id==auth.Salon.SalonBotAdmin)
+	if ((message.channel.id==auth.Salon.rueAgna) || (message.channel.id==auth.Salon.rueCaldera) || (message.channel.id==auth.Salon.rueBSS) || (message.channel.id==auth.Salon.rueOmashu))
 		{
-			if (petitMessage.includes("escargot") || petitMessage.includes("coquille"))
+			if (petitMessage.includes("escargot") || petitMessage.includes("coquille")) 
 			{
 				message.reply("Sortant de nul part des cris de foule et de panique se font entendre dans diverses directions. Un nuage violet court sur une grande zone ; une horde d'esprit s'en prend à vous ! Coups ! Toux ! Désolations ! Vous vous sentez soudainement faible, démuni, comme privé de quelque chose dont vous n'auriez jamais pensé l'être... \n Quelques secondes, quelques minutes peut-être. Vous voilà revenu à vous. Tout semble calme, totalement... normal. Etrange. Auriez-vous rêvé ? En commençant à marcher vous remarquerez une coquille brisé sous votre chaussure : vous avez marchez sur un escargot améthyste ! Des sbires d'esprits puissants ! Horreur ! Vous voilà désormais privé de votre maitrise. Tous vos jets de maitrise échouent. Il faudra aller prier et apporter une offrande aux esprits locaux pour implorer leur pardon au plus vite...")
 				message.member.roles.add(auth.RoleRP.Escargot);
@@ -3357,13 +3371,13 @@ client.on('message', async function (message, user)
 		}
 
 	// quete de la pinte
-	if (message.channel.id==auth.Salon.SalonBotAdmin)
-	//if ((message.channel.id==auth.Salon.BarBraise))
+	//if (message.channel.id==auth.Salon.SalonBotAdmin)
+	if (message.channel.id==auth.Salon.BarBraise || message.channel.id==auth.Salon.AubergeBSS || message.channel.id==auth.Salon.AubergeOmashu)
 		{
-			if ((petitMessage.includes("pinte")) && !(message.member.roles.cache.has(auth.RoleRP.Pinte))) 
+			if ((petitMessage.includes("pinte")) && (Math.random()<=0.1)) 
 			{
 				message.reply("La pinte servie était en fait une gnole de chou. Vous étiez tellement assoifé que vous avez tout bu ! Votre constitution n'aura rien pu faire pour vous sauver ! Vous vous réveillerez au petit matin avec une sacré gueule de bois et 3000 <:zap:997455359730003998> en moins ! Des marauds vous auront fait les poches dans votre sommeil ! Les salauds !")
-				message.member.roles.add(auth.RoleRP.Pinte);
+				//message.member.roles.add(auth.RoleRP.Pinte);
 				var Quantity = 3000; // Amount of Joker
 				var fiche = await FichePerso.findOne({_id: message.author.id}); 
 				var NewXP = fiche.NiveauXP-Quantity
@@ -3371,11 +3385,64 @@ client.on('message', async function (message, user)
 				client.channels.cache.get(auth.Salon.SalonBotAdmin).send("<@"+message.author.id+"> a bu une pinte de la mort et a perdu " + Quantity + " XP");
 
 			}
-			if ((petitMessage.includes("pinte")) && (message.member.roles.cache.has(auth.RoleRP.Pinte))) 
-			{
-				message.reply("Cette fois-ci, tu ne te fais pas avoir !")
-			}
+			//if ((petitMessage.includes("pinte")) && (message.member.roles.cache.has(auth.RoleRP.Pinte))) 
+			//{
+			//	message.reply("Cette fois-ci, tu ne te fais pas avoir !")
+			//}
 		}
+
+
+	//quetes positive statue
+	if (message.channel.id==auth.Salon.SalonBotAdmin)
+	//if ((message.channel.id==auth.Salon.TempleAgna) || (message.channel.id==auth.Salon.TempleCaldera) || (message.channel.id==auth.Salon.TempleBSS) || (message.channel.id==auth.Salon.TempleOmashu) || (message.channel.id==auth.Salon.SancBoreal) || (message.channel.id==auth.Salon.SancOcci) || (message.channel.id==auth.Salon.SancOri) || (message.channel.id==auth.Salon.SancKyoshi) || (message.channel.id==auth.Salon.SancAus) || (message.channel.id==auth.Salon.TempRoku))
+		{
+			if (petitMessage.includes("statue") && (Math.random()<=0.1))
+			{
+				message.reply("Les esprits vous ont trouvé remarquable, comme ça, sans plus de raison que cela ...!  Vous sentez une sorte de brise fraiche et vaporeuse pour pénétrer de part en part. Un sentiment doux vous envahi. Lorsque vous rouvrirez les yeux, le sentiment d'une nouvelle force sera la votre. Vous avez gagnez en sagesse, en spiritualité et en appréhension du monde. Les esprits vous ont fait don de 5000 <:zap:997455359730003998>")
+				//message.member.roles.add(auth.RoleRP.EspritLike);
+				var Quantity = 5000; // Amount of Joker
+				var fiche = await FichePerso.findOne({_id: message.author.id}); 
+				var NewXP = fiche.NiveauXP+Quantity
+				await FichePerso.findOneAndUpdate({_id: message.author.id},{NiveauXP: NewXP});
+				client.channels.cache.get(auth.Salon.SalonBotAdmin).send("<@"+message.author.id+"> a bu une pinte de la mort et a perdu " + Quantity + " XP");
+			}
+			//else if (petitMessage.includes("statue") && (message.member.roles.cache.has(auth.RoleRP.EspritLike)))
+			//{
+			//	message.reply("Les esprits ont deja ete plus que genereux...")
+			//}
+		}
+
+	// quetes positive attendre ALEATOIRE
+	if (message.channel.id==auth.Salon.SalonBotAdmin)
+	//if ((message.channel.id==auth.Salon.CommerceCaldera) || (message.channel.id==auth.Salon.CommerceBSS) || (message.channel.id==auth.Salon.CommerceOmashu) || (message.channel.id==auth.Salon.ParcOmashu) || (message.channel.id==auth.Salon.PlageCroissant) || (message.channel.id==auth.Salon.PlageBraise) || (message.channel.id==auth.Salon.PlageOrient) || (message.channel.id==auth.Salon.PlageAus) || (message.channel.id==auth.Salon.GrPlaceCaldera) || (message.channel.id==auth.Salon.PlaceKyoshi))
+		{
+			if ((petitMessage.includes("attendre") || petitMessage.includes("attends") || petitMessage.includes("patienter")) && (Math.random()<=0.1))
+				{
+				message.reply("Alors que vous attendiez, quelque chose d'incroyable s'est passé. L'avatar Nookie est mort ? Non ! Une ribambelle de jeunes gens tous plus beaux les uns que les autres sont venus chantant et dansant vous couvrir de collier de fleur, de douces musiques et d'OR ?! Wahou ! Ils sont extrêmement généreux, ou ils auront abusé de vin de chou... Quoiqu'il en soit, vous vous retrouver en possession de 3000 <:zap:997455359730003998>")
+				var Quantity = 3000; // Amount of Joker
+				var fiche = await FichePerso.findOne({_id: message.author.id}); 
+				var NewXP = fiche.NiveauXP+Quantity
+				await FichePerso.findOneAndUpdate({_id: message.author.id},{NiveauXP: NewXP});
+				client.channels.cache.get(auth.Salon.SalonBotAdmin).send("<@"+message.author.id+"> a bu une pinte de la mort et a perdu " + Quantity + " XP");
+				}
+		}
+
+	//quetes negative sans force
+	if (message.channel.id==auth.Salon.SalonBotAdmin)
+	//if ((message.channel.id==auth.Salon.BoisMarecageuxMarais) || (message.channel.id==auth.Salon.ForetOubli) || (message.channel.id==auth.Salon.ForetGlace) || (message.channel.id==auth.Salon.ForetKyoshi) || (message.channel.id==auth.Salon.ForetOmashu))
+	{
+		if ((petitMessage.includes("branche") || petitMessage.includes("racine"))&& (Math.random()<=0.1))
+			{
+				message.reply("Vous marchiez, prudemment, mais... OUTCH ! Vos pieds se prennent dans quelque chose ! Et votre crâne ?! Il heurte contre un tronc si durement que vos chakras en sont tout chamboulés ! C'est le remue-ménage dans vos énergies ! Vous vous retrouvez  sans force ! A peine la capacité de soulever une brindille et encore, cela vous demande de la concentration !\n Vos muscles sont endoloris, vous n'êtes plus capable d'utiliser votre force !\n Il va falloir réaligner vos chakras au plus vite si vous ne souhaitez pas rester ainsi ! Pour cela, rien de tel qu'un bain chaud et/ou quelques heures de méditation !")
+				message.member.roles.add(auth.RoleRP.SansForce);
+			}
+	}
+	if ((petitMessage.includes("baigne") || petitMessage.includes("bain") || petitMessage.includes("mediter") || petitMessage.includes("meditation"))  && (message.member.roles.cache.has(auth.RoleRP.SansForce)) && ((message.channel.id==auth.Salon.SourceHotCaldera) || (message.channel.id==auth.Salon.FontaineMilleFeu) || (message.channel.id==auth.Salon.MerCaldera) || (message.channel.id==auth.Salon.MerCroissant) || (message.channel.id==auth.Salon.MerKyoshi) || (message.channel.id==auth.Salon.RiviereCaldera) || (message.channel.id==auth.Salon.CourDEauOmashu) || (message.channel.id==auth.Salon.MaraisBru) || (message.channel.id==auth.Salon.CanauxMarais) || (message.channel.id==auth.Salon.CanauxAgna)))
+	{
+		message.reply("Tout est revenue a la normale.")
+		message.member.roles.remove(auth.RoleRP.SansForce);
+	}
+	
 
 });
 
