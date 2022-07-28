@@ -1585,23 +1585,23 @@ client.on('message', async function (message, user)
 								var BonusMixte=Number(BonusChauve) + Number(BonusLieuTerre)
 								if (ValRoll<=1)
 								{
-									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise)" + BonusMixte + " (bonus/malus Sup) = " + ValRoll +"\rOuhla c'est un echec critique ! Tu dois t'infliger une blessure");
+									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) + " + BonusMixte + " (bonus/malus Sup) = " + ValRoll +"\rOuhla c'est un echec critique ! Tu dois t'infliger une blessure");
 								}
 								else if (ValRoll<=12)
 								{
-									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise)" + BonusMixte + " (bonus/malus Sup) = " + ValRoll +"\rTu n'as pas su utiliser ta maitrise correctement, c'est un echec sans dommage physique");
+									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) + " + BonusMixte + " (bonus/malus Sup) = " + ValRoll +"\rTu n'as pas su utiliser ta maitrise correctement, c'est un echec sans dommage physique");
 								}
 								else if (ValRoll<=19)
 								{
-									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise)" + BonusMixte + " (bonus/malus Sup) = " + ValRoll +"\rLa maitrise de ton element est correcte, tu reussis ton action sans briller");
+									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) + " + BonusMixte + " (bonus/malus Sup) = " + ValRoll +"\rLa maitrise de ton element est correcte, tu reussis ton action sans briller");
 								}
 								else if (ValRoll<=24)
 								{
-									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise)" + BonusMixte + " (bonus/malus Sup) = " + ValRoll +"\rLa maitrise de ton element est tres bonne, tu reussis ton action !");
+									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) + " + BonusMixte + " (bonus/malus Sup) = " + ValRoll +"\rLa maitrise de ton element est tres bonne, tu reussis ton action !");
 								}
 								else
 								{
-									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise)" + BonusMixte + " (bonus/malus Sup) = " + ValRoll +"\rBravo c'est une reussite critique ! Ton action est juste parfait");
+									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) + " + BonusMixte + " (bonus/malus Sup) = " + ValRoll +"\rBravo c'est une reussite critique ! Ton action est juste parfait");
 								}
 							}
 							else 
@@ -1612,23 +1612,23 @@ client.on('message', async function (message, user)
 								var BonusMixte=Number(BonusChauve) + Number(BonusLieuTerre)
 								if (ValRoll<=1)
 								{
-									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) " + BonusLieu + " (bonus/malus Lieu/Contexte) " + BonusMixte + " (bonus/malus Sup) = " + ValRoll +"\rOuhla c'est un echec critique ! Tu dois t'infliger une blessure");
+									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) " + BonusLieu + " (bonus/malus Lieu/Contexte) + " + BonusMixte + " (bonus/malus Sup) = " + ValRoll +"\rOuhla c'est un echec critique ! Tu dois t'infliger une blessure");
 								}
 								else if (ValRoll<=12)
 								{
-									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) " + BonusLieu + " (bonus/malus Lieu/Contexte)" + BonusMixte + " (bonus/malus Sup) = " + ValRoll +"\rTu n'as pas su utiliser ta maitrise correctement, c'est un echec sans dommage physique");
+									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) " + BonusLieu + " (bonus/malus Lieu/Contexte) + " + BonusMixte + " (bonus/malus Sup) = " + ValRoll +"\rTu n'as pas su utiliser ta maitrise correctement, c'est un echec sans dommage physique");
 								}
 								else if (ValRoll<=19)
 								{
-									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) " + BonusLieu + " (bonus/malus Lieu/Contexte)" + BonusMixte + " (bonus/malus Sup) = " + ValRoll +"\rLa maitrise de ton element est correcte, tu reussis ton action sans briller");
+									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) " + BonusLieu + " (bonus/malus Lieu/Contexte) + " + BonusMixte + " (bonus/malus Sup) = " + ValRoll +"\rLa maitrise de ton element est correcte, tu reussis ton action sans briller");
 								}
 								else if (ValRoll<=24)
 								{
-									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) " + BonusLieu + " (bonus/malus Lieu/Contexte)" + BonusMixte + " (bonus/malus Sup) = " + ValRoll +"\rLa maitrise de ton element est tres bonne, tu reussis ton action !");
+									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) " + BonusLieu + " (bonus/malus Lieu/Contexte) + " + BonusMixte + " (bonus/malus Sup) = " + ValRoll +"\rLa maitrise de ton element est tres bonne, tu reussis ton action !");
 								}
 								else
 								{
-									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) " + BonusLieu + " (bonus/malus Lieu/Contexte)" + BonusMixte + " (bonus/malus Sup) = " + ValRoll +"\rBravo c'est une reussite critique ! Ton action est juste parfait");
+									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) " + BonusLieu + " (bonus/malus Lieu/Contexte) + " + BonusMixte + " (bonus/malus Sup) = " + ValRoll +"\rBravo c'est une reussite critique ! Ton action est juste parfait");
 								}	
 							}	
 						}
