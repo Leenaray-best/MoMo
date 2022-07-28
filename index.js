@@ -3478,7 +3478,7 @@ client.on('message', async function (message, user)
 				message.member.roles.add(auth.RoleRP.SansForce);
 			}
 	}
-	if ((petitMessage.includes("baigne") || petitMessage.includes("bain") || petitMessage.includes("mediter") || petitMessage.includes("meditation"))  && (message.member.roles.cache.has(auth.RoleRP.SansForce)) && ((message.channel.id==auth.Salon.SourceHotCaldera) || (message.channel.id==auth.Salon.FontaineMilleFeu) || (message.channel.id==auth.Salon.MerCaldera) || (message.channel.id==auth.Salon.MerCroissant) || (message.channel.id==auth.Salon.MerKyoshi) || (message.channel.id==auth.Salon.RiviereCaldera) || (message.channel.id==auth.Salon.CourDEauOmashu) || (message.channel.id==auth.Salon.MaraisBru) || (message.channel.id==auth.Salon.CanauxMarais) || (message.channel.id==auth.Salon.CanauxAgna)))
+	if ((petitMessage.includes("baigne") || petitMessage.includes("bain") || petitMessage.includes("mediter") || petitMessage.includes("meditation") || petitMessage.includes("méditer") || petitMessage.includes("méditation") || petitMessage.includes("médite")  )  && (message.member.roles.cache.has(auth.RoleRP.SansForce)) && ((message.channel.id==auth.Salon.SourceHotCaldera) || (message.channel.id==auth.Salon.FontaineMilleFeu) || (message.channel.id==auth.Salon.MerCaldera) || (message.channel.id==auth.Salon.MerCroissant) || (message.channel.id==auth.Salon.MerKyoshi) || (message.channel.id==auth.Salon.RiviereCaldera) || (message.channel.id==auth.Salon.CourDEauOmashu) || (message.channel.id==auth.Salon.MaraisBru) || (message.channel.id==auth.Salon.CanauxMarais) || (message.channel.id==auth.Salon.CanauxAgna)))
 	{
 		message.reply("Tout est revenue a la normale.")
 		message.member.roles.remove(auth.RoleRP.SansForce);
