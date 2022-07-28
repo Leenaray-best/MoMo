@@ -1044,8 +1044,10 @@ client.on('message', async function (message, user)
 	}
 
 	//LES ROLLS ATTAQUES USANT DE LA MAITRISE OU DES COMPETENCES
-	if (message.channel.id==auth.Salon.Jet && petitMessage.startsWith(prefixRoll) && message.member.roles.cache.has(auth.RoleRP.RolePlay))
-	{
+	//if (message.channel.id==auth.Salon.Jet && petitMessage.startsWith(prefixRoll) && message.member.roles.cache.has(auth.RoleRP.RolePlay))
+	if ((message.channel.parent==auth.Salon.CategorieRPAzathys || message.channel.parent==auth.Salon.CategorieRPTempleAustral || message.channel.parent==auth.Salon.CategorieRPMasun || message.channel.parent==auth.Salon.CategorieRPCroissant || message.channel.parent==auth.Salon.CategorieRPTempOcci || message.channel.parent==auth.Salon.CategorieRPBraise || message.channel.parent==auth.Salon.CategorieRPBahSingSe || message.channel.parent==auth.Salon.CategorieRPOmashu || message.channel.parent==auth.Salon.CategorieRPMaraisBrumeux || message.channel.parent==auth.Salon.CategorieRPDesertSiWang || message.channel.parent==auth.Salon.CategorieRPTempOrient || message.channel.parent==auth.Salon.CategorieRPIleKyoshi || message.channel.parent==auth.Salon.CategorieRPTempBoreal|| message.channel.parent==auth.Salon.CategorieRPTribuSud || message.channel.parent==auth.Salon.CategorieTempleTerre || message.channel.parent==auth.Salon.CategorieSaloncache) && petitMessage.startsWith(prefixRoll) && message.member.roles.cache.has(auth.RoleRP.RolePlay))
+		{
+		message.delete({ timeout: 5000})
 		console.log("roll")
 		const taggedUser = message.mentions.users.first();
 			if (!taggedUser) 
@@ -1568,55 +1570,65 @@ client.on('message', async function (message, user)
 							{
 								BonusChauve = Number(0)
 							}
+							if ((message.member.roles.cache.has(auth.RoleRP.Terre)) && ((message.channel.id==auth.Salon.CaveGlace) || (message.channel.id==auth.Salon.CatacombeCristal) || (message.channel.id==auth.Salon.CaviteRocheuse) || (message.channel.id==auth.Salon.MineOmashu) || (message.channel.id==auth.Salon.MontagneKolau) || (message.channel.id==auth.Salon.FlancMontagne) || (message.channel.id==auth.Salon.GrandCanyon) || (message.channel.id==auth.Salon.PlageAus) || (message.channel.id==auth.Salon.BiblioSiWong)))
+							{
+								BonusLieuTerre = Number(1)
+							}
+							else 
+							{
+								BonusLieuTerre = Number(0)
+							}
 				  			if (!tableauDeMot[1])
 							{
 								console.log("pas de boost de lieu")
-					  			var ValRoll= ValRand + Number(bonusAttaque) + Number(BonusChauve)
+					  			var ValRoll= ValRand + Number(bonusAttaque) + Number(BonusChauve) + Number(BonusLieuTerre)
+								var BonusMixte=Number(BonusChauve) + Number(BonusLieuTerre)
 								if (ValRoll<=1)
 								{
-									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) = " + ValRoll +"\rOuhla c'est un echec critique ! Tu dois t'infliger une blessure");
+									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise)" + BonusMixte + " (bonus/malus Sup) = " + ValRoll +"\rOuhla c'est un echec critique ! Tu dois t'infliger une blessure");
 								}
 								else if (ValRoll<=12)
 								{
-									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) = " + ValRoll +"\rTu n'as pas su utiliser ta maitrise correctement, c'est un echec sans dommage physique");
+									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise)" + BonusMixte + " (bonus/malus Sup) = " + ValRoll +"\rTu n'as pas su utiliser ta maitrise correctement, c'est un echec sans dommage physique");
 								}
 								else if (ValRoll<=19)
 								{
-									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) = " + ValRoll +"\rLa maitrise de ton element est correcte, tu reussis ton action sans briller");
+									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise)" + BonusMixte + " (bonus/malus Sup) = " + ValRoll +"\rLa maitrise de ton element est correcte, tu reussis ton action sans briller");
 								}
 								else if (ValRoll<=24)
 								{
-									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) = " + ValRoll +"\rLa maitrise de ton element est tres bonne, tu reussis ton action !");
+									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise)" + BonusMixte + " (bonus/malus Sup) = " + ValRoll +"\rLa maitrise de ton element est tres bonne, tu reussis ton action !");
 								}
 								else
 								{
-									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) = " + ValRoll +"\rBravo c'est une reussite critique ! Ton action est juste parfait");
+									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise)" + BonusMixte + " (bonus/malus Sup) = " + ValRoll +"\rBravo c'est une reussite critique ! Ton action est juste parfait");
 								}
 							}
 							else 
 							{
 								console.log(tableauDeMot[1])
 								var BonusLieu = tableauDeMot[1]
-								var ValRoll= ValRand + Number(bonusAttaque)+ Number(BonusLieu) + Number(BonusChauve)
+								var ValRoll= ValRand + Number(bonusAttaque)+ Number(BonusLieu) + Number(BonusChauve) + Number(BonusLieuTerre)
+								var BonusMixte=Number(BonusChauve) + Number(BonusLieuTerre)
 								if (ValRoll<=1)
 								{
-									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) " + BonusLieu + " (bonus/malus Lieu/Contexte) = " + ValRoll +"\rOuhla c'est un echec critique ! Tu dois t'infliger une blessure");
+									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) " + BonusLieu + " (bonus/malus Lieu/Contexte) " + BonusMixte + " (bonus/malus Sup) = " + ValRoll +"\rOuhla c'est un echec critique ! Tu dois t'infliger une blessure");
 								}
 								else if (ValRoll<=12)
 								{
-									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) " + BonusLieu + " (bonus/malus Lieu/Contexte) = " + ValRoll +"\rTu n'as pas su utiliser ta maitrise correctement, c'est un echec sans dommage physique");
+									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) " + BonusLieu + " (bonus/malus Lieu/Contexte)" + BonusMixte + " (bonus/malus Sup) = " + ValRoll +"\rTu n'as pas su utiliser ta maitrise correctement, c'est un echec sans dommage physique");
 								}
 								else if (ValRoll<=19)
 								{
-									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) " + BonusLieu + " (bonus/malus Lieu/Contexte) = " + ValRoll +"\rLa maitrise de ton element est correcte, tu reussis ton action sans briller");
+									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) " + BonusLieu + " (bonus/malus Lieu/Contexte)" + BonusMixte + " (bonus/malus Sup) = " + ValRoll +"\rLa maitrise de ton element est correcte, tu reussis ton action sans briller");
 								}
 								else if (ValRoll<=24)
 								{
-									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) " + BonusLieu + " (bonus/malus Lieu/Contexte) = " + ValRoll +"\rLa maitrise de ton element est tres bonne, tu reussis ton action !");
+									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) " + BonusLieu + " (bonus/malus Lieu/Contexte)" + BonusMixte + " (bonus/malus Sup) = " + ValRoll +"\rLa maitrise de ton element est tres bonne, tu reussis ton action !");
 								}
 								else
 								{
-									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) " + BonusLieu + " (bonus/malus Lieu/Contexte) = " + ValRoll +"\rBravo c'est une reussite critique ! Ton action est juste parfait");
+									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ bonusAttaque + " (bonus/malus maitrise) " + BonusLieu + " (bonus/malus Lieu/Contexte)" + BonusMixte + " (bonus/malus Sup) = " + ValRoll +"\rBravo c'est une reussite critique ! Ton action est juste parfait");
 								}	
 							}	
 						}
@@ -2389,6 +2401,14 @@ client.on('message', async function (message, user)
 							{
 								BonusChauve= Number(0)
 							}
+							if ((message.member.roles.cache.has(auth.RoleRP.Terre)) && ((message.channel.id==auth.Salon.CaveGlace) || (message.channel.id==auth.Salon.CatacombeCristal) || (message.channel.id==auth.Salon.CaviteRocheuse) || (message.channel.id==auth.Salon.MineOmashu) || (message.channel.id==auth.Salon.MontagneKolau) || (message.channel.id==auth.Salon.FlancMontagne) || (message.channel.id==auth.Salon.GrandCanyon) || (message.channel.id==auth.Salon.PlageAus) || (message.channel.id==auth.Salon.BiblioSiWong)))
+							{
+								BonusLieuTerre = Number(1)
+							}
+							else 
+							{
+								BonusLieuTerre = Number(0)
+							}
 							if (message.member.roles.cache.has(auth.RoleRP.Terre))
 							{
 								var BonusCompetence = Number(fiche.Competence.Constitution)
@@ -2400,8 +2420,8 @@ client.on('message', async function (message, user)
 				  			if(!tableauDeMot[2])
 				  			{
 				  				console.log("Pas de bonus de lieu")
-					  			var ValRoll= ValRand + Number(bonusAttaque)+Number(BonusCompetence)+Number(BonusChauve)
-								var BonnusAttaqueMix = Number(bonusAttaque)+Number(BonusCompetence)+Number(BonusChauve);
+					  			var ValRoll= ValRand + Number(bonusAttaque)+Number(BonusCompetence)+Number(BonusChauve)+Number(BonusLieuTerre)
+								var BonnusAttaqueMix = Number(bonusAttaque)+Number(BonusCompetence)+Number(BonusChauve)+Number(BonusLieuTerre);
 								if (ValRoll<15)
 								{
 									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ BonnusAttaqueMix + " (bonus maitrise) = " + ValRoll + " \rTu n'as pas su utiliser ta maitrise efficacement, meme si ton score est plus haut que ton adversaire, tu ne lui feras pas de degat");
@@ -2415,8 +2435,8 @@ client.on('message', async function (message, user)
 				  			{
 				  				console.log("bonnus de lieu = "+tableauDeMot[2])
 				  				var BonusLieu = Number(tableauDeMot[2])
-				  				var ValRoll= ValRand + Number(bonusAttaque) + Number(BonusLieu)+Number(BonusCompetence)+Number(BonusChauve)
-								var BonnusAttaqueMix = Number(bonusAttaque)+Number(BonusCompetence)+Number(BonusChauve);
+				  				var ValRoll= ValRand + Number(bonusAttaque) + Number(BonusLieu)+Number(BonusCompetence)+Number(BonusChauve)+Number(BonusLieuTerre)
+								var BonnusAttaqueMix = Number(bonusAttaque)+Number(BonusCompetence)+Number(BonusChauve)+Number(BonusLieuTerre);
 								if (ValRoll<15)
 								{
 									client.channels.cache.get(auth.Salon.Jet).send("<@"+message.author.id+"> Ton attaque est de " +ValRand+ " (roll) + "+ BonnusAttaqueMix + " (bonus maitrise) + "+ BonusLieu + " (bonus/malus Lieu/Contexte) = " + ValRoll + " \rTu n'as pas su utiliser ta maitrise efficacement, meme si ton score est plus haut que ton adversaire, tu ne lui feras pas de degat");
