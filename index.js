@@ -1562,7 +1562,7 @@ client.on('message', async function (message, user)
 						}
 						if (message.member.roles.cache.has(auth.RoleRP.Terre) || message.member.roles.cache.has(auth.RoleRP.Air))
 				  		{
-							if (message.member.roles.cache.has(auth.RoleRP.Chauve))
+							if (message.member.roles.cache.has(auth.RoleRP.Chauve) && message.member.roles.cache.has(auth.RoleRP.Air))
 							{
 								BonusChauve = Number(1)
 							}
@@ -2393,7 +2393,7 @@ client.on('message', async function (message, user)
 						
 						if (message.member.roles.cache.has(auth.RoleRP.Terre) || message.member.roles.cache.has(auth.RoleRP.Air))
 				  		{
-							if (message.member.roles.cache.has(auth.RoleRP.Chauve))
+							if (message.member.roles.cache.has(auth.RoleRP.Chauve) && message.member.roles.cache.has(auth.RoleRP.Air))
 							{
 								BonusChauve= Number(1)
 							}
