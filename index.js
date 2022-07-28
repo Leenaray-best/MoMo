@@ -10,7 +10,8 @@ mongoose.connect(uri,{ useNewUrlParser: true, useUnifiedTopology: true });
 /*mongoose.connect(uri,{ useNewUrlParser: true, useUnifiedTopology: true }() => { }).catch(err => console.log(err));*/
 mongoose.set('useFindAndModify', false);
 
-
+//git commit -am "Release2022July-1"
+//git push heroku master
 const FichePerso = require("./FichePerso.js");
 const BoutiqueMaitrise = require("./Boutique.js");
 const Weather = require("./meteo.js");
@@ -3374,21 +3375,25 @@ client.on('message', async function (message, user)
 	//if (message.channel.id==auth.Salon.SalonBotAdmin)
 	if (message.channel.id==auth.Salon.BarBraise || message.channel.id==auth.Salon.AubergeBSS || message.channel.id==auth.Salon.AubergeOmashu)
 		{
-			if ((petitMessage.includes("pinte")) && (Math.random()<=0.1)) 
+			if ((petitMessage.includes("pinte")) && !(message.member.roles.cache.has(auth.RoleRP.Pinte))) 
 			{
 				message.reply("La pinte servie était en fait une gnole de chou. Vous étiez tellement assoifé que vous avez tout bu ! Votre constitution n'aura rien pu faire pour vous sauver ! Vous vous réveillerez au petit matin avec une sacré gueule de bois et 3000 <:zap:997455359730003998> en moins ! Des marauds vous auront fait les poches dans votre sommeil ! Les salauds !")
-				//message.member.roles.add(auth.RoleRP.Pinte);
+				message.member.roles.add(auth.RoleRP.Pinte);
 				var Quantity = 3000; // Amount of Joker
 				var fiche = await FichePerso.findOne({_id: message.author.id}); 
 				var NewXP = fiche.NiveauXP-Quantity
+				if (NewXP<0)
+				{
+					NewXP=0
+				}
 				await FichePerso.findOneAndUpdate({_id: message.author.id},{NiveauXP: NewXP});
 				client.channels.cache.get(auth.Salon.SalonBotAdmin).send("<@"+message.author.id+"> a bu une pinte de la mort et a perdu " + Quantity + " XP");
 
 			}
-			//if ((petitMessage.includes("pinte")) && (message.member.roles.cache.has(auth.RoleRP.Pinte))) 
-			//{
-			//	message.reply("Cette fois-ci, tu ne te fais pas avoir !")
-			//}
+			if ((petitMessage.includes("pinte")) && (message.member.roles.cache.has(auth.RoleRP.Pinte))) 
+			{
+				message.reply("Cette fois-ci, tu ne te fais pas avoir !")
+			}
 		}
 
 
@@ -3396,7 +3401,7 @@ client.on('message', async function (message, user)
 	if (message.channel.id==auth.Salon.SalonBotAdmin)
 	//if ((message.channel.id==auth.Salon.TempleAgna) || (message.channel.id==auth.Salon.TempleCaldera) || (message.channel.id==auth.Salon.TempleBSS) || (message.channel.id==auth.Salon.TempleOmashu) || (message.channel.id==auth.Salon.SancBoreal) || (message.channel.id==auth.Salon.SancOcci) || (message.channel.id==auth.Salon.SancOri) || (message.channel.id==auth.Salon.SancKyoshi) || (message.channel.id==auth.Salon.SancAus) || (message.channel.id==auth.Salon.TempRoku))
 		{
-			if (petitMessage.includes("statue") && (Math.random()<=0.1))
+			if (petitMessage.includes("statue") && (Math.random()<=0.5))
 			{
 				message.reply("Les esprits vous ont trouvé remarquable, comme ça, sans plus de raison que cela ...!  Vous sentez une sorte de brise fraiche et vaporeuse pour pénétrer de part en part. Un sentiment doux vous envahi. Lorsque vous rouvrirez les yeux, le sentiment d'une nouvelle force sera la votre. Vous avez gagnez en sagesse, en spiritualité et en appréhension du monde. Les esprits vous ont fait don de 5000 <:zap:997455359730003998>")
 				//message.member.roles.add(auth.RoleRP.EspritLike);
@@ -3404,7 +3409,7 @@ client.on('message', async function (message, user)
 				var fiche = await FichePerso.findOne({_id: message.author.id}); 
 				var NewXP = fiche.NiveauXP+Quantity
 				await FichePerso.findOneAndUpdate({_id: message.author.id},{NiveauXP: NewXP});
-				client.channels.cache.get(auth.Salon.SalonBotAdmin).send("<@"+message.author.id+"> a bu une pinte de la mort et a perdu " + Quantity + " XP");
+				client.channels.cache.get(auth.Salon.SalonBotAdmin).send("<@"+message.author.id+"> a plu aux esprits, et a gagne " + Quantity + " XP");
 			}
 			//else if (petitMessage.includes("statue") && (message.member.roles.cache.has(auth.RoleRP.EspritLike)))
 			//{
@@ -3416,14 +3421,14 @@ client.on('message', async function (message, user)
 	if (message.channel.id==auth.Salon.SalonBotAdmin)
 	//if ((message.channel.id==auth.Salon.CommerceCaldera) || (message.channel.id==auth.Salon.CommerceBSS) || (message.channel.id==auth.Salon.CommerceOmashu) || (message.channel.id==auth.Salon.ParcOmashu) || (message.channel.id==auth.Salon.PlageCroissant) || (message.channel.id==auth.Salon.PlageBraise) || (message.channel.id==auth.Salon.PlageOrient) || (message.channel.id==auth.Salon.PlageAus) || (message.channel.id==auth.Salon.GrPlaceCaldera) || (message.channel.id==auth.Salon.PlaceKyoshi))
 		{
-			if ((petitMessage.includes("attendre") || petitMessage.includes("attends") || petitMessage.includes("patienter")) && (Math.random()<=0.1))
+			if ((petitMessage.includes("attendre") || petitMessage.includes("attend") || petitMessage.includes("patienter") || petitMessage.includes("patiente")) && (Math.random()<=0.5))
 				{
 				message.reply("Alors que vous attendiez, quelque chose d'incroyable s'est passé. L'avatar Nookie est mort ? Non ! Une ribambelle de jeunes gens tous plus beaux les uns que les autres sont venus chantant et dansant vous couvrir de collier de fleur, de douces musiques et d'OR ?! Wahou ! Ils sont extrêmement généreux, ou ils auront abusé de vin de chou... Quoiqu'il en soit, vous vous retrouver en possession de 3000 <:zap:997455359730003998>")
 				var Quantity = 3000; // Amount of Joker
 				var fiche = await FichePerso.findOne({_id: message.author.id}); 
 				var NewXP = fiche.NiveauXP+Quantity
 				await FichePerso.findOneAndUpdate({_id: message.author.id},{NiveauXP: NewXP});
-				client.channels.cache.get(auth.Salon.SalonBotAdmin).send("<@"+message.author.id+"> a bu une pinte de la mort et a perdu " + Quantity + " XP");
+				client.channels.cache.get(auth.Salon.SalonBotAdmin).send("<@"+message.author.id+"> est tombe sur de jeunes genereux, et a gagne " + Quantity + " XP");
 				}
 		}
 
@@ -3431,7 +3436,7 @@ client.on('message', async function (message, user)
 	if (message.channel.id==auth.Salon.SalonBotAdmin)
 	//if ((message.channel.id==auth.Salon.BoisMarecageuxMarais) || (message.channel.id==auth.Salon.ForetOubli) || (message.channel.id==auth.Salon.ForetGlace) || (message.channel.id==auth.Salon.ForetKyoshi) || (message.channel.id==auth.Salon.ForetOmashu))
 	{
-		if ((petitMessage.includes("branche") || petitMessage.includes("racine"))&& (Math.random()<=0.1))
+		if ((petitMessage.includes("branche") || petitMessage.includes("racine"))&& (Math.random()<=0.5))
 			{
 				message.reply("Vous marchiez, prudemment, mais... OUTCH ! Vos pieds se prennent dans quelque chose ! Et votre crâne ?! Il heurte contre un tronc si durement que vos chakras en sont tout chamboulés ! C'est le remue-ménage dans vos énergies ! Vous vous retrouvez  sans force ! A peine la capacité de soulever une brindille et encore, cela vous demande de la concentration !\n Vos muscles sont endoloris, vous n'êtes plus capable d'utiliser votre force !\n Il va falloir réaligner vos chakras au plus vite si vous ne souhaitez pas rester ainsi ! Pour cela, rien de tel qu'un bain chaud et/ou quelques heures de méditation !")
 				message.member.roles.add(auth.RoleRP.SansForce);
