@@ -3486,7 +3486,7 @@ client.on('message', async function (message, user)
 	}
 
 	//Faire apparaitre l'iD d'un joueur
-	if (message.channel.id==auth.Salon.SalonBotAdmin && message.member.roles.cache.has(auth.RoleRP.staff) && petitMessage.startsWith(prefixIdJoueur))
+	if (message.channel.id==auth.Salon.SalonBotAdmin && petitMessage.startsWith(prefixIdJoueur))
 	{
 		const taggedUser = message.mentions.users.first();
 			if (!taggedUser) return message.channel.send("remplirfiche1 @joueur Prenom Nom Age Sexe @RoleCategorie Metier.");
