@@ -3492,6 +3492,7 @@ client.on('message', async function (message, user)
 			if (!taggedUser) return message.channel.send("remplirfiche1 @joueur Prenom Nom Age Sexe @RoleCategorie Metier.");
         	if (isNaN(taggedUser)) return message.author.send("Le paramètre que vous avez saisi n'est pas un pseudo.").then(msg => msg.delete({ timeout: 10000 }));
 		IdNumberJoueur=taggedUser.id;
+		console.log("Apparaitre ID joueur")
 		message.channel.send(IdNumberJoueur);
 	}
 	
