@@ -40,6 +40,7 @@ const prefixUpdateFiche = "updatefiche"
 const prefixAjoutCompetence = "newcompetence"
 const prefixLevelAll = "levelallplayer"
 const prefixTest = "testcode"
+const prefixIdJoueur ="idjoueur"
 const SalaireCat0= 0
 const SalaireCat6= 150
 const SalaireCat1 = 200
@@ -3482,6 +3483,16 @@ client.on('message', async function (message, user)
 	{
 		message.reply("Tout est revenue a la normale.")
 		message.member.roles.remove(auth.RoleRP.SansForce);
+	}
+
+	//Faire apparaitre l'iD d'un joueur
+	if (message.channel.id==auth.Salon.SalonBotAdmin && message.member.roles.cache.has(auth.RoleRP.staff) && petitMessage.startsWith(prefixIdJoueur))
+	{
+		const taggedUser = message.mentions.users.first();
+			if (!taggedUser) return message.channel.send("remplirfiche1 @joueur Prenom Nom Age Sexe @RoleCategorie Metier.");
+        	if (isNaN(taggedUser)) return message.author.send("Le paramètre que vous avez saisi n'est pas un pseudo.").then(msg => msg.delete({ timeout: 10000 }));
+		IdNumberJoueur=taggedUser.id;
+		message.channel.send(IdNumberJoueur);
 	}
 	
 
