@@ -11,7 +11,7 @@ mongoose.connect(uri,{ useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.set('useFindAndModify', false);
 
 //git commit -am "Release2022July-1"
-//git push heroku master
+//git push heroku main ou seul sans rien
 const FichePerso = require("./FichePerso.js");
 const BoutiqueMaitrise = require("./Boutique.js");
 const Weather = require("./meteo.js");
@@ -3376,7 +3376,7 @@ client.on('message', async function (message, user)
 
 	//Commande pour lancer une quete avec un mot 
 	//if (message.channel.id==auth.Salon.SalonBotAdmin)
-	if ((message.channel.id==auth.Salon.SalonBotAdmin) || (message.channel.parent==auth.Salon.CategorieRPAzathys || message.channel.parent==auth.Salon.CategorieRPTempleAustral || message.channel.parent==auth.Salon.CategorieRPMasun || message.channel.parent==auth.Salon.CategorieRPCroissant || message.channel.parent==auth.Salon.CategorieRPTempOcci || message.channel.parent==auth.Salon.CategorieRPBraise || message.channel.parent==auth.Salon.CategorieRPBahSingSe || message.channel.parent==auth.Salon.CategorieRPOmashu || message.channel.parent==auth.Salon.CategorieRPMaraisBrumeux || message.channel.parent==auth.Salon.CategorieRPDesertSiWang || message.channel.parent==auth.Salon.CategorieRPTempOrient || message.channel.parent==auth.Salon.CategorieRPIleKyoshi || message.channel.parent==auth.Salon.CategorieRPTempBoreal|| message.channel.parent==auth.Salon.CategorieRPTribuSud || message.channel.parent==auth.Salon.CategorieTempleTerre || message.channel.parent==auth.Salon.CategorieSaloncache))
+	if ((message.author.id!=auth.staff.emi) && ((message.channel.id==auth.Salon.SalonBotAdmin) || (message.channel.parent==auth.Salon.CategorieRPAzathys || message.channel.parent==auth.Salon.CategorieRPTempleAustral || message.channel.parent==auth.Salon.CategorieRPMasun || message.channel.parent==auth.Salon.CategorieRPCroissant || message.channel.parent==auth.Salon.CategorieRPTempOcci || message.channel.parent==auth.Salon.CategorieRPBraise || message.channel.parent==auth.Salon.CategorieRPBahSingSe || message.channel.parent==auth.Salon.CategorieRPOmashu || message.channel.parent==auth.Salon.CategorieRPMaraisBrumeux || message.channel.parent==auth.Salon.CategorieRPDesertSiWang || message.channel.parent==auth.Salon.CategorieRPTempOrient || message.channel.parent==auth.Salon.CategorieRPIleKyoshi || message.channel.parent==auth.Salon.CategorieRPTempBoreal|| message.channel.parent==auth.Salon.CategorieRPTribuSud || message.channel.parent==auth.Salon.CategorieTempleTerre || message.channel.parent==auth.Salon.CategorieSaloncache)))
 	{
 		// quete du putois
 		if (petitMessage.includes("putois"))
@@ -3394,7 +3394,7 @@ client.on('message', async function (message, user)
 
 	// quete du escargot
 	//if (message.channel.id==auth.Salon.SalonBotAdmin)
-	if ((message.channel.id==auth.Salon.rueAgna) || (message.channel.id==auth.Salon.rueCaldera) || (message.channel.id==auth.Salon.rueBSS) || (message.channel.id==auth.Salon.rueOmashu))
+	if ((message.author.id!=auth.staff.emi) && ((message.channel.id==auth.Salon.rueAgna) || (message.channel.id==auth.Salon.rueCaldera) || (message.channel.id==auth.Salon.rueBSS) || (message.channel.id==auth.Salon.rueOmashu)))
 		{
 			if (petitMessage.includes("escargot") || petitMessage.includes("coquille")) 
 			{
@@ -3402,7 +3402,7 @@ client.on('message', async function (message, user)
 				message.member.roles.add(auth.RoleRP.Escargot);
 			}
 		}
-	if ((petitMessage.includes("pardon") || petitMessage.includes("prie") || petitMessage.includes("prier") || petitMessage.includes("offrande"))  && (message.member.roles.cache.has(auth.RoleRP.Escargot)) && ((message.channel.id==auth.Salon.TempleAgna) || (message.channel.id==auth.Salon.TempleCaldera) || (message.channel.id==auth.Salon.TempleBSS) || (message.channel.id==auth.Salon.TempleOmashu)))
+	if ((message.author.id!=auth.staff.emi) && ((petitMessage.includes("pardon") || petitMessage.includes("prie") || petitMessage.includes("prier") || petitMessage.includes("offrande"))  && (message.member.roles.cache.has(auth.RoleRP.Escargot)) && ((message.channel.id==auth.Salon.TempleAgna) || (message.channel.id==auth.Salon.TempleCaldera) || (message.channel.id==auth.Salon.TempleBSS) || (message.channel.id==auth.Salon.TempleOmashu))))
 		{
 		message.reply("Tout est revenue a la normale.")
 		message.member.roles.remove(auth.RoleRP.Escargot);
@@ -3410,7 +3410,7 @@ client.on('message', async function (message, user)
 
 	// quete de la pinte
 	//if (message.channel.id==auth.Salon.SalonBotAdmin)
-	if (message.channel.id==auth.Salon.BarBraise || message.channel.id==auth.Salon.AubergeBSS || message.channel.id==auth.Salon.AubergeOmashu)
+	if ((message.author.id!=auth.staff.emi) && (message.channel.id==auth.Salon.BarBraise || message.channel.id==auth.Salon.AubergeBSS || message.channel.id==auth.Salon.AubergeOmashu))
 		{
 			if ((petitMessage.includes("pinte")) && !(message.member.roles.cache.has(auth.RoleRP.Pinte))) 
 			{
@@ -3436,7 +3436,7 @@ client.on('message', async function (message, user)
 
 	//quetes positive statue
 	//if (message.channel.id==auth.Salon.SalonBotAdmin)
-	if ((message.channel.id==auth.Salon.TempleAgna) || (message.channel.id==auth.Salon.TempleCaldera) || (message.channel.id==auth.Salon.TempleBSS) || (message.channel.id==auth.Salon.TempleOmashu) || (message.channel.id==auth.Salon.SancBoreal) || (message.channel.id==auth.Salon.SancOcci) || (message.channel.id==auth.Salon.SancOri) || (message.channel.id==auth.Salon.SancKyoshi) || (message.channel.id==auth.Salon.SancAus) || (message.channel.id==auth.Salon.TempRoku))
+	if ((message.author.id!=auth.staff.emi) && ((message.channel.id==auth.Salon.TempleAgna) || (message.channel.id==auth.Salon.TempleCaldera) || (message.channel.id==auth.Salon.TempleBSS) || (message.channel.id==auth.Salon.TempleOmashu) || (message.channel.id==auth.Salon.SancBoreal) || (message.channel.id==auth.Salon.SancOcci) || (message.channel.id==auth.Salon.SancOri) || (message.channel.id==auth.Salon.SancKyoshi) || (message.channel.id==auth.Salon.SancAus) || (message.channel.id==auth.Salon.TempRoku)))
 		{
 			if (petitMessage.includes("statue") && (Math.random()<=0.5))
 			{
@@ -3456,7 +3456,7 @@ client.on('message', async function (message, user)
 
 	// quetes positive attendre ALEATOIRE
 	//if (message.channel.id==auth.Salon.SalonBotAdmin)
-	if ((message.channel.id==auth.Salon.CommerceCaldera) || (message.channel.id==auth.Salon.CommerceBSS) || (message.channel.id==auth.Salon.CommerceOmashu) || (message.channel.id==auth.Salon.ParcOmashu) || (message.channel.id==auth.Salon.PlageCroissant) || (message.channel.id==auth.Salon.PlageBraise) || (message.channel.id==auth.Salon.PlageOrient) || (message.channel.id==auth.Salon.PlageAus) || (message.channel.id==auth.Salon.GrPlaceCaldera) || (message.channel.id==auth.Salon.PlaceKyoshi))
+	if ((message.author.id!=auth.staff.emi) && ((message.channel.id==auth.Salon.CommerceCaldera) || (message.channel.id==auth.Salon.CommerceBSS) || (message.channel.id==auth.Salon.CommerceOmashu) || (message.channel.id==auth.Salon.ParcOmashu) || (message.channel.id==auth.Salon.PlageCroissant) || (message.channel.id==auth.Salon.PlageBraise) || (message.channel.id==auth.Salon.PlageOrient) || (message.channel.id==auth.Salon.PlageAus) || (message.channel.id==auth.Salon.GrPlaceCaldera) || (message.channel.id==auth.Salon.PlaceKyoshi)))
 		{
 			if ((petitMessage.includes("attendre") || petitMessage.includes("attend") || petitMessage.includes("patienter") || petitMessage.includes("patiente")) && (Math.random()<=0.5))
 				{
@@ -3471,7 +3471,7 @@ client.on('message', async function (message, user)
 
 	//quetes negative sans force
 	//if (message.channel.id==auth.Salon.SalonBotAdmin)
-	if ((message.channel.id==auth.Salon.BoisMarecageuxMarais) || (message.channel.id==auth.Salon.ForetOubli) || (message.channel.id==auth.Salon.ForetGlace) || (message.channel.id==auth.Salon.ForetKyoshi) || (message.channel.id==auth.Salon.ForetOmashu))
+	if ((message.author.id!=auth.staff.emi) && ((message.channel.id==auth.Salon.BoisMarecageuxMarais) || (message.channel.id==auth.Salon.ForetOubli) || (message.channel.id==auth.Salon.ForetGlace) || (message.channel.id==auth.Salon.ForetKyoshi) || (message.channel.id==auth.Salon.ForetOmashu)))
 	{
 		if ((petitMessage.includes("branche") || petitMessage.includes("racine"))&& (Math.random()<=0.5))
 			{
@@ -3479,7 +3479,7 @@ client.on('message', async function (message, user)
 				message.member.roles.add(auth.RoleRP.SansForce);
 			}
 	}
-	if ((petitMessage.includes("baigne") || petitMessage.includes("bain") || petitMessage.includes("mediter") || petitMessage.includes("meditation") || petitMessage.includes("méditer") || petitMessage.includes("méditation") || petitMessage.includes("médite")  )  && (message.member.roles.cache.has(auth.RoleRP.SansForce)) && ((message.channel.id==auth.Salon.SourceHotCaldera) || (message.channel.id==auth.Salon.FontaineMilleFeu) || (message.channel.id==auth.Salon.MerCaldera) || (message.channel.id==auth.Salon.MerCroissant) || (message.channel.id==auth.Salon.MerKyoshi) || (message.channel.id==auth.Salon.RiviereCaldera) || (message.channel.id==auth.Salon.CourDEauOmashu) || (message.channel.id==auth.Salon.MaraisBru) || (message.channel.id==auth.Salon.CanauxMarais) || (message.channel.id==auth.Salon.CanauxAgna)))
+	if ((message.author.id!=auth.staff.emi) &&  ((petitMessage.includes("baigne") || petitMessage.includes("bain") || petitMessage.includes("mediter") || petitMessage.includes("meditation") || petitMessage.includes("méditer") || petitMessage.includes("méditation") || petitMessage.includes("médite")  )  && (message.member.roles.cache.has(auth.RoleRP.SansForce)) && ((message.channel.id==auth.Salon.SourceHotCaldera) || (message.channel.id==auth.Salon.FontaineMilleFeu) || (message.channel.id==auth.Salon.MerCaldera) || (message.channel.id==auth.Salon.MerCroissant) || (message.channel.id==auth.Salon.MerKyoshi) || (message.channel.id==auth.Salon.RiviereCaldera) || (message.channel.id==auth.Salon.CourDEauOmashu) || (message.channel.id==auth.Salon.MaraisBru) || (message.channel.id==auth.Salon.CanauxMarais) || (message.channel.id==auth.Salon.CanauxAgna))))
 	{
 		message.reply("Tout est revenue a la normale.")
 		message.member.roles.remove(auth.RoleRP.SansForce);
