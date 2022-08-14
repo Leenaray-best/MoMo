@@ -1105,7 +1105,10 @@ client.on("message", async function (message, user) {
   //Commande de gain d'XP par message dans les salons RP
   let guildQuete = await FicheQuete.findOne({ _id: auth.idDatabase.questId });
   const tailleTableau = guildQuete.AllCategorie.length;
+  console.log(tailleTableau);
+  console.log(message.channel.id);
   for (i = 0; i < tailleTableau; i++) {
+    console.log(guildQuete.AllCategorie[i]);
     if (message.channel.id == guildQuete.AllCategorie[i]) {
       // if (
       //   message.channel.parent == auth.Salon.CategorieRPAzathys ||
