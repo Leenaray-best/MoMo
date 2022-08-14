@@ -346,11 +346,11 @@ client.on('message', async function (message, user)
 	}
 
 	// Commande pour la carte
-	if (message.channel.id==auth.Salon.Jet && petitMessage === prefixCarte)
-	{
-		var gifCarte = "https://cdn.discordapp.com/attachments/641015662118174730/843501620172292096/map2.jpg";
-	  	await client.channels.cache.get(auth.Salon.Jet).send(gifCarte);
-	}
+	// if (message.channel.id==auth.Salon.Jet && petitMessage === prefixCarte)
+	// {
+	// 	var gifCarte = "https://cdn.discordapp.com/attachments/641015662118174730/843501620172292096/map2.jpg";
+	//   	await client.channels.cache.get(auth.Salon.Jet).send(gifCarte);
+	// }
 
 	// COMMANDE POUR LES ADMINS
 	//Fonction affichage fiche pour admin
@@ -455,250 +455,250 @@ client.on('message', async function (message, user)
 	}
 
 	//Fonction pour set up la fiche Nom/Prenom/Age/Sexe/Metier
-	if (message.channel.id==auth.Salon.GestionFiche && message.member.roles.cache.has(auth.RoleRP.RoleStaff) && petitMessage.startsWith(prefixCreateFicheStep1))
-	{
-		const taggedUser = message.mentions.users.first();
-			if (!taggedUser) return message.channel.send("remplirfiche1 @joueur Prenom Nom Age Sexe @RoleCategorie Metier.");
-        	if (isNaN(taggedUser)) return message.author.send("Le paramètre que vous avez saisi n'est pas un pseudo.").then(msg => msg.delete({ timeout: 10000 }));
-		const argIdPrenom = message.content.split(' ').slice(2); // All arguments behind the command name with the prefix
-		const argIdNom = message.content.split(' ').slice(3); // All arguments behind the command name with the prefix
-		const argIdAge = message.content.split(' ').slice(4); // All arguments behind the command name with the prefix
-		const argIdSexe = message.content.split(' ').slice(5); // All arguments behind the command name with the prefix
-		const argIdCat = message.content.split(' ').slice(6);
-		const argIdCat1 = argIdCat[0].split('&');
-		const realID = argIdCat1[1].split('>');
-		console.log(realID);
-		const argIdJob = message.content.split(' ').slice(7).join(' '); // All arguments behind the command name with the prefix
-		console.log(argIdJob)
-		var fiche = await FichePerso.findOne({_id: taggedUser.id}); 
-		NewPrenom=argIdPrenom[0];
-		NewNom=argIdNom[0];
-		NewAge=argIdAge[0];
-		NewSexe=argIdSexe[0];
-		NewCat= realID[0];
-		NewMetier=argIdJob;
-		await FichePerso.findOneAndUpdate({_id: taggedUser.id},{'Identite.Prenom': NewPrenom , 'Identite.Nom': NewNom, 'Identite.Age': NewAge, 'Identite.Sexe': NewSexe, 'Identite.Metier': NewMetier, 'Identite.Categorie': NewCat});
-		var fiche = await FichePerso.findOne({_id: taggedUser.id}); 
-		console.log(fiche)
-		const listeQualite=fiche.Qualite;
-		const listeFaiblesse=fiche.Faiblesse;			
-		console.log(listeQualite)
-		console.log(listeFaiblesse)
-		const exampleEmbed = new Discord.MessageEmbed()
-            .setColor('#16EF0E')
-            .setTitle("Fiche de "+fiche.Username)
-            .setDescription(`Nom : `+fiche.Identite.Nom+`
-                         Prenom : `+fiche.Identite.Prenom+`
-                         Age: `+fiche.Identite.Age+`
-                         Sexe: `+fiche.Identite.Sexe+`
-                         Metier : `+fiche.Identite.Metier+`
-                         Niveau de Maitrise : `+fiche.NiveauDeMaitrise+`
-                         Niveau XP : `+fiche.NiveauXP+`
-                         Point de Competence : `+fiche.GainCompetence+`
-                         Faiblesse : `+listeFaiblesse[0]+`, `+listeFaiblesse[1])
-            .addFields(
-                { name : `Qualite 1`, value : listeQualite[0], inline : true},
-                { name : `Qualite 2`, value : listeQualite[1], inline : true},
-                { name : `Defaut 1`, value : fiche.Defaut, inline : true}
-            )
-            .addFields(
-                { name : `Force`, value : fiche.Competence.Force, inline : true},
-                { name : `Constitution`, value : fiche.Competence.Constitution, inline : true},
-                { name : `Charisme`, value : fiche.Competence.Charisme, inline : true}
-            )
-            .addFields(
-				{ name : `Intelligence`, value : fiche.Competence.Intelligence, inline : true},
-				{ name : `Survie`, value : fiche.Competence.Survie, inline : true},
-				{ name : `Adresse`, value : fiche.Competence.Adresse, inline : true}
-			)
-			.addFields(
-				{ name : `Spiritualite`, value : fiche.Competence.Spiritualite, inline : true},
-				{ name : `Discretion`, value : fiche.Competence.Discretion, inline : true},
-				{ name : `Lien Gdoc`, value : fiche.LienFichePerso, inline : true}
-			)
-            .setThumbnail(taggedUser.avatarURL())
-            message.channel.send(exampleEmbed);
-	}
+	// if (message.channel.id==auth.Salon.GestionFiche && message.member.roles.cache.has(auth.RoleRP.RoleStaff) && petitMessage.startsWith(prefixCreateFicheStep1))
+	// {
+	// 	const taggedUser = message.mentions.users.first();
+	// 		if (!taggedUser) return message.channel.send("remplirfiche1 @joueur Prenom Nom Age Sexe @RoleCategorie Metier.");
+    //     	if (isNaN(taggedUser)) return message.author.send("Le paramètre que vous avez saisi n'est pas un pseudo.").then(msg => msg.delete({ timeout: 10000 }));
+	// 	const argIdPrenom = message.content.split(' ').slice(2); // All arguments behind the command name with the prefix
+	// 	const argIdNom = message.content.split(' ').slice(3); // All arguments behind the command name with the prefix
+	// 	const argIdAge = message.content.split(' ').slice(4); // All arguments behind the command name with the prefix
+	// 	const argIdSexe = message.content.split(' ').slice(5); // All arguments behind the command name with the prefix
+	// 	const argIdCat = message.content.split(' ').slice(6);
+	// 	const argIdCat1 = argIdCat[0].split('&');
+	// 	const realID = argIdCat1[1].split('>');
+	// 	console.log(realID);
+	// 	const argIdJob = message.content.split(' ').slice(7).join(' '); // All arguments behind the command name with the prefix
+	// 	console.log(argIdJob)
+	// 	var fiche = await FichePerso.findOne({_id: taggedUser.id}); 
+	// 	NewPrenom=argIdPrenom[0];
+	// 	NewNom=argIdNom[0];
+	// 	NewAge=argIdAge[0];
+	// 	NewSexe=argIdSexe[0];
+	// 	NewCat= realID[0];
+	// 	NewMetier=argIdJob;
+	// 	await FichePerso.findOneAndUpdate({_id: taggedUser.id},{'Identite.Prenom': NewPrenom , 'Identite.Nom': NewNom, 'Identite.Age': NewAge, 'Identite.Sexe': NewSexe, 'Identite.Metier': NewMetier, 'Identite.Categorie': NewCat});
+	// 	var fiche = await FichePerso.findOne({_id: taggedUser.id}); 
+	// 	console.log(fiche)
+	// 	const listeQualite=fiche.Qualite;
+	// 	const listeFaiblesse=fiche.Faiblesse;			
+	// 	console.log(listeQualite)
+	// 	console.log(listeFaiblesse)
+	// 	const exampleEmbed = new Discord.MessageEmbed()
+    //         .setColor('#16EF0E')
+    //         .setTitle("Fiche de "+fiche.Username)
+    //         .setDescription(`Nom : `+fiche.Identite.Nom+`
+    //                      Prenom : `+fiche.Identite.Prenom+`
+    //                      Age: `+fiche.Identite.Age+`
+    //                      Sexe: `+fiche.Identite.Sexe+`
+    //                      Metier : `+fiche.Identite.Metier+`
+    //                      Niveau de Maitrise : `+fiche.NiveauDeMaitrise+`
+    //                      Niveau XP : `+fiche.NiveauXP+`
+    //                      Point de Competence : `+fiche.GainCompetence+`
+    //                      Faiblesse : `+listeFaiblesse[0]+`, `+listeFaiblesse[1])
+    //         .addFields(
+    //             { name : `Qualite 1`, value : listeQualite[0], inline : true},
+    //             { name : `Qualite 2`, value : listeQualite[1], inline : true},
+    //             { name : `Defaut 1`, value : fiche.Defaut, inline : true}
+    //         )
+    //         .addFields(
+    //             { name : `Force`, value : fiche.Competence.Force, inline : true},
+    //             { name : `Constitution`, value : fiche.Competence.Constitution, inline : true},
+    //             { name : `Charisme`, value : fiche.Competence.Charisme, inline : true}
+    //         )
+    //         .addFields(
+	// 			{ name : `Intelligence`, value : fiche.Competence.Intelligence, inline : true},
+	// 			{ name : `Survie`, value : fiche.Competence.Survie, inline : true},
+	// 			{ name : `Adresse`, value : fiche.Competence.Adresse, inline : true}
+	// 		)
+	// 		.addFields(
+	// 			{ name : `Spiritualite`, value : fiche.Competence.Spiritualite, inline : true},
+	// 			{ name : `Discretion`, value : fiche.Competence.Discretion, inline : true},
+	// 			{ name : `Lien Gdoc`, value : fiche.LienFichePerso, inline : true}
+	// 		)
+    //         .setThumbnail(taggedUser.avatarURL())
+    //         message.channel.send(exampleEmbed);
+	// }
 
 	//Fonction pour set up la fiche Qualite1/Qualite2/Defaut1/Faiblesse1
-	if (message.channel.id==auth.Salon.GestionFiche && message.member.roles.cache.has(auth.RoleRP.RoleStaff) && petitMessage.startsWith(prefixCreateFicheStep2))
-	{
-		const taggedUser = message.mentions.users.first();
-			if (!taggedUser) return message.channel.send("remplirfiche2 @joueur Qualite1 Qualite2 Defaut1 Faiblesse1.");
-        	if (isNaN(taggedUser)) return message.author.send("Le paramètre que vous avez saisi n'est pas un pseudo.").then(msg => msg.delete({ timeout: 10000 }));
-		const argQualiteUn = message.content.split(' ').slice(2); // All arguments behind the command name with the prefix
-		const argQualiteDeux = message.content.split(' ').slice(3); // All arguments behind the command name with the prefix
-		const argDefautUn = message.content.split(' ').slice(4); // All arguments behind the command name with the prefix
-		const argFaiblesseUn = message.content.split(' ').slice(5).join(' '); // All arguments behind the command name with the prefix
-		var fiche = await FichePerso.findOne({_id: taggedUser.id}); 
-		NewQualiteUn=argQualiteUn[0];
-		NewQualiteDeux=argQualiteDeux[0];
-		NewDefautUn=argDefautUn[0];
-		NewFaiblesse=argFaiblesseUn;
-		await FichePerso.findOneAndUpdate({_id: taggedUser.id},{'Qualite.0': NewQualiteUn ,'Qualite.1': NewQualiteDeux, Defaut: NewDefautUn, 'Faiblesse.0': NewFaiblesse});
-		var fiche = await FichePerso.findOne({_id: taggedUser.id}); 
-		console.log(fiche)
-		const listeQualite=fiche.Qualite;
-		const listeFaiblesse=fiche.Faiblesse;			
-		console.log(listeQualite)
-		console.log(listeFaiblesse)
-		const exampleEmbed = new Discord.MessageEmbed()
-            .setColor('#16EF0E')
-            .setTitle("Fiche de " +fiche.Username)
-            .setDescription(`Nom : `+fiche.Identite.Nom+`
-                         Prenom : `+fiche.Identite.Prenom+`
-                         Age: `+fiche.Identite.Age+`
-                         Sexe: `+fiche.Identite.Sexe+`
-                         Metier : `+fiche.Identite.Metier+`
-                         Niveau de Maitrise : `+fiche.NiveauDeMaitrise+`
-                         Niveau XP : `+fiche.NiveauXP+`
-                         Point de Competence : `+fiche.GainCompetence+`
-                         Faiblesse : `+listeFaiblesse[0]+`, `+listeFaiblesse[1])
-            .addFields(
-                { name : `Qualite 1`, value : listeQualite[0], inline : true},
-                { name : `Qualite 2`, value : listeQualite[1], inline : true},
-                { name : `Defaut 1`, value : fiche.Defaut, inline : true}
-            )
-            .addFields(
-                { name : `Force`, value : fiche.Competence.Force, inline : true},
-                { name : `Constitution`, value : fiche.Competence.Constitution, inline : true},
-                { name : `Charisme`, value : fiche.Competence.Charisme, inline : true}
-            )
-            .addFields(
-				{ name : `Intelligence`, value : fiche.Competence.Intelligence, inline : true},
-				{ name : `Survie`, value : fiche.Competence.Survie, inline : true},
-				{ name : `Adresse`, value : fiche.Competence.Adresse, inline : true}
-			)
-			.addFields(
-				{ name : `Spiritualite`, value : fiche.Competence.Spiritualite, inline : true},
-				{ name : `Discretion`, value : fiche.Competence.Discretion, inline : true},
-				{ name : `Lien Gdoc`, value : fiche.LienFichePerso, inline : true}
-			)
-            .setThumbnail(taggedUser.avatarURL())
-            message.channel.send(exampleEmbed);
-	}
+	// if (message.channel.id==auth.Salon.GestionFiche && message.member.roles.cache.has(auth.RoleRP.RoleStaff) && petitMessage.startsWith(prefixCreateFicheStep2))
+	// {
+	// 	const taggedUser = message.mentions.users.first();
+	// 		if (!taggedUser) return message.channel.send("remplirfiche2 @joueur Qualite1 Qualite2 Defaut1 Faiblesse1.");
+    //     	if (isNaN(taggedUser)) return message.author.send("Le paramètre que vous avez saisi n'est pas un pseudo.").then(msg => msg.delete({ timeout: 10000 }));
+	// 	const argQualiteUn = message.content.split(' ').slice(2); // All arguments behind the command name with the prefix
+	// 	const argQualiteDeux = message.content.split(' ').slice(3); // All arguments behind the command name with the prefix
+	// 	const argDefautUn = message.content.split(' ').slice(4); // All arguments behind the command name with the prefix
+	// 	const argFaiblesseUn = message.content.split(' ').slice(5).join(' '); // All arguments behind the command name with the prefix
+	// 	var fiche = await FichePerso.findOne({_id: taggedUser.id}); 
+	// 	NewQualiteUn=argQualiteUn[0];
+	// 	NewQualiteDeux=argQualiteDeux[0];
+	// 	NewDefautUn=argDefautUn[0];
+	// 	NewFaiblesse=argFaiblesseUn;
+	// 	await FichePerso.findOneAndUpdate({_id: taggedUser.id},{'Qualite.0': NewQualiteUn ,'Qualite.1': NewQualiteDeux, Defaut: NewDefautUn, 'Faiblesse.0': NewFaiblesse});
+	// 	var fiche = await FichePerso.findOne({_id: taggedUser.id}); 
+	// 	console.log(fiche)
+	// 	const listeQualite=fiche.Qualite;
+	// 	const listeFaiblesse=fiche.Faiblesse;			
+	// 	console.log(listeQualite)
+	// 	console.log(listeFaiblesse)
+	// 	const exampleEmbed = new Discord.MessageEmbed()
+    //         .setColor('#16EF0E')
+    //         .setTitle("Fiche de " +fiche.Username)
+    //         .setDescription(`Nom : `+fiche.Identite.Nom+`
+    //                      Prenom : `+fiche.Identite.Prenom+`
+    //                      Age: `+fiche.Identite.Age+`
+    //                      Sexe: `+fiche.Identite.Sexe+`
+    //                      Metier : `+fiche.Identite.Metier+`
+    //                      Niveau de Maitrise : `+fiche.NiveauDeMaitrise+`
+    //                      Niveau XP : `+fiche.NiveauXP+`
+    //                      Point de Competence : `+fiche.GainCompetence+`
+    //                      Faiblesse : `+listeFaiblesse[0]+`, `+listeFaiblesse[1])
+    //         .addFields(
+    //             { name : `Qualite 1`, value : listeQualite[0], inline : true},
+    //             { name : `Qualite 2`, value : listeQualite[1], inline : true},
+    //             { name : `Defaut 1`, value : fiche.Defaut, inline : true}
+    //         )
+    //         .addFields(
+    //             { name : `Force`, value : fiche.Competence.Force, inline : true},
+    //             { name : `Constitution`, value : fiche.Competence.Constitution, inline : true},
+    //             { name : `Charisme`, value : fiche.Competence.Charisme, inline : true}
+    //         )
+    //         .addFields(
+	// 			{ name : `Intelligence`, value : fiche.Competence.Intelligence, inline : true},
+	// 			{ name : `Survie`, value : fiche.Competence.Survie, inline : true},
+	// 			{ name : `Adresse`, value : fiche.Competence.Adresse, inline : true}
+	// 		)
+	// 		.addFields(
+	// 			{ name : `Spiritualite`, value : fiche.Competence.Spiritualite, inline : true},
+	// 			{ name : `Discretion`, value : fiche.Competence.Discretion, inline : true},
+	// 			{ name : `Lien Gdoc`, value : fiche.LienFichePerso, inline : true}
+	// 		)
+    //         .setThumbnail(taggedUser.avatarURL())
+    //         message.channel.send(exampleEmbed);
+	// }
 
 
 	//Fonction pour set up la fiche Force/Constitution/Charisme/Intelligence/Survie/Adresse/Faiblesse2
-	if (message.channel.id==auth.Salon.GestionFiche && message.member.roles.cache.has(auth.RoleRP.RoleStaff) && petitMessage.startsWith(prefixCreateFicheStep3))
-	{
-		const taggedUser = message.mentions.users.first();
-			if (!taggedUser) return message.channel.send("remplirfiche3 @joueur Force Constitution Charisme Intelligence Survie Adresse Faiblesse2");
-        	if (isNaN(taggedUser)) return message.author.send("Le paramètre que vous avez saisi n'est pas un pseudo.").then(msg => msg.delete({ timeout: 10000 }));
-		const argForce = message.content.split(' ').slice(2); // All arguments behind the command name with the prefix
-		const argConst = message.content.split(' ').slice(3); // All arguments behind the command name with the prefix
-		const argCharisme = message.content.split(' ').slice(4); // All arguments behind the command name with the prefix
-		const argInt = message.content.split(' ').slice(5); // All arguments behind the command name with the prefix
-		const argSagesse = message.content.split(' ').slice(6); // All arguments behind the command name with the prefix
-		const argDext = message.content.split(' ').slice(7); // All ar.join(' ')guments behind the command name with the prefix
-		const argFaiblesseDeux = message.content.split(' ').slice(8).join(' '); // All arguments behind the command name with the prefix
-		var fiche = await FichePerso.findOne({_id: taggedUser.id}); 
-		NewForce=argForce[0];
-		NewConst=argConst[0];
-		NewCharisme=argCharisme[0];
-		NewInt=argInt[0];
-		NewSagesse=argSagesse[0];
-		NewDext=argDext[0];
-		NewFaiblesseDeux=argFaiblesseDeux;
-		await FichePerso.findOneAndUpdate({_id: taggedUser.id},{'Competence.Force': NewForce ,'Competence.Constitution': NewConst, 'Competence.Charisme': NewCharisme});
-		await FichePerso.findOneAndUpdate({_id: taggedUser.id},{'Competence.Intelligence': NewInt ,'Competence.Survie': NewSagesse, 'Competence.Adresse': NewDext});
-		await FichePerso.findOneAndUpdate({_id: taggedUser.id},{'Faiblesse.1': NewFaiblesseDeux});
-		var fiche = await FichePerso.findOne({_id: taggedUser.id}); 
-		console.log(fiche)
-		const listeQualite=fiche.Qualite;
-		const listeFaiblesse=fiche.Faiblesse;			
-		console.log(listeQualite)
-		console.log(listeFaiblesse)
-		const exampleEmbed = new Discord.MessageEmbed()
-            .setColor('#16EF0E')
-            .setTitle("Fiche de " +fiche.Username)
-            .setDescription(`Nom : `+fiche.Identite.Nom+`
-                         Prenom : `+fiche.Identite.Prenom+`
-                         Age: `+fiche.Identite.Age+`
-                         Sexe: `+fiche.Identite.Sexe+`
-                         Metier : `+fiche.Identite.Metier+`
-                         Niveau de Maitrise : `+fiche.NiveauDeMaitrise+`
-                         Niveau XP : `+fiche.NiveauXP+`
-                         Point de Competence : `+fiche.GainCompetence+`
-                         Faiblesse : `+listeFaiblesse[0]+`, `+listeFaiblesse[1])
-            .addFields(
-                { name : `Qualite 1`, value : listeQualite[0], inline : true},
-                { name : `Qualite 2`, value : listeQualite[1], inline : true},
-                { name : `Defaut 1`, value : fiche.Defaut, inline : true}
-            )
-            .addFields(
-                { name : `Force`, value : fiche.Competence.Force, inline : true},
-                { name : `Constitution`, value : fiche.Competence.Constitution, inline : true},
-                { name : `Charisme`, value : fiche.Competence.Charisme, inline : true}
-            )
-            .addFields(
-				{ name : `Intelligence`, value : fiche.Competence.Intelligence, inline : true},
-				{ name : `Survie`, value : fiche.Competence.Survie, inline : true},
-				{ name : `Adresse`, value : fiche.Competence.Adresse, inline : true}
-			)
-			.addFields(
-				{ name : `Spiritualite`, value : fiche.Competence.Spiritualite, inline : true},
-				{ name : `Discretion`, value : fiche.Competence.Discretion, inline : true},
-				{ name : `Lien Gdoc`, value : fiche.LienFichePerso, inline : true}
-			)
-            .setThumbnail(taggedUser.avatarURL())
-            message.channel.send(exampleEmbed);
-	}
+	// if (message.channel.id==auth.Salon.GestionFiche && message.member.roles.cache.has(auth.RoleRP.RoleStaff) && petitMessage.startsWith(prefixCreateFicheStep3))
+	// {
+	// 	const taggedUser = message.mentions.users.first();
+	// 		if (!taggedUser) return message.channel.send("remplirfiche3 @joueur Force Constitution Charisme Intelligence Survie Adresse Faiblesse2");
+    //     	if (isNaN(taggedUser)) return message.author.send("Le paramètre que vous avez saisi n'est pas un pseudo.").then(msg => msg.delete({ timeout: 10000 }));
+	// 	const argForce = message.content.split(' ').slice(2); // All arguments behind the command name with the prefix
+	// 	const argConst = message.content.split(' ').slice(3); // All arguments behind the command name with the prefix
+	// 	const argCharisme = message.content.split(' ').slice(4); // All arguments behind the command name with the prefix
+	// 	const argInt = message.content.split(' ').slice(5); // All arguments behind the command name with the prefix
+	// 	const argSagesse = message.content.split(' ').slice(6); // All arguments behind the command name with the prefix
+	// 	const argDext = message.content.split(' ').slice(7); // All ar.join(' ')guments behind the command name with the prefix
+	// 	const argFaiblesseDeux = message.content.split(' ').slice(8).join(' '); // All arguments behind the command name with the prefix
+	// 	var fiche = await FichePerso.findOne({_id: taggedUser.id}); 
+	// 	NewForce=argForce[0];
+	// 	NewConst=argConst[0];
+	// 	NewCharisme=argCharisme[0];
+	// 	NewInt=argInt[0];
+	// 	NewSagesse=argSagesse[0];
+	// 	NewDext=argDext[0];
+	// 	NewFaiblesseDeux=argFaiblesseDeux;
+	// 	await FichePerso.findOneAndUpdate({_id: taggedUser.id},{'Competence.Force': NewForce ,'Competence.Constitution': NewConst, 'Competence.Charisme': NewCharisme});
+	// 	await FichePerso.findOneAndUpdate({_id: taggedUser.id},{'Competence.Intelligence': NewInt ,'Competence.Survie': NewSagesse, 'Competence.Adresse': NewDext});
+	// 	await FichePerso.findOneAndUpdate({_id: taggedUser.id},{'Faiblesse.1': NewFaiblesseDeux});
+	// 	var fiche = await FichePerso.findOne({_id: taggedUser.id}); 
+	// 	console.log(fiche)
+	// 	const listeQualite=fiche.Qualite;
+	// 	const listeFaiblesse=fiche.Faiblesse;			
+	// 	console.log(listeQualite)
+	// 	console.log(listeFaiblesse)
+	// 	const exampleEmbed = new Discord.MessageEmbed()
+    //         .setColor('#16EF0E')
+    //         .setTitle("Fiche de " +fiche.Username)
+    //         .setDescription(`Nom : `+fiche.Identite.Nom+`
+    //                      Prenom : `+fiche.Identite.Prenom+`
+    //                      Age: `+fiche.Identite.Age+`
+    //                      Sexe: `+fiche.Identite.Sexe+`
+    //                      Metier : `+fiche.Identite.Metier+`
+    //                      Niveau de Maitrise : `+fiche.NiveauDeMaitrise+`
+    //                      Niveau XP : `+fiche.NiveauXP+`
+    //                      Point de Competence : `+fiche.GainCompetence+`
+    //                      Faiblesse : `+listeFaiblesse[0]+`, `+listeFaiblesse[1])
+    //         .addFields(
+    //             { name : `Qualite 1`, value : listeQualite[0], inline : true},
+    //             { name : `Qualite 2`, value : listeQualite[1], inline : true},
+    //             { name : `Defaut 1`, value : fiche.Defaut, inline : true}
+    //         )
+    //         .addFields(
+    //             { name : `Force`, value : fiche.Competence.Force, inline : true},
+    //             { name : `Constitution`, value : fiche.Competence.Constitution, inline : true},
+    //             { name : `Charisme`, value : fiche.Competence.Charisme, inline : true}
+    //         )
+    //         .addFields(
+	// 			{ name : `Intelligence`, value : fiche.Competence.Intelligence, inline : true},
+	// 			{ name : `Survie`, value : fiche.Competence.Survie, inline : true},
+	// 			{ name : `Adresse`, value : fiche.Competence.Adresse, inline : true}
+	// 		)
+	// 		.addFields(
+	// 			{ name : `Spiritualite`, value : fiche.Competence.Spiritualite, inline : true},
+	// 			{ name : `Discretion`, value : fiche.Competence.Discretion, inline : true},
+	// 			{ name : `Lien Gdoc`, value : fiche.LienFichePerso, inline : true}
+	// 		)
+    //         .setThumbnail(taggedUser.avatarURL())
+    //         message.channel.send(exampleEmbed);
+	// }
 
 	//Fonction pour set up la fiche Spiritualite/Discretion/Ĺien Gdoc
-	if (message.channel.id==auth.Salon.GestionFiche && message.member.roles.cache.has(auth.RoleRP.RoleStaff) && petitMessage.startsWith(prefixCreateFicheStep4))
-	{
-		const taggedUser = message.mentions.users.first();
-			if (!taggedUser) return message.channel.send("remplirfiche4 @joueur Spiritualite Discretion Lien Gdoc");
-        	if (isNaN(taggedUser)) return message.author.send("Le paramètre que vous avez saisi n'est pas un pseudo.").then(msg => msg.delete({ timeout: 10000 }));
-		const argSpi = message.content.split(' ').slice(2); // All arguments behind the command name with the prefix
-		const argDis = message.content.split(' ').slice(3); // All arguments behind the command name with the prefix
-		const argLienGdoc = message.content.split(' ').slice(4).join(' '); // All arguments behind the command name with the prefix
-		NewSpi=argSpi[0];
-		NewDis=argDis[0];
-		await FichePerso.findOneAndUpdate({_id: taggedUser.id},{'Competence.Spiritualite': NewSpi ,'Competence.Discretion': NewDis});
-		await FichePerso.findOneAndUpdate({_id: taggedUser.id},{LienFichePerso: argLienGdoc});
-		var fiche = await FichePerso.findOne({_id: taggedUser.id}); 
-		console.log(fiche)
-		const listeQualite=fiche.Qualite;
-		const listeFaiblesse=fiche.Faiblesse;			
-		console.log(listeQualite)
-		console.log(listeFaiblesse)
-		const exampleEmbed = new Discord.MessageEmbed()
-            .setColor('#16EF0E')
-            .setTitle("Fiche de " +fiche.Username)
-            .setDescription(`Nom : `+fiche.Identite.Nom+`
-                         Prenom : `+fiche.Identite.Prenom+`
-                         Age: `+fiche.Identite.Age+`
-                         Sexe: `+fiche.Identite.Sexe+`
-                         Metier : `+fiche.Identite.Metier+`
-                         Niveau de Maitrise : `+fiche.NiveauDeMaitrise+`
-                         Niveau XP : `+fiche.NiveauXP+`
-                         Point de Competence : `+fiche.GainCompetence+`
-                         Faiblesse : `+listeFaiblesse[0]+`, `+listeFaiblesse[1])
-            .addFields(
-                { name : `Qualite 1`, value : listeQualite[0], inline : true},
-                { name : `Qualite 2`, value : listeQualite[1], inline : true},
-                { name : `Defaut 1`, value : fiche.Defaut, inline : true}
-            )
-            .addFields(
-                { name : `Force`, value : fiche.Competence.Force, inline : true},
-                { name : `Constitution`, value : fiche.Competence.Constitution, inline : true},
-                { name : `Charisme`, value : fiche.Competence.Charisme, inline : true}
-            )
-            .addFields(
-				{ name : `Intelligence`, value : fiche.Competence.Intelligence, inline : true},
-				{ name : `Survie`, value : fiche.Competence.Survie, inline : true},
-				{ name : `Adresse`, value : fiche.Competence.Adresse, inline : true}
-			)
-			.addFields(
-				{ name : `Spiritualite`, value : fiche.Competence.Spiritualite, inline : true},
-				{ name : `Discretion`, value : fiche.Competence.Discretion, inline : true},
-				{ name : `Lien Gdoc`, value : fiche.LienFichePerso, inline : true}
-			)
-            .setThumbnail(taggedUser.avatarURL())
-            message.channel.send(exampleEmbed);
-	}
+	// if (message.channel.id==auth.Salon.GestionFiche && message.member.roles.cache.has(auth.RoleRP.RoleStaff) && petitMessage.startsWith(prefixCreateFicheStep4))
+	// {
+	// 	const taggedUser = message.mentions.users.first();
+	// 		if (!taggedUser) return message.channel.send("remplirfiche4 @joueur Spiritualite Discretion Lien Gdoc");
+    //     	if (isNaN(taggedUser)) return message.author.send("Le paramètre que vous avez saisi n'est pas un pseudo.").then(msg => msg.delete({ timeout: 10000 }));
+	// 	const argSpi = message.content.split(' ').slice(2); // All arguments behind the command name with the prefix
+	// 	const argDis = message.content.split(' ').slice(3); // All arguments behind the command name with the prefix
+	// 	const argLienGdoc = message.content.split(' ').slice(4).join(' '); // All arguments behind the command name with the prefix
+	// 	NewSpi=argSpi[0];
+	// 	NewDis=argDis[0];
+	// 	await FichePerso.findOneAndUpdate({_id: taggedUser.id},{'Competence.Spiritualite': NewSpi ,'Competence.Discretion': NewDis});
+	// 	await FichePerso.findOneAndUpdate({_id: taggedUser.id},{LienFichePerso: argLienGdoc});
+	// 	var fiche = await FichePerso.findOne({_id: taggedUser.id}); 
+	// 	console.log(fiche)
+	// 	const listeQualite=fiche.Qualite;
+	// 	const listeFaiblesse=fiche.Faiblesse;			
+	// 	console.log(listeQualite)
+	// 	console.log(listeFaiblesse)
+	// 	const exampleEmbed = new Discord.MessageEmbed()
+    //         .setColor('#16EF0E')
+    //         .setTitle("Fiche de " +fiche.Username)
+    //         .setDescription(`Nom : `+fiche.Identite.Nom+`
+    //                      Prenom : `+fiche.Identite.Prenom+`
+    //                      Age: `+fiche.Identite.Age+`
+    //                      Sexe: `+fiche.Identite.Sexe+`
+    //                      Metier : `+fiche.Identite.Metier+`
+    //                      Niveau de Maitrise : `+fiche.NiveauDeMaitrise+`
+    //                      Niveau XP : `+fiche.NiveauXP+`
+    //                      Point de Competence : `+fiche.GainCompetence+`
+    //                      Faiblesse : `+listeFaiblesse[0]+`, `+listeFaiblesse[1])
+    //         .addFields(
+    //             { name : `Qualite 1`, value : listeQualite[0], inline : true},
+    //             { name : `Qualite 2`, value : listeQualite[1], inline : true},
+    //             { name : `Defaut 1`, value : fiche.Defaut, inline : true}
+    //         )
+    //         .addFields(
+    //             { name : `Force`, value : fiche.Competence.Force, inline : true},
+    //             { name : `Constitution`, value : fiche.Competence.Constitution, inline : true},
+    //             { name : `Charisme`, value : fiche.Competence.Charisme, inline : true}
+    //         )
+    //         .addFields(
+	// 			{ name : `Intelligence`, value : fiche.Competence.Intelligence, inline : true},
+	// 			{ name : `Survie`, value : fiche.Competence.Survie, inline : true},
+	// 			{ name : `Adresse`, value : fiche.Competence.Adresse, inline : true}
+	// 		)
+	// 		.addFields(
+	// 			{ name : `Spiritualite`, value : fiche.Competence.Spiritualite, inline : true},
+	// 			{ name : `Discretion`, value : fiche.Competence.Discretion, inline : true},
+	// 			{ name : `Lien Gdoc`, value : fiche.LienFichePerso, inline : true}
+	// 		)
+    //         .setThumbnail(taggedUser.avatarURL())
+    //         message.channel.send(exampleEmbed);
+	// }
 
 	//commande admin update fiche des gens
 	if (message.channel.id==auth.Salon.GestionFiche && message.member.roles.cache.has(auth.RoleRP.RoleStaff) && petitMessage.startsWith(prefixUpdateFiche))
@@ -788,52 +788,52 @@ client.on('message', async function (message, user)
 
 	// COMMANDE POUR LES GENS
 	//Fonction affichage fiche pour les gens 
-	if (message.channel.id==auth.Salon.Jet || message.channel.id==auth.Salon.SalonBotAdmin)
-	{
-		if (petitMessage.startsWith(prefixMaFiche)) 
-		{
-			var fiche = await FichePerso.findOne({_id: message.author.id}); 
-			const listeQualite=fiche.Qualite;
-			const listeFaiblesse=fiche.Faiblesse;
-			const exampleEmbed = new Discord.MessageEmbed()
-	            .setColor('#16EF0E')
-	            .setTitle("Fiche de " +fiche.Username)
-	            .setDescription(`Nom : `+fiche.Identite.Nom+`
-	                         Prenom : `+fiche.Identite.Prenom+`
-	                         Age: `+fiche.Identite.Age+`
-	                         Sexe: `+fiche.Identite.Sexe+`
-	                         Metier : `+fiche.Identite.Metier+`
-	                         Niveau de Maitrise : `+fiche.NiveauDeMaitrise+`
-	                         Niveau XP : `+fiche.NiveauXP+`
-	                         Point de Competence : `+fiche.GainCompetence+`
-	                         Faiblesse : `+listeFaiblesse[0]+`, `+listeFaiblesse[1])
+	// if (message.channel.id==auth.Salon.Jet || message.channel.id==auth.Salon.SalonBotAdmin)
+	// {
+	// 	if (petitMessage.startsWith(prefixMaFiche)) 
+	// 	{
+	// 		var fiche = await FichePerso.findOne({_id: message.author.id}); 
+	// 		const listeQualite=fiche.Qualite;
+	// 		const listeFaiblesse=fiche.Faiblesse;
+	// 		const exampleEmbed = new Discord.MessageEmbed()
+	//             .setColor('#16EF0E')
+	//             .setTitle("Fiche de " +fiche.Username)
+	//             .setDescription(`Nom : `+fiche.Identite.Nom+`
+	//                          Prenom : `+fiche.Identite.Prenom+`
+	//                          Age: `+fiche.Identite.Age+`
+	//                          Sexe: `+fiche.Identite.Sexe+`
+	//                          Metier : `+fiche.Identite.Metier+`
+	//                          Niveau de Maitrise : `+fiche.NiveauDeMaitrise+`
+	//                          Niveau XP : `+fiche.NiveauXP+`
+	//                          Point de Competence : `+fiche.GainCompetence+`
+	//                          Faiblesse : `+listeFaiblesse[0]+`, `+listeFaiblesse[1])
 
-                .addFields(
-                    { name : `Qualite 1`, value : listeQualite[0], inline : true},
-                    { name : `Qualite 2`, value : listeQualite[1], inline : true},
-                    { name : `Defaut 1`, value : fiche.Defaut, inline : true}
-                )
-                .addFields(
-                    { name : `Force`, value : fiche.Competence.Force, inline : true},
-                    { name : `Constitution`, value : fiche.Competence.Constitution, inline : true},
-                    { name : `Charisme`, value : fiche.Competence.Charisme, inline : true}
-                )
-                .addFields(
-					{ name : `Intelligence`, value : fiche.Competence.Intelligence, inline : true},
-					{ name : `Survie`, value : fiche.Competence.Survie, inline : true},
-					{ name : `Adresse`, value : fiche.Competence.Adresse, inline : true}
-				)
-				.addFields(
-					{ name : `Spiritualite`, value : fiche.Competence.Spiritualite, inline : true},
-					{ name : `Discretion`, value : fiche.Competence.Discretion, inline : true}
-				)
-				.addFields(
-					{ name : `Lien Gdoc`, value : fiche.LienFichePerso, inline : true}
-				)
-                .setThumbnail(message.author.avatarURL())
-	            message.channel.send(exampleEmbed);
-		}
-	}
+    //             .addFields(
+    //                 { name : `Qualite 1`, value : listeQualite[0], inline : true},
+    //                 { name : `Qualite 2`, value : listeQualite[1], inline : true},
+    //                 { name : `Defaut 1`, value : fiche.Defaut, inline : true}
+    //             )
+    //             .addFields(
+    //                 { name : `Force`, value : fiche.Competence.Force, inline : true},
+    //                 { name : `Constitution`, value : fiche.Competence.Constitution, inline : true},
+    //                 { name : `Charisme`, value : fiche.Competence.Charisme, inline : true}
+    //             )
+    //             .addFields(
+	// 				{ name : `Intelligence`, value : fiche.Competence.Intelligence, inline : true},
+	// 				{ name : `Survie`, value : fiche.Competence.Survie, inline : true},
+	// 				{ name : `Adresse`, value : fiche.Competence.Adresse, inline : true}
+	// 			)
+	// 			.addFields(
+	// 				{ name : `Spiritualite`, value : fiche.Competence.Spiritualite, inline : true},
+	// 				{ name : `Discretion`, value : fiche.Competence.Discretion, inline : true}
+	// 			)
+	// 			.addFields(
+	// 				{ name : `Lien Gdoc`, value : fiche.LienFichePerso, inline : true}
+	// 			)
+    //             .setThumbnail(message.author.avatarURL())
+	//             message.channel.send(exampleEmbed);
+	// 	}
+	// }
 
 	//Commande de gain d'XP par message dans les salons RP
 	if (message.channel.parent==auth.Salon.CategorieRPAzathys || message.channel.parent==auth.Salon.CategorieRPTempleAustral || message.channel.parent==auth.Salon.CategorieRPMasun || message.channel.parent==auth.Salon.CategorieRPCroissant || message.channel.parent==auth.Salon.CategorieRPTempOcci || message.channel.parent==auth.Salon.CategorieRPBraise || message.channel.parent==auth.Salon.CategorieRPBahSingSe || message.channel.parent==auth.Salon.CategorieRPOmashu || message.channel.parent==auth.Salon.CategorieRPMaraisBrumeux || message.channel.parent==auth.Salon.CategorieRPDesertSiWang || message.channel.parent==auth.Salon.CategorieRPTempOrient || message.channel.parent==auth.Salon.CategorieRPIleKyoshi || message.channel.parent==auth.Salon.CategorieRPTempBoreal|| message.channel.parent==auth.Salon.CategorieRPTribuSud || message.channel.parent==auth.Salon.CategorieTempleTerre || message.channel.parent==auth.Salon.CategorieSaloncache)
@@ -875,59 +875,59 @@ client.on('message', async function (message, user)
 	}
 
 	//Commande pour voir son XP
-	if ((message.channel.id==auth.Salon.Jet || message.channel.id==auth.Salon.SalonBotAdmin) && message.member.roles.cache.has(auth.RoleRP.RolePlay) && petitMessage.startsWith(prefixXP))
-	{
-		var xPficheLive = await FichePerso.findOne({_id: message.author.id});
-		message.reply("Tu as "+xPficheLive.NiveauXP+ " XP")
-	}
+	// if ((message.channel.id==auth.Salon.Jet || message.channel.id==auth.Salon.SalonBotAdmin) && message.member.roles.cache.has(auth.RoleRP.RolePlay) && petitMessage.startsWith(prefixXP))
+	// {
+	// 	var xPficheLive = await FichePerso.findOne({_id: message.author.id});
+	// 	message.reply("Tu as "+xPficheLive.NiveauXP+ " XP")
+	// }
 
 
 	//Appel de la BOUTIQUE
-	if ((message.channel.id==auth.Salon.Jet || message.channel.id==auth.Salon.SalonBotAdmin) && petitMessage.startsWith(prefixBoutique) && message.member.roles.cache.has(auth.RoleRP.RolePlay))
-	{
-		var boutique = await BoutiqueMaitrise.findOne({_id: "15257986"}); 
-			const exampleEmbed = new Discord.MessageEmbed()
+	// if ((message.channel.id==auth.Salon.Jet || message.channel.id==auth.Salon.SalonBotAdmin) && petitMessage.startsWith(prefixBoutique) && message.member.roles.cache.has(auth.RoleRP.RolePlay))
+	// {
+	// 	var boutique = await BoutiqueMaitrise.findOne({_id: "15257986"}); 
+	// 		const exampleEmbed = new Discord.MessageEmbed()
 
-	            .setColor('#16EF0E')
-	            .setTitle("Boutique de Nivaux de Maitrise")
-	            .setDescription("")
+	//             .setColor('#16EF0E')
+	//             .setTitle("Boutique de Nivaux de Maitrise")
+	//             .setDescription("")
 
-                .addFields(
-                    { name : `Maitrise 2`, value : boutique.Maitrise2, inline : true},
-                    { name : `Maitrise 3`, value : boutique.Maitrise3, inline : true},
-                    { name : `Maitrise 4`, value : boutique.Maitrise4, inline : true},
-                )
-                .addFields(
-                    { name : `Maitrise 5`, value : boutique.Maitrise5, inline : true},
-                    { name : `Maitrise 6`, value : boutique.Maitrise6, inline : true},
-                    { name : `Maitrise 7`, value : boutique.Maitrise7, inline : true},
-                )
-                .addFields(
-                    { name : `Maitrise 8`, value : boutique.Maitrise8, inline : true},
-                    { name : `Maitrise 9`, value : boutique.Maitrise9, inline : true},
-                    { name : `Maitrise 10`, value : boutique.Maitrise10, inline : true},
-                )
-                .addFields(
-                    { name : `Maitrise 11`, value : boutique.Maitrise11, inline : true},
-                    { name : `Maitrise 12`, value : boutique.Maitrise12, inline : true},
-                    { name : `Maitrise 13`, value : boutique.Maitrise13, inline : true},
-                )
-                .addFields(
-                    { name : `Maitrise 14`, value : boutique.Maitrise14, inline : true},
-                    { name : `Maitrise 15`, value : boutique.Maitrise15, inline : true},
-                    { name : `Maitrise 16`, value : boutique.Maitrise16, inline : true},
-                )
-                .addFields(
-                    { name : `Maitrise 17`, value : boutique.Maitrise17, inline : true},
-                    { name : `Maitrise 18`, value : boutique.Maitrise18, inline : true},
-                    { name : `Maitrise 19`, value : boutique.Maitrise19, inline : true},
-                )
-                .addFields(
-                    { name : `Maitrise 20`, value : boutique.Maitrise20, inline : true},
-                )
-                .setThumbnail("https://static.wikia.nocookie.net/skies-of-arcadia/images/e/e4/Avatar_The_Last_Airbender_logo_%28alternate_version%29.png/revision/latest?cb=20180224144932")
-	            message.channel.send(exampleEmbed);
-	}
+    //             .addFields(
+    //                 { name : `Maitrise 2`, value : boutique.Maitrise2, inline : true},
+    //                 { name : `Maitrise 3`, value : boutique.Maitrise3, inline : true},
+    //                 { name : `Maitrise 4`, value : boutique.Maitrise4, inline : true},
+    //             )
+    //             .addFields(
+    //                 { name : `Maitrise 5`, value : boutique.Maitrise5, inline : true},
+    //                 { name : `Maitrise 6`, value : boutique.Maitrise6, inline : true},
+    //                 { name : `Maitrise 7`, value : boutique.Maitrise7, inline : true},
+    //             )
+    //             .addFields(
+    //                 { name : `Maitrise 8`, value : boutique.Maitrise8, inline : true},
+    //                 { name : `Maitrise 9`, value : boutique.Maitrise9, inline : true},
+    //                 { name : `Maitrise 10`, value : boutique.Maitrise10, inline : true},
+    //             )
+    //             .addFields(
+    //                 { name : `Maitrise 11`, value : boutique.Maitrise11, inline : true},
+    //                 { name : `Maitrise 12`, value : boutique.Maitrise12, inline : true},
+    //                 { name : `Maitrise 13`, value : boutique.Maitrise13, inline : true},
+    //             )
+    //             .addFields(
+    //                 { name : `Maitrise 14`, value : boutique.Maitrise14, inline : true},
+    //                 { name : `Maitrise 15`, value : boutique.Maitrise15, inline : true},
+    //                 { name : `Maitrise 16`, value : boutique.Maitrise16, inline : true},
+    //             )
+    //             .addFields(
+    //                 { name : `Maitrise 17`, value : boutique.Maitrise17, inline : true},
+    //                 { name : `Maitrise 18`, value : boutique.Maitrise18, inline : true},
+    //                 { name : `Maitrise 19`, value : boutique.Maitrise19, inline : true},
+    //             )
+    //             .addFields(
+    //                 { name : `Maitrise 20`, value : boutique.Maitrise20, inline : true},
+    //             )
+    //             .setThumbnail("https://static.wikia.nocookie.net/skies-of-arcadia/images/e/e4/Avatar_The_Last_Airbender_logo_%28alternate_version%29.png/revision/latest?cb=20180224144932")
+	//             message.channel.send(exampleEmbed);
+	// }
 
 	//Achat dans la BOUTIQUE
 	if (message.channel.id==auth.Salon.Jet && petitMessage.startsWith(prefixAchatBoutique) && message.member.roles.cache.has(auth.RoleRP.RolePlay))
@@ -2759,58 +2759,58 @@ client.on('message', async function (message, user)
 	}
 
 	//Commande de check la meteo
-	if ((message.channel.id==auth.Salon.Jet || message.channel.id==auth.Salon.SalonBotAdmin) && petitMessage.startsWith(prefixWhatWeather) && message.member.roles.cache.has(auth.RoleRP.RolePlay))
-	{
-		var ficheMeteo = await Weather.findOne({_id: "152579868"});
-		if (message.member.roles.cache.has(auth.RoleRP.PoleNord))
-		{
-			message.reply("Temps au pole nord : " +ficheMeteo.PoleNord)
-		}
-		else if (message.member.roles.cache.has(auth.RoleRP.TempleAus))
-		{
-			message.reply("Temps au temple austral : " +ficheMeteo.TempleAus)
-		}
-		else if (message.member.roles.cache.has(auth.RoleRP.NationFeu))
-		{
-			message.reply("Temps sur la nation du feu : " +ficheMeteo.NationFeu)
-		}
-		else if (message.member.roles.cache.has(auth.RoleRP.TempleOcc))
-		{
-			message.reply("Temps au temple occidental : " +ficheMeteo.TempleOcc)
-		}
-		else if (message.member.roles.cache.has(auth.RoleRP.BaSingSe))
-		{
-			message.reply("Temps sur la capitale Ba Sing Se : " +ficheMeteo.BaSingSe)
-		}
-		else if (message.member.roles.cache.has(auth.RoleRP.Omashu))
-		{
-			message.reply("Temps a Omashu : " +ficheMeteo.Omashu)
-		}
-		else if (message.member.roles.cache.has(auth.RoleRP.Marais))
-		{
-			message.reply("Temps dans la region des marais : " +ficheMeteo.Marais)
-		}
-		else if (message.member.roles.cache.has(auth.RoleRP.Desert))
-		{
-			message.reply("Temps dans le desert de Si Wong : " +ficheMeteo.Desert)
-		}
-		else if (message.member.roles.cache.has(auth.RoleRP.TempleOr))
-		{
-			message.reply("Temps au temple oriental :" +ficheMeteo.TempleOr)
-		}
-		else if (message.member.roles.cache.has(auth.RoleRP.IleKyoshi))
-		{
-			message.reply("Temps sur l'ile de Kyoshi : " +ficheMeteo.IleKyoshi)
-		}
-		else if (message.member.roles.cache.has(auth.RoleRP.TempleBor))
-		{
-			message.reply("Temps au temple boreal : " +ficheMeteo.TempleBor)
-		}
-		else if (message.member.roles.cache.has(auth.RoleRP.PoleSud))
-		{
-			message.reply("Temps au pole sud : " +ficheMeteo.PoleSud)
-		}
-	}
+	// if ((message.channel.id==auth.Salon.Jet || message.channel.id==auth.Salon.SalonBotAdmin) && petitMessage.startsWith(prefixWhatWeather) && message.member.roles.cache.has(auth.RoleRP.RolePlay))
+	// {
+	// 	var ficheMeteo = await Weather.findOne({_id: "152579868"});
+	// 	if (message.member.roles.cache.has(auth.RoleRP.PoleNord))
+	// 	{
+	// 		message.reply("Temps au pole nord : " +ficheMeteo.PoleNord)
+	// 	}
+	// 	else if (message.member.roles.cache.has(auth.RoleRP.TempleAus))
+	// 	{
+	// 		message.reply("Temps au temple austral : " +ficheMeteo.TempleAus)
+	// 	}
+	// 	else if (message.member.roles.cache.has(auth.RoleRP.NationFeu))
+	// 	{
+	// 		message.reply("Temps sur la nation du feu : " +ficheMeteo.NationFeu)
+	// 	}
+	// 	else if (message.member.roles.cache.has(auth.RoleRP.TempleOcc))
+	// 	{
+	// 		message.reply("Temps au temple occidental : " +ficheMeteo.TempleOcc)
+	// 	}
+	// 	else if (message.member.roles.cache.has(auth.RoleRP.BaSingSe))
+	// 	{
+	// 		message.reply("Temps sur la capitale Ba Sing Se : " +ficheMeteo.BaSingSe)
+	// 	}
+	// 	else if (message.member.roles.cache.has(auth.RoleRP.Omashu))
+	// 	{
+	// 		message.reply("Temps a Omashu : " +ficheMeteo.Omashu)
+	// 	}
+	// 	else if (message.member.roles.cache.has(auth.RoleRP.Marais))
+	// 	{
+	// 		message.reply("Temps dans la region des marais : " +ficheMeteo.Marais)
+	// 	}
+	// 	else if (message.member.roles.cache.has(auth.RoleRP.Desert))
+	// 	{
+	// 		message.reply("Temps dans le desert de Si Wong : " +ficheMeteo.Desert)
+	// 	}
+	// 	else if (message.member.roles.cache.has(auth.RoleRP.TempleOr))
+	// 	{
+	// 		message.reply("Temps au temple oriental :" +ficheMeteo.TempleOr)
+	// 	}
+	// 	else if (message.member.roles.cache.has(auth.RoleRP.IleKyoshi))
+	// 	{
+	// 		message.reply("Temps sur l'ile de Kyoshi : " +ficheMeteo.IleKyoshi)
+	// 	}
+	// 	else if (message.member.roles.cache.has(auth.RoleRP.TempleBor))
+	// 	{
+	// 		message.reply("Temps au temple boreal : " +ficheMeteo.TempleBor)
+	// 	}
+	// 	else if (message.member.roles.cache.has(auth.RoleRP.PoleSud))
+	// 	{
+	// 		message.reply("Temps au pole sud : " +ficheMeteo.PoleSud)
+	// 	}
+	// }
 
 	//Commande d'ajout de competence
 	if ((message.channel.id==auth.Salon.Jet || message.channel.id==auth.Salon.SalonBotAdmin) && petitMessage.startsWith(prefixAjoutCompetence) && message.member.roles.cache.has(auth.RoleRP.RolePlay))
