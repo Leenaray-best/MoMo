@@ -1109,7 +1109,7 @@ client.on("message", async function (message, user) {
   console.log(message.channel.id);
   for (i = 0; i < tailleTableau; i++) {
     console.log(guildQuete.AllCategorie[i]);
-    if (message.channel.id == guildQuete.AllCategorie[i]) {
+    if (message.channel.parent == guildQuete.AllCategorie[i]) {
       // if (
       //   message.channel.parent == auth.Salon.CategorieRPAzathys ||
       //   message.channel.parent == auth.Salon.CategorieRPTempleAustral ||
