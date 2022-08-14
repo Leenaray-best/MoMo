@@ -17,6 +17,7 @@ const FicheBonusQuete = require("./salonBonus.js");
 // const BoutiqueMaitrise = require("./Boutique.js");
 const Weather = require("./meteo.js");
 const ListeMetier = require("./job.js");
+const FicheQuete = require("./salonQuete.js");
 const prefixFiche = "ficheperso";
 const prefixMaitrise = "roll-maitrise";
 const prefixXP = "monxp";
