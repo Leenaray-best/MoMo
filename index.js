@@ -1951,6 +1951,7 @@ client.on("message", async function (message, user) {
               const tailleTableau = ficheBonus.Terre.length;
               console.log(tailleTableau);
               for (i = 0; i < tailleTableau; i++) {
+                console.log(ficheBonus.Terre[i]);
                 if (
                   message.member.roles.cache.has(auth.RoleRP.Terre) &&
                   message.channel.id == ficheBonus.Terre[i] /* &&
@@ -1964,9 +1965,10 @@ client.on("message", async function (message, user) {
                     message.channel.id == auth.Salon.PlageAus ||
                     message.channel.id == auth.Salon.BiblioSiWong) */
                 ) {
-                  console.log("on passe par ici");
+                  console.log("Bonus de salon");
                   BonusLieuTerre = Number(1);
                 } else {
+                  console.log("Pas de bonus de salon");
                   BonusLieuTerre = Number(0);
                 }
               }
