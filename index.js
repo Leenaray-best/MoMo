@@ -1949,6 +1949,7 @@ client.on("message", async function (message, user) {
                 _id: auth.idDatabase.BonusId,
               });
               const tailleTableau = ficheBonus.Terre.length;
+              console.log(tailleTableau);
               for (i = 0; i < tailleTableau; i++) {
                 if (
                   message.member.roles.cache.has(auth.RoleRP.Terre) &&
