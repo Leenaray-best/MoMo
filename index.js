@@ -1957,16 +1957,7 @@ client.on("message", async function (message, user) {
                 console.log(ficheBonus.Terre[i]);
                 if (
                   message.member.roles.cache.has(auth.RoleRP.Terre) &&
-                  message.channel.id == ficheBonus.Terre[i] /* &&
-                  (message.channel.id == auth.Salon.CaveGlace ||
-                    message.channel.id == auth.Salon.CatacombeCristal ||
-                    message.channel.id == auth.Salon.CaviteRocheuse ||
-                    message.channel.id == auth.Salon.MineOmashu ||
-                    message.channel.id == auth.Salon.MontagneKolau ||
-                    message.channel.id == auth.Salon.FlancMontagne ||
-                    message.channel.id == auth.Salon.GrandCanyon ||
-                    message.channel.id == auth.Salon.PlageAus ||
-                    message.channel.id == auth.Salon.BiblioSiWong) */
+                  message.channel.id == ficheBonus.Terre[i]
                 ) {
                   console.log("Bonus de salon");
                   BonusLieuTerre = Number(1);
@@ -3137,24 +3128,25 @@ client.on("message", async function (message, user) {
                 message.member.roles.cache.has(auth.RoleRP.Air)
               ) {
                 BonusChauve = Number(1);
+                BonusLieuTerre = Number(0);
               } else {
                 BonusChauve = Number(0);
-              }
-              if (
-                message.member.roles.cache.has(auth.RoleRP.Terre) &&
-                (message.channel.id == auth.Salon.CaveGlace ||
-                  message.channel.id == auth.Salon.CatacombeCristal ||
-                  message.channel.id == auth.Salon.CaviteRocheuse ||
-                  message.channel.id == auth.Salon.MineOmashu ||
-                  message.channel.id == auth.Salon.MontagneKolau ||
-                  message.channel.id == auth.Salon.FlancMontagne ||
-                  message.channel.id == auth.Salon.GrandCanyon ||
-                  message.channel.id == auth.Salon.PlageAus ||
-                  message.channel.id == auth.Salon.BiblioSiWong)
-              ) {
-                BonusLieuTerre = Number(1);
-              } else {
                 BonusLieuTerre = Number(0);
+              }
+              var ficheBonus = await FicheBonusQuete.findOne({
+                _id: auth.idDatabase.BonusId,
+              });
+              const tailleTableau = ficheBonus.Terre.length;
+              console.log(tailleTableau);
+              console.log(message.channel.id);
+              for (i = 0; i < tailleTableau; i++) {
+                console.log(ficheBonus.Terre[i]);
+                if (
+                  message.member.roles.cache.has(auth.RoleRP.Terre) &&
+                  message.channel.id == ficheBonus.Terre[i]
+                ) {
+                  BonusLieuTerre = Number(1);
+                }
               }
               if (message.member.roles.cache.has(auth.RoleRP.Terre)) {
                 var BonusCompetence = Number(fiche.Competence.Constitution);
