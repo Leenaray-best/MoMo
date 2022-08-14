@@ -11,7 +11,7 @@ const salonQuete = mongoose.Schema({
   Attente: [String],
   Branche: [String],
   Bain: [String],
-
+  Putois: [String],
   time: Date,
 });
 

@@ -1103,62 +1103,67 @@ client.on("message", async function (message, user) {
   // }
 
   //Commande de gain d'XP par message dans les salons RP
-  if (
-    message.channel.parent == auth.Salon.CategorieRPAzathys ||
-    message.channel.parent == auth.Salon.CategorieRPTempleAustral ||
-    message.channel.parent == auth.Salon.CategorieRPMasun ||
-    message.channel.parent == auth.Salon.CategorieRPCroissant ||
-    message.channel.parent == auth.Salon.CategorieRPTempOcci ||
-    message.channel.parent == auth.Salon.CategorieRPBraise ||
-    message.channel.parent == auth.Salon.CategorieRPBahSingSe ||
-    message.channel.parent == auth.Salon.CategorieRPOmashu ||
-    message.channel.parent == auth.Salon.CategorieRPMaraisBrumeux ||
-    message.channel.parent == auth.Salon.CategorieRPDesertSiWang ||
-    message.channel.parent == auth.Salon.CategorieRPTempOrient ||
-    message.channel.parent == auth.Salon.CategorieRPIleKyoshi ||
-    message.channel.parent == auth.Salon.CategorieRPTempBoreal ||
-    message.channel.parent == auth.Salon.CategorieRPTribuSud ||
-    message.channel.parent == auth.Salon.CategorieTempleTerre ||
-    message.channel.parent == auth.Salon.CategorieSaloncache
-  ) {
-    if (message.member.roles.cache.has(auth.RoleRP.progreAFaire)) {
-      console.log("ne fait rien");
-    } else {
-      var NewXP = 0;
-      var taillemessage = counterMot.count(petitMessage, "-c");
-      console.log(taillemessage);
-      if (taillemessage.chars < 100) {
-        var xPfiche = await FichePerso.findOne({ _id: message.author.id });
-        await FichePerso.findOneAndUpdate(
-          { _id: message.author.id },
-          { time: Date.now() }
-        );
+  let guildQuete = await FicheQuete.findOne({ _id: auth.idDatabase.questId });
+  const tailleTableau = guildQuete.AllCategorie.length;
+  for (i = 0; i < tailleTableau; i++) {
+    if (message.channel.id == guildQuete.AllCategorie[i]) {
+      // if (
+      //   message.channel.parent == auth.Salon.CategorieRPAzathys ||
+      //   message.channel.parent == auth.Salon.CategorieRPTempleAustral ||
+      //   message.channel.parent == auth.Salon.CategorieRPMasun ||
+      //   message.channel.parent == auth.Salon.CategorieRPCroissant ||
+      //   message.channel.parent == auth.Salon.CategorieRPTempOcci ||
+      //   message.channel.parent == auth.Salon.CategorieRPBraise ||
+      //   message.channel.parent == auth.Salon.CategorieRPBahSingSe ||
+      //   message.channel.parent == auth.Salon.CategorieRPOmashu ||
+      //   message.channel.parent == auth.Salon.CategorieRPMaraisBrumeux ||
+      //   message.channel.parent == auth.Salon.CategorieRPDesertSiWang ||
+      //   message.channel.parent == auth.Salon.CategorieRPTempOrient ||
+      //   message.channel.parent == auth.Salon.CategorieRPIleKyoshi ||
+      //   message.channel.parent == auth.Salon.CategorieRPTempBoreal ||
+      //   message.channel.parent == auth.Salon.CategorieRPTribuSud ||
+      //   message.channel.parent == auth.Salon.CategorieTempleTerre ||
+      //   message.channel.parent == auth.Salon.CategorieSaloncache
+      // ) {
+      if (message.member.roles.cache.has(auth.RoleRP.progreAFaire)) {
+        console.log("ne fait rien");
+      } else {
+        var NewXP = 0;
+        var taillemessage = counterMot.count(petitMessage, "-c");
+        console.log(taillemessage);
+        if (taillemessage.chars < 100) {
+          var xPfiche = await FichePerso.findOne({ _id: message.author.id });
+          await FichePerso.findOneAndUpdate(
+            { _id: message.author.id },
+            { time: Date.now() }
+          );
+        }
+        if (taillemessage.chars >= 150 && taillemessage.chars <= 200) {
+          var xPfiche = await FichePerso.findOne({ _id: message.author.id });
+          var NewXP = xPfiche.NiveauXP + Rand(30) + 10;
+          await FichePerso.findOneAndUpdate(
+            { _id: message.author.id },
+            { NiveauXP: NewXP, time: Date.now() }
+          );
+        }
+        if (taillemessage.chars > 200 && taillemessage.chars <= 250) {
+          var xPfiche = await FichePerso.findOne({ _id: message.author.id });
+          var NewXP = xPfiche.NiveauXP + Rand(70) + 30;
+          await FichePerso.findOneAndUpdate(
+            { _id: message.author.id },
+            { NiveauXP: NewXP, time: Date.now() }
+          );
+        }
+        if (taillemessage.chars > 250) {
+          var xPfiche = await FichePerso.findOne({ _id: message.author.id });
+          var NewXP = xPfiche.NiveauXP + Rand(90) + 70;
+          await FichePerso.findOneAndUpdate(
+            { _id: message.author.id },
+            { NiveauXP: NewXP, time: Date.now() }
+          );
+        }
+        console.log(NewXP);
       }
-      if (taillemessage.chars >= 150 && taillemessage.chars <= 200) {
-        var xPfiche = await FichePerso.findOne({ _id: message.author.id });
-        var NewXP = xPfiche.NiveauXP + Rand(30) + 10;
-        await FichePerso.findOneAndUpdate(
-          { _id: message.author.id },
-          { NiveauXP: NewXP, time: Date.now() }
-        );
-      }
-      if (taillemessage.chars > 200 && taillemessage.chars <= 250) {
-        var xPfiche = await FichePerso.findOne({ _id: message.author.id });
-        var NewXP = xPfiche.NiveauXP + Rand(70) + 30;
-        await FichePerso.findOneAndUpdate(
-          { _id: message.author.id },
-          { NiveauXP: NewXP, time: Date.now() }
-        );
-      }
-      if (taillemessage.chars > 250) {
-        var xPfiche = await FichePerso.findOne({ _id: message.author.id });
-        var NewXP = xPfiche.NiveauXP + Rand(90) + 70;
-        await FichePerso.findOneAndUpdate(
-          { _id: message.author.id },
-          { NiveauXP: NewXP, time: Date.now() }
-        );
-      }
-      console.log(NewXP);
     }
   }
 
@@ -5110,6 +5115,146 @@ client.on("message", async function (message, user) {
   ) {
     message.reply("Tout est revenue a la normale.");
     message.member.roles.remove(auth.RoleRP.SansForce);
+  }
+
+  //Quetes positives dans les geoles
+  if (
+    message.author.id != auth.staff.emi &&
+    (petitMessage.includes("barreau") || petitMessage.includes("barre")) &&
+    Math.random() <= 0.5 &&
+    !message.member.roles.cache.has(auth.RoleRP.Musaraigne)
+  ) {
+    let guildQuete = await FicheQuete.findOne({ _id: auth.idDatabase.questId });
+    const tailleTableau = guildQuete.Barreau.length;
+    for (i = 0; i < tailleTableau; i++) {
+      if (message.channel.id == guildQuete.Barreau[i]) {
+        message.member.roles.add(auth.RoleRP.Musaraigne);
+        message.reply(
+          "Alors que vous vous occupiez de vos affaire, vous apercevez dans un recoin sombre  une sorte de musaraigne toute mimi. Alors que cette dernière se délecte d'un repas volé à un voleur -quelle ironie- .\nLa créature casse une noisette en la frappant vivement contre le mur.... provoquant la chute d'une torche !\nUne torche se décroche et tombeau sol, effrayant la dite musaraigne qui s'enfuie dans son trou. En y regardant de plus près, l'éclat de la torche se réverbère sur... quelque chose dans le trou de la musaraigne... En farfouillant, vous en tirez un sac rempli de pierres précieuses qui vous subjuguent ! Vous gagnez 5000 <:zap:997455359730003998> et une richesse ! "
+        );
+        var Quantity = 5000; // Amount of Joker
+        var fiche = await FichePerso.findOne({ _id: message.author.id });
+        var NewXP = fiche.NiveauXP + Quantity;
+        await FichePerso.findOneAndUpdate(
+          { _id: message.author.id },
+          { NiveauXP: NewXP }
+        );
+        client.channels.cache
+          .get(auth.Salon.SalonBotAdmin)
+          .send(
+            "<@" +
+              message.author.id +
+              "> est tombe sur une malicieuse musaraigne, et a gagne " +
+              Quantity +
+              " XP"
+          );
+      }
+    }
+  }
+
+  //Quetes positives sur la mer
+  if (
+    message.author.id != auth.staff.emi &&
+    (petitMessage.includes("bateau") ||
+      petitMessage.includes("navire") ||
+      petitMessage.includes("embarcation")) &&
+    Math.random() <= 0.5 &&
+    !message.member.roles.cache.has(auth.RoleRP.Moule)
+  ) {
+    let guildQuete = await FicheQuete.findOne({ _id: auth.idDatabase.questId });
+    const tailleTableau = guildQuete.Bateau.length;
+    for (i = 0; i < tailleTableau; i++) {
+      if (message.channel.id == guildQuete.Bateau[i]) {
+        message.member.roles.add(auth.RoleRP.Moule);
+        message.reply(
+          " Alors que vous vaquiez à vos occupations, votre regard se pose sur un sorte d'objet brillant accroché à la coque de votre navire. En y regardant de plus près, il s'agit d'une moule. Mais pas de n'importe quelle moule ! Une moule opaline ! On dit qu'elle est la marque d'un esprit bienveillant qui se serait amouraché de vous ! En la touchant, vous pouvez sentir toute l'affection que cet esprit vous porte et vous sentir comme comblé d'un précieux cadeau ! L'esprit vous a offert le présent de 4000 <:zap:997455359730003998> ! Quelle générosité !"
+        );
+        var Quantity = 4000; // Amount of Joker
+        var fiche = await FichePerso.findOne({ _id: message.author.id });
+        var NewXP = fiche.NiveauXP + Quantity;
+        await FichePerso.findOneAndUpdate(
+          { _id: message.author.id },
+          { NiveauXP: NewXP }
+        );
+        client.channels.cache
+          .get(auth.Salon.SalonBotAdmin)
+          .send(
+            "<@" +
+              message.author.id +
+              "> est tombe sur une moule opaline, et a gagne " +
+              Quantity +
+              " XP"
+          );
+      }
+    }
+  }
+
+  //Quetes sans charisme
+  if (
+    message.author.id != auth.staff.emi &&
+    (petitMessage.includes("parchemin") || petitMessage.includes("encre")) &&
+    Math.random() <= 0.5
+  ) {
+    let guildQuete = await FicheQuete.findOne({ _id: auth.idDatabase.questId });
+    const tailleTableau = guildQuete.Parchemin.length;
+    for (i = 0; i < tailleTableau; i++) {
+      if (message.channel.id == guildQuete.Parchemin[i]) {
+        message.member.roles.add(auth.RoleRP.SansCharisme);
+        message.reply(
+          " Alors que vous faisiez votre vie, votre regard se pose sur un curieux écrit dans une écriture qui vous ait inconnue. Vous tournez les pages, vous vous grattez la tête, vous vous tenez le menton et haussez les épaules devant cette trouvaille. HORREUR ! Votre visage se trouve maculé d'encre sombre, vous donnant un air des plus misérables ! Les gens semblent effrayés ou se rient de votre apparence ridicule ! \n Vous n'avez plus aucun charisme ! Seul frotter votre visage avec un alcool puissant pourra vous débarrassez de cette encre coriace ! "
+        );
+      }
+    }
+  }
+  if (
+    message.author.id != auth.staff.emi &&
+    (petitMessage.includes("frotte") || petitMessage.includes("frotter")) &&
+    message.member.roles.cache.has(auth.RoleRP.SansCharisme)
+  ) {
+    let guildQuete = await FicheQuete.findOne({ _id: auth.idDatabase.questId });
+    const tailleTableau = guildQuete.Frotter.length;
+    for (i = 0; i < tailleTableau; i++) {
+      if (message.channel.id == guildQuete.Frotter[i]) {
+        message.member.roles.add(auth.RoleRP.SansCharisme);
+        message.reply("Tu as retrouver toute ta beaute");
+        message.member.roles.remove(auth.RoleRP.SansCharisme);
+      }
+    }
+  }
+
+  //Quetes positives dans son lit
+  if (
+    message.author.id != auth.staff.emi &&
+    petitMessage.includes("lit") &&
+    Math.random() <= 0.5 &&
+    !message.member.roles.cache.has(auth.RoleRP.Dormeur)
+  ) {
+    let guildQuete = await FicheQuete.findOne({ _id: auth.idDatabase.questId });
+    const tailleTableau = guildQuete.Lit.length;
+    for (i = 0; i < tailleTableau; i++) {
+      if (message.channel.id == guildQuete.Lit[i]) {
+        message.member.roles.add(auth.RoleRP.Dormeur);
+        message.reply(
+          " Alors que vos muscles se détendent, vous vous endormez soudain comme dans une transe. La journée a dû être rude ! Votre rêve s'émerveille soudain. Est-ce le monde spirituel que vous traverser à dos d'un équidé rose pourvu d'une longue corne dorée sur le devant de son crâne ? FA-BU-LEUX ! Jamais vous ne pensiez imaginez de telles choses ! En revenant à vous, vous vous sentez super confiant ! Ce rêve vous a donné des ailes et... 3000 <:zap:997455359730003998> ! Waouh !"
+        );
+        var Quantity = 3000; // Amount of Joker
+        var fiche = await FichePerso.findOne({ _id: message.author.id });
+        var NewXP = fiche.NiveauXP + Quantity;
+        await FichePerso.findOneAndUpdate(
+          { _id: message.author.id },
+          { NiveauXP: NewXP }
+        );
+        client.channels.cache
+          .get(auth.Salon.SalonBotAdmin)
+          .send(
+            "<@" +
+              message.author.id +
+              "> a fait un reve lucratif, et a gagne " +
+              Quantity +
+              " XP"
+          );
+      }
+    }
   }
 
   //Faire apparaitre l'iD d'un joueur
