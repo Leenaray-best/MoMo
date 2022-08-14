@@ -1963,6 +1963,7 @@ client.on("message", async function (message, user) {
                     message.channel.id == auth.Salon.PlageAus ||
                     message.channel.id == auth.Salon.BiblioSiWong) */
                 ) {
+                  console.log("on passe par ici");
                   BonusLieuTerre = Number(1);
                 } else {
                   BonusLieuTerre = Number(0);
