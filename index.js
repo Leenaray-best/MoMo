@@ -1942,8 +1942,10 @@ client.on("message", async function (message, user) {
                 message.member.roles.cache.has(auth.RoleRP.Air)
               ) {
                 BonusChauve = Number(1);
+                BonusLieuTerre = Number(0);
               } else {
                 BonusChauve = Number(0);
+                BonusLieuTerre = Number(0);
               }
               var ficheBonus = await FicheBonusQuete.findOne({
                 _id: auth.idDatabase.BonusId,
@@ -1968,9 +1970,6 @@ client.on("message", async function (message, user) {
                 ) {
                   console.log("Bonus de salon");
                   BonusLieuTerre = Number(1);
-                } else {
-                  console.log("Pas de bonus de salon");
-                  BonusLieuTerre = Number(0);
                 }
               }
               if (!tableauDeMot[1]) {
