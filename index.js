@@ -1950,6 +1950,7 @@ client.on("message", async function (message, user) {
               });
               const tailleTableau = ficheBonus.Terre.length;
               console.log(tailleTableau);
+              console.log(message.channel.id);
               for (i = 0; i < tailleTableau; i++) {
                 console.log(ficheBonus.Terre[i]);
                 if (
