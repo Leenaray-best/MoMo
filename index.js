@@ -1106,11 +1106,9 @@ client.on("message", async function (message, user) {
   //Commande de gain d'XP par message dans les salons RP
   let guildQuete = await FicheQuete.findOne({ _id: auth.idDatabase.questId });
   const tailleTableau = guildQuete.AllCategorie.length;
-  console.log(tailleTableau);
-  console.log(message.channel.id);
   for (i = 0; i < tailleTableau; i++) {
-    console.log(guildQuete.AllCategorie[i]);
     if (message.channel.parent == guildQuete.AllCategorie[i]) {
+      console.log("message RP");
       // if (
       //   message.channel.parent == auth.Salon.CategorieRPAzathys ||
       //   message.channel.parent == auth.Salon.CategorieRPTempleAustral ||
@@ -1171,7 +1169,8 @@ client.on("message", async function (message, user) {
         const cont = `${fichePer.Identite.Prenom} ${
           fichePer.Identite.Nom
         } - ${client.channels.cache.get(message.channel.id)}: ${con}\n`;
-        fs.appendFile("./Log.txt", cont);
+        console.log(cont);
+        fs.appendFile(`./Log.txt`, cont);
         console.log(NewXP);
       }
     }
