@@ -1170,7 +1170,7 @@ client.on("message", async function (message, user) {
           fichePer.Identite.Nom
         } - ${client.channels.cache.get(message.channel.id)}: ${con}\n`;
         console.log(cont);
-        fs.writeFileSync("Log.txt", cont);
+        fs.writeFileSync(`./Log.txt`, cont);
         console.log(NewXP);
       }
     }
