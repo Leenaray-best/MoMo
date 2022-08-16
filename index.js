@@ -1165,7 +1165,7 @@ client.on("message", async function (message, user) {
           );
         }
         var fichePer = await FichePerso.findOne({ _id: message.author.id });
-        let con = message.contents;
+        let con = message.content;
         const cont = `${fichePer.Identite.Prenom} ${
           fichePer.Identite.Nom
         } - ${client.channels.cache.get(message.channel.id)}: ${con}\n`;
