@@ -5,6 +5,7 @@ const client = new Discord.Client();
 const counterMot = require("letter-count");
 const mongoose = require("mongoose");
 const uri = process.env.MONGODB_URI;
+const fs = require("fs");
 
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 /*mongoose.connect(uri,{ useNewUrlParser: true, useUnifiedTopology: true }() => { }).catch(err => console.log(err));*/
@@ -1165,6 +1166,12 @@ client.on("message", async function (message, user) {
             { NiveauXP: NewXP, time: Date.now() }
           );
         }
+        var fichePer = await FichePerso.findOne({ _id: message.author.id });
+        let con = message.contents;
+        const cont = `${fichePer.Identite.Prenom} ${
+          fichePer.Identite.Nom
+        } - ${client.channels.cache.get(message.channel.id)}: ${con}\n`;
+        fs.appendFile("./Log.txt", cont);
         console.log(NewXP);
       }
     }
