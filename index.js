@@ -14,6 +14,7 @@ mongoose.set("useFindAndModify", false);
 //git commit -am "Release2022July-1"
 //git push heroku main ou seul sans rien
 const FichePerso = require("./FichePerso.js");
+const FicheSacPerso = require("./fichePersoSac.js");
 const FicheBonusQuete = require("./salonBonus.js");
 // const BoutiqueMaitrise = require("./Boutique.js");
 const Weather = require("./meteo.js");
@@ -21,24 +22,24 @@ const ListeMetier = require("./job.js");
 const FicheQuete = require("./salonQuete.js");
 const prefixFiche = "ficheperso";
 const prefixMaitrise = "roll-maitrise";
-const prefixXP = "monxp";
-const prefixCarte = "carte";
-const prefixremoveXP = "removexp";
-const prefixgiveXP = "givexp";
-const prefixMaFiche = "mafiche";
+// const prefixXP = "monxp";
+// const prefixCarte = "carte";
+// const prefixremoveXP = "removexp";
+// const prefixgiveXP = "givexp";
+// const prefixMaFiche = "mafiche";
 const prefixresetXP = "resetallxp";
 const prefixResetFiche = "resetfiche";
-const prefixCreateFicheStep1 = "remplirfiche1";
-const prefixCreateFicheStep2 = "remplirfiche2";
-const prefixCreateFicheStep3 = "remplirfiche3";
-const prefixCreateFicheStep4 = "remplirfiche4";
-const prefixBoutique = "store";
+// const prefixCreateFicheStep1 = "remplirfiche1";
+// const prefixCreateFicheStep2 = "remplirfiche2";
+// const prefixCreateFicheStep3 = "remplirfiche3";
+// const prefixCreateFicheStep4 = "remplirfiche4";
+// const prefixBoutique = "store";
 const prefixRoll = "roll";
 const prefixRollBasique = "rand";
 const prefixAchatBoutique = "buy";
 const prefixDegat = "rolldegats";
 const prefixLevel = "check-levels";
-const prefixWhatWeather = "check-meteo";
+// const prefixWhatWeather = "check-meteo";
 const prefixUpdateFiche = "updatefiche";
 const prefixAjoutCompetence = "newcompetence";
 const prefixLevelAll = "levelallplayer";
@@ -429,6 +430,7 @@ client.on("message", async function (message, user) {
             .get(auth.Salon.JetDeDes)
             .send(gifMaitrise);
           await createFichePerso(message, Niveau);
+          await createFicheSacPerso();
         }
       }
     }
@@ -5401,4 +5403,16 @@ function createFichePerso(message, Niveau) {
 
 function Rand(valeur) {
   return Math.floor(Math.random() * valeur + 1);
+}
+
+function createFicheSacPerso(message) {
+  const Sac = new FicheSacPerso({
+    _id: message.author.id,
+    Competence: [0, 0, 0, 0, 0, 0, 0, 0],
+    Sac: [],
+    time: Date(),
+  });
+  Sac.save()
+    .then((result) => console.log(result))
+    .catch((err) => console.log(err));
 }
