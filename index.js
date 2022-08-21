@@ -430,7 +430,7 @@ client.on("message", async function (message, user) {
             .get(auth.Salon.JetDeDes)
             .send(gifMaitrise);
           await createFichePerso(message, Niveau);
-          await createFicheSacPerso();
+          await createFicheSacPerso(message);
         }
       }
     }
