@@ -4,7 +4,7 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 const counterMot = require("letter-count");
 const mongoose = require("mongoose");
-const uri = process.env.MONGODB_URI; FOR HEROKU */
+const uri = process.env.MONGODB_URI; /*FOR HEROKU */
 /*const uri = auth.MONGODB_URI; /*FOR LOCAL*/
 const fs = require("fs");
 
