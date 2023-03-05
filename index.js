@@ -4,7 +4,8 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 const counterMot = require("letter-count");
 const mongoose = require("mongoose");
-const uri = process.env.MONGODB_URI;
+const uri = process.env.MONGODB_URI; FOR HEROKU */
+/*const uri = auth.MONGODB_URI; /*FOR LOCAL*/
 const fs = require("fs");
 
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -55,7 +56,8 @@ const SalaireCat4 = 450;
 const SalaireCat5 = 500;
 var CountLune;
 
-client.login(process.env.BOT_TOKEN);
+/* client.login(process.env.BOT_TOKEN); Pour Heroku */
+client.login(auth.BOT_TOKEN); /* POUR LOCAL */
 client.on("ready", () => {
   //createBoutique();
   createJobList();
