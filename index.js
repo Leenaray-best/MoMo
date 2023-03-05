@@ -56,8 +56,8 @@ const SalaireCat4 = 450;
 const SalaireCat5 = 500;
 var CountLune;
 
-/* client.login(process.env.BOT_TOKEN); Pour Heroku */
-client.login(auth.BOT_TOKEN); /* POUR LOCAL */
+client.login(process.env.BOT_TOKEN); /*Pour Heroku */
+/*client.login(auth.BOT_TOKEN); /* POUR LOCAL */
 client.on("ready", () => {
   //createBoutique();
   createJobList();
